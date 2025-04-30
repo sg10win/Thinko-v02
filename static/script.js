@@ -90,10 +90,10 @@ function updateDailyBadge() {
     if (!elements.dailyBadge) return;
     
     if (gameState.player.dailyCompletedToday) {
-        elements.dailyBadge.innerHTML = '<span>DAILY XP ✓</span>';
+        elements.dailyBadge.innerHTML = '<span>XP ✓</span>';
         elements.dailyBadge.classList.add('completed');
     } else {
-        elements.dailyBadge.innerHTML = '<span>DAILY XP</span>';
+        elements.dailyBadge.innerHTML = '<span>XP</span>';
         elements.dailyBadge.classList.remove('completed');
     }
 }
