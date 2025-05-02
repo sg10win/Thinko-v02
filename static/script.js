@@ -178,16 +178,14 @@ async function fetchRiddle(daily = false) {
         gameState.hintUsed = false;
         if (elements.hintBtn) elements.hintBtn.disabled = false;
         
-        // In a real app, you would fetch from your server
-        // For this example, we'll use mock data
-        gameState.currentRiddle = {
-            id: 'mock-' + Date.now(),
-            question: daily 
-                ? "What has keys but no locks, space but no room, and you can enter but not go in?" 
-                : "I speak without a mouth and hear without ears. I have no body, but I come alive with wind. What am I?",
-            answer: daily ? "keyboard" : "echo",
-            hint: daily ? "You're using one right now" : "Mountain response"
-        };
+        const endpoint = daily ? '/riddle/daily' : '/riddle';
+        const response = await fetch(endpoint);
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        gameState.currentRiddle = await response.json();
         
         if (elements.riddle) {
             elements.riddle.innerHTML = '';
@@ -202,6 +200,20 @@ async function fetchRiddle(daily = false) {
     } catch (error) {
         console.error('Error fetching riddle:', error);
         showToast('Failed to load riddle. Try again.');
+        
+        // Fallback to mock data if API fails
+        gameState.currentRiddle = {
+            id: 'mock-' + Date.now(),
+            question: daily 
+                ? "What has keys but no locks, space but no room, and you can enter but not go in?" 
+                : "I speak without a mouth and hear without ears. I have no body, but I come alive with wind. What am I?",
+            hint: daily ? "You're using one right now" : "Mountain response"
+        };
+        
+        if (elements.riddle) {
+            elements.riddle.innerHTML = '';
+            typeWriter(gameState.currentRiddle.question);
+        }
     }
 }
 
@@ -226,24 +238,45 @@ function typeWriter(text, i = 0, target = null, isHint = false) {
     }
 }
 
-// Verify answer
 async function verifyAnswer() {
     if (gameState.isTyping || !gameState.currentRiddle?.id || !elements.answerInput) return;
 
-    const userAnswer = elements.answerInput.value.trim().toLowerCase();
+    const userAnswer = elements.answerInput.value.trim();
     if (!userAnswer) return;
 
-    // In a real app, you would verify with your server
-    // For this example, we'll check against the mock answer
-    const isCorrect = userAnswer === gameState.currentRiddle.answer.toLowerCase();
-    
-    if (isCorrect) {
-        handleCorrectAnswer();
-    } else {
-        handleIncorrectAnswer();
+    try {
+        const response = await fetch('/verify', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                riddle_id: gameState.currentRiddle.id,
+                answer: userAnswer
+            })
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const result = await response.json();
+        
+        if (result.correct) {
+            handleCorrectAnswer();
+        } else {
+            handleIncorrectAnswer();
+        }
+    } catch (error) {
+        console.error('Error verifying answer:', error);
+        
+        // Fallback verification for mock data
+        const mockAnswer = gameState.currentRiddle.answer?.toLowerCase();
+        if (mockAnswer && userAnswer.toLowerCase() === mockAnswer) {
+            handleCorrectAnswer();
+        } else {
+            handleIncorrectAnswer();
+        }
     }
 }
-
 // Handle correct answer
 async function handleCorrectAnswer() {
     const isDaily = elements.riddle && elements.riddle.classList.contains('daily-riddle');
