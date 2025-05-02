@@ -118,5 +118,246 @@
         "question": "What can you catch but not throw?",
         "answer": "a cold",
         "hint": "Related to illness"
+    },
+    {
+        "id": "riddle_21",
+        "question": "I’m not alive, but I grow. I don’t have lungs, but I need air. What am I?",
+        "answer": "fire",
+        "hint": "It feeds on oxygen"
+    },
+    {
+        "id": "riddle_22",
+        "question": "The more you have of me, the less you see. What am I?",
+        "answer": "darkness",
+        "hint": "Opposite of light"
+    },
+    {
+        "id": "riddle_23",
+        "question": "I can fill a room but take up no space. What am I?",
+        "answer": "light",
+        "hint": "You need me to see"
+    },
+    {
+        "id": "riddle_24",
+        "question": "What has one eye but can't see?",
+        "answer": "needle",
+        "hint": "Used in sewing"
+    },
+    {
+        "id": "riddle_25",
+        "question": "What comes once in a minute, twice in a moment, but never in a thousand years?",
+        "answer": "m",
+        "hint": "Think alphabetically"
+    },
+    {
+        "id": "riddle_26",
+        "question": "What kind of room has no doors or windows?",
+        "answer": "mushroom",
+        "hint": "Found in forests and kitchens"
+    },
+    {
+        "id": "riddle_27",
+        "question": "What has a neck but no head?",
+        "answer": "bottle",
+        "hint": "You drink from it"
+    },
+    {
+        "id": "riddle_28",
+        "question": "The more you remove from me, the stronger I get. What am I?",
+        "answer": "silence",
+        "hint": "Often appreciated in libraries"
+    },
+    {
+        "id": "riddle_29",
+        "question": "I can be cracked, made, told, and played. What am I?",
+        "answer": "joke",
+        "hint": "Makes people laugh"
+    },
+    {
+        "id": "riddle_30",
+        "question": "I shave every day, but my beard stays the same. What am I?",
+        "answer": "barber",
+        "hint": "Works with scissors and clippers"
+    },
+    {
+        "id": "riddle_31",
+        "question": "What comes down but never goes up?",
+        "answer": "rain",
+        "hint": "Falls from the sky"
+    },
+    {
+        "id": "riddle_32",
+        "question": "What has a bed but never sleeps and a mouth but never speaks?",
+        "answer": "river",
+        "hint": "Flows through valleys"
+    },
+    {
+        "id": "riddle_33",
+        "question": "I’m taken from a mine and shut in a wooden case, but I’m used by many. What am I?",
+        "answer": "graphite",
+        "hint": "Found in pencils"
+    },
+    {
+        "id": "riddle_34",
+        "question": "The more you stretch me, the thinner I get. What am I?",
+        "answer": "elastic",
+        "hint": "Used to hold things together"
+    },
+    {
+        "id": "riddle_35",
+        "question": "What has a ring but no finger?",
+        "answer": "phone",
+        "hint": "Used for communication"
+    },
+    {
+        "id": "riddle_36",
+        "question": "What goes through cities and fields but never moves?",
+        "answer": "road",
+        "hint": "Cars travel on it"
+    },
+    {
+        "id": "riddle_37",
+        "question": "What is full of holes but still holds water?",
+        "answer": "sponge",
+        "hint": "Used for cleaning"
+    },
+    {
+        "id": "riddle_38",
+        "question": "I’m invisible, I weigh nothing, and if you put me in a barrel, it becomes lighter. What am I?",
+        "answer": "hole",
+        "hint": "The absence of matter"
+    },
+    {
+        "id": "riddle_39",
+        "question": "What invention lets you look right through a wall?",
+        "answer": "window",
+        "hint": "Found in every house"
+    },
+    {
+        "id": "riddle_40",
+        "question": "I follow you all day but disappear at night. What am I?",
+        "answer": "shadow",
+        "hint": "Only visible with light"
+    },
+    {
+        "id": "riddle_41",
+        "question": "I always come in the middle of night and end the day. What am I?",
+        "answer": "t",
+        "hint": "Look at the spelling"
+    },
+    {
+        "id": "riddle_42",
+        "question": "I exist only when you ignore me. What am I?",
+        "answer": "problem",
+        "hint": "It grows when avoided"
+    },
+    {
+        "id": "riddle_43",
+        "question": "I shrink smaller every time you take a bite. What am I?",
+        "answer": "cake",
+        "hint": "Used in celebrations"
+    },
+    {
+        "id": "riddle_44",
+        "question": "You buy me to eat but never eat me. What am I?",
+        "answer": "plate",
+        "hint": "Found in kitchens"
+    },
+    {
+        "id": "riddle_45",
+        "question": "The more you have of me, the less you see. What am I?",
+        "answer": "darkness",
+        "hint": "Opposite of light"
+    },
+    {
+        "id": "riddle_46",
+        "question": "I start with an 'e', end with an 'e', but contain only one letter. What am I?",
+        "answer": "envelope",
+        "hint": "Used in mailing"
+    },
+    {
+        "id": "riddle_47",
+        "question": "I’m invisible, yet I make everything visible. What am I?",
+        "answer": "light",
+        "hint": "Needed to see"
+    },
+    {
+        "id": "riddle_48",
+        "question": "What has a neck but no head?",
+        "answer": "bottle",
+        "hint": "Used to hold liquid"
+    },
+    {
+        "id": "riddle_49",
+        "question": "I’m taken from a mine, and shut in a wooden case, from which I’m never released. What am I?",
+        "answer": "pencil",
+        "hint": "Used for writing"
+    },
+    {
+        "id": "riddle_50",
+        "question": "I fly without wings, I cry without eyes. What am I?",
+        "answer": "cloud",
+        "hint": "Found in the sky"
+    },
+    {
+        "id": "riddle_51",
+        "question": "I can be cracked, made, told, and played. What am I?",
+        "answer": "joke",
+        "hint": "Used to make people laugh"
+    },
+    {
+        "id": "riddle_52",
+        "question": "I go through towns and over hills but never move. What am I?",
+        "answer": "road",
+        "hint": "Used for driving"
+    },
+    {
+        "id": "riddle_53",
+        "question": "I have eyes but no sight. What am I?",
+        "answer": "potato",
+        "hint": "Grows underground"
+    },
+    {
+        "id": "riddle_54",
+        "question": "I move without legs. I push without arms. What am I?",
+        "answer": "wind",
+        "hint": "Felt on your face"
+    },
+    {
+        "id": "riddle_55",
+        "question": "The more you fill me, the lighter I get. What am I?",
+        "answer": "balloon",
+        "hint": "Floats in the air"
+    },
+    {
+        "id": "riddle_56",
+        "question": "I can fit in a pocket but grow big when opened. What am I?",
+        "answer": "map",
+        "hint": "Shows directions"
+    },
+    {
+        "id": "riddle_57",
+        "question": "I come after thunder and sometimes before tears. What am I?",
+        "answer": "rain",
+        "hint": "In the weather forecast"
+    },
+    {
+        "id": "riddle_58",
+        "question": "You throw me out when you want to use me, and take me in when you don’t. What am I?",
+        "answer": "anchor",
+        "hint": "Used in boats"
+    },
+    {
+        "id": "riddle_59",
+        "question": "I’m full of holes but still hold water. What am I?",
+        "answer": "sponge",
+        "hint": "Used for cleaning"
+    },
+    {
+        "id": "riddle_60",
+        "question": "I make two people out of one. What am I?",
+        "answer": "mirror",
+        "hint": "Shows reflection"
     }
+
 ]
