@@ -85,6 +85,11 @@ body {
   cursor: pointer;
   animation: pulse 2s infinite;
   z-index: 10;
+  /* Prevent text selection */
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 .daily-badge.completed {
