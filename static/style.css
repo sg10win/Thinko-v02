@@ -40,6 +40,11 @@ body {
   font-size: 3rem;
   margin-bottom: 1rem;
   text-shadow: 0 0 5px var(--matrix-green);
+  /* Prevent text selection */
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 .stats-container {
@@ -48,6 +53,11 @@ body {
   margin: 1rem 0;
   gap: 0.5rem;
   flex-wrap: nowrap;
+  /* Prevent text selection */
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 .stat-box {
@@ -58,18 +68,33 @@ body {
   border: 1px solid var(--dark-green);
   border-radius: 5px;
   flex-shrink: 1;
+  /* Prevent text selection */
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 .stat-label {
   display: block;
   font-size: 0.8rem;
   color: var(--matrix-green);
+  /* Prevent text selection */
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 .stat-value {
   font-size: 1.1rem;
   font-weight: bold;
   color: white;
+  /* Prevent text selection */
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 .daily-badge {
@@ -170,6 +195,11 @@ body {
   font-family: 'Courier New', monospace;
   cursor: pointer;
   transition: all 0.3s ease;
+  /* Prevent text selection */
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 #submitBtn:hover {
@@ -188,6 +218,11 @@ body {
   cursor: pointer;
   font-size: 1rem;
   transition: all 0.3s ease;
+  /* Prevent text selection */
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 #hintBtn:hover {
