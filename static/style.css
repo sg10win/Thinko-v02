@@ -93,10 +93,69 @@ body {
   z-index: 10;
   user-select: none;
   box-shadow: 0 2px 5px rgba(0, 102, 255, 0.2);
+  animation: pulse 2s infinite;
 }
 
 .daily-badge.completed {
   background: var(--deepseek-text-light);
+  animation: none;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.progress-container {
+  width: 100%;
+  height: 12px;
+  background-color: var(--deepseek-border);
+  border-radius: 6px;
+  margin: 0 0 1.5rem 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--deepseek-blue), var(--deepseek-light-blue));
+  border-radius: 6px;
+  transition: width 0.7s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  animation: progress-wave 2s linear infinite;
+}
+
+@keyframes progress-wave {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.progress-bar.level-up {
+  animation: progress-pop 0.7s;
+}
+
+@keyframes progress-pop {
+  0% { opacity: 1; }
+  50% { opacity: 0.7; transform: scaleY(1.5); }
+  100% { opacity: 1; transform: scaleY(1); }
 }
 
 .riddle-box {
@@ -117,33 +176,6 @@ body {
   box-shadow: 0 0 15px rgba(0, 102, 255, 0.1);
 }
 
-.progress-container {
-  width: 100%;
-  height: 8px;
-  background-color: var(--deepseek-border);
-  border-radius: 4px;
-  margin: 1.5rem 0;
-  overflow: hidden;
-}
-
-.progress-bar {
-  height: 100%;
-  width: 0%;
-  background-color: var(--deepseek-blue);
-  border-radius: 4px;
-  transition: width 0.7s ease;
-}
-
-.progress-bar.level-up {
-  animation: progress-pop 0.7s;
-}
-
-@keyframes progress-pop {
-  0% { opacity: 1; }
-  50% { opacity: 0.7; transform: scaleY(1.5); }
-  100% { opacity: 1; transform: scaleY(1); }
-}
-
 .answer-container {
   display: flex;
   gap: 10px;
@@ -162,6 +194,7 @@ body {
   border-radius: 8px;
   font-family: inherit;
   transition: all 0.3s ease;
+  min-width: 0; /* Fix for flexbox overflow */
 }
 
 #answerInput:focus {
@@ -183,6 +216,7 @@ body {
   white-space: nowrap;
   user-select: none;
   font-weight: 600;
+  flex-shrink: 0;
 }
 
 #submitBtn:hover {
@@ -281,16 +315,30 @@ body {
   100% { transform: translateX(0); }
 }
 
-@keyframes pop {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
+@keyframes input-error {
+  0% { border-color: var(--error-red); box-shadow: var(--incorrect-glow); }
+  50% { border-color: var(--error-red); box-shadow: 0 0 15px var(--error-red); }
+  100% { border-color: var(--error-red); box-shadow: var(--incorrect-glow); }
+}
+
+@keyframes button-error {
+  0% { background-color: var(--error-red); transform: translateY(0); }
+  50% { background-color: #ff6666; transform: translateY(-3px); }
+  100% { background-color: var(--error-red); transform: translateY(0); }
 }
 
 .incorrect-animation {
   animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+.input-error {
+  animation: input-error 0.5s ease-in-out;
   border-color: var(--error-red) !important;
-  box-shadow: var(--incorrect-glow);
+}
+
+.button-error {
+  animation: button-error 0.5s ease-in-out;
+  background-color: var(--error-red) !important;
 }
 
 .correct-animation {
@@ -323,6 +371,11 @@ body {
     font-size: 1rem;
   }
   
+  .progress-container {
+    height: 10px;
+    margin-bottom: 1rem;
+  }
+  
   .riddle-box {
     padding: 1.2rem;
     min-height: 160px;
@@ -339,27 +392,35 @@ body {
   .answer-container {
     flex-direction: row;
     margin: 1rem 0;
+    gap: 8px;
   }
   
   #answerInput {
     padding: 10px 12px;
+    font-size: 0.95rem;
   }
   
   #submitBtn {
     padding: 10px 15px;
+    font-size: 0.95rem;
   }
   
   #hintBtn {
     padding: 10px;
+    font-size: 0.95rem;
   }
 }
 
 @media (max-width: 400px) {
   .answer-container {
-    flex-direction: column;
+    flex-direction: row; /* Keep in line even on small screens */
   }
   
   #answerInput, #submitBtn {
-    width: 100%;
+    width: auto; /* Allow natural width */
+  }
+  
+  #submitBtn {
+    padding: 10px 12px; /* Slightly smaller padding */
   }
 }
