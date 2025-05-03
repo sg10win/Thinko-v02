@@ -194,7 +194,7 @@ body {
   border-radius: 8px;
   font-family: inherit;
   transition: all 0.3s ease;
-  min-width: 0; /* Fix for flexbox overflow */
+  min-width: 0;
 }
 
 #answerInput:focus {
@@ -260,30 +260,6 @@ body {
   padding: 12px;
   background-color: var(--input-bg);
   border-radius: 8px;
-}
-
-.hint-separator {
-  color: var(--deepseek-border);
-  margin: 0.5rem 0;
-  text-align: center;
-  position: relative;
-}
-
-.hint-separator::before {
-  content: "";
-  display: block;
-  height: 1px;
-  background-color: var(--deepseek-border);
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  z-index: -1;
-}
-
-.hint-separator span {
-  background-color: var(--deepseek-bg);
-  padding: 0 10px;
 }
 
 .toast {
@@ -413,14 +389,10 @@ body {
 
 @media (max-width: 400px) {
   .answer-container {
-    flex-direction: row; /* Keep in line even on small screens */
-  }
-  
-  #answerInput, #submitBtn {
-    width: auto; /* Allow natural width */
+    flex-direction: row;
   }
   
   #submitBtn {
-    padding: 10px 12px; /* Slightly smaller padding */
+    padding: 10px 12px;
   }
 }
