@@ -339,24 +339,48 @@ function handleIncorrectAnswer() {
         elements.errorSound.play();
     }
     
+    // Add all animation classes
     if (elements.answerInput) {
-        elements.answerInput.classList.remove('shake');
-        void elements.answerInput.offsetWidth;
-        elements.answerInput.classList.add('shake');
+        elements.answerInput.classList.remove('input-error', 'shake');
+        void elements.answerInput.offsetWidth; // Trigger reflow
+        elements.answerInput.classList.add('input-error');
     }
     
     if (elements.submitBtn) {
-        elements.submitBtn.classList.remove('shake');
-        void elements.submitBtn.offsetWidth;
-        elements.submitBtn.classList.add('shake');
+        elements.submitBtn.classList.remove('button-error', 'shake');
+        void elements.submitBtn.offsetWidth; // Trigger reflow
+        elements.submitBtn.classList.add('button-error');
     }
     
+    if (elements.container) {
+        elements.container.classList.remove('incorrect-animation', 'shake');
+        void elements.container.offsetWidth; // Trigger reflow
+        elements.container.classList.add('incorrect-animation');
+    }
+    
+    // Remove animation classes after completion
     setTimeout(() => {
-        if (elements.answerInput) elements.answerInput.classList.remove('shake');
-        if (elements.submitBtn) elements.submitBtn.classList.remove('shake');
+        if (elements.answerInput) {
+            elements.answerInput.classList.remove('input-error', 'shake');
+            elements.answerInput.style.borderColor = ''; // Reset to default
+            elements.answerInput.style.boxShadow = ''; // Reset to default
+        }
+        
+        if (elements.submitBtn) {
+            elements.submitBtn.classList.remove('button-error', 'shake');
+            elements.submitBtn.style.backgroundColor = ''; // Reset to default
+        }
+        
+        if (elements.container) {
+            elements.container.classList.remove('incorrect-animation', 'shake');
+        }
     }, 500);
+    
+    // Add slight vibration for mobile devices if supported
+    if (navigator.vibrate) {
+        navigator.vibrate([100, 50, 100]);
+    }
 }
-
 // Show hint
 function showHint() {
     if (gameState.isTyping || !gameState.currentRiddle?.hint || !elements.riddle || gameState.hintUsed) return;
