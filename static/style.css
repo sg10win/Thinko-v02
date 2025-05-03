@@ -112,16 +112,30 @@ body {
 /* Progress Bar Container */
 .progress-container {
   width: 100%;
-  height: 20px;  /* Extra thick size */
-  background-color: #f0f3f7;  /* Soft light blue-gray */
-  border-radius: 10px;  /* Fully rounded ends */
-  margin: 0.75rem 0;  /* Perfectly balanced spacing */
+  height: 20px; /* Maintain same thickness on all devices */
+  background-color: #f0f3f7;
+  border-radius: 10px;
+  margin: 0.75rem 0;
   overflow: hidden;
   position: relative;
   box-shadow: 
-    inset 0 2px 4px rgba(0, 0, 0, 0.08),  /* Inner depth */
-    0 1px 2px rgba(0, 0, 0, 0.05);  /* Subtle outer shadow */
-  border: 1px solid #d9e2ec;  /* Delicate border */
+    inset 0 2px 4px rgba(0, 0, 0, 0.08),
+    0 1px 2px rgba(0, 0, 0, 0.05);
+  border: 1px solid #d9e2ec;
+}
+
+/* Mobile-optimized progress bar */
+@media (max-width: 768px) {
+  .progress-container {
+    height: 18px; /* Slightly thinner but still substantial */
+    border-radius: 8px;
+    margin: 0.5rem 0; /* Tighter spacing on mobile */
+  }
+  
+  .progress-bar::after {
+    top: -15%; /* Adjusted wave for mobile thickness */
+    bottom: -15%;
+  }
 }
 
 /* Animated Progress Fill */
@@ -424,5 +438,69 @@ body {
   
   #submitBtn {
     padding: 10px 12px;
+  }
+}
+/* Social Buttons Container */
+.social-buttons {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  padding: 12px;
+  background: white;
+  border-top: 1px solid #e0e3e7;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+  z-index: 100;
+}
+
+/* Individual Social Buttons */
+.social-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: white;
+  border: 1px solid #e0e3e7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.social-btn:hover {
+  background: #f5f8ff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 102, 255, 0.1);
+}
+
+.social-btn:active {
+  transform: translateY(0);
+}
+
+/* Mobile-specific social button adjustments */
+@media (max-width: 480px) {
+  .social-buttons {
+    gap: 10px;
+    padding: 10px;
+  }
+  
+  .social-btn {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+/* Ensure content doesn't hide behind social buttons */
+.container {
+  padding-bottom: 80px; /* Space for social buttons */
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding-bottom: 70px; /* Slightly less space on mobile */
   }
 }
