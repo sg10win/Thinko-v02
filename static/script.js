@@ -420,10 +420,16 @@ let deferredPrompt;
 
 function showInstallButton() {
     if (elements.installButton) {
+        // Reset any previous state
         elements.installButton.style.display = 'flex';
-        setTimeout(() => {
-            elements.installButton.classList.add('visible');
-        }, 100);
+        elements.installButton.style.opacity = '0';
+        elements.installButton.style.transform = 'translateY(20px)';
+        
+        // Trigger reflow
+        void elements.installButton.offsetWidth;
+        
+        // Animate in
+        elements.installButton.classList.add('visible');
     }
 }
 
@@ -432,28 +438,49 @@ function hideInstallButton() {
         elements.installButton.classList.remove('visible');
         setTimeout(() => {
             elements.installButton.style.display = 'none';
-        }, 300);
+        }, 300); // Match this with your CSS transition
     }
 }
 
 function setupPWAInstall() {
+    // Reset any existing prompt
+    deferredPrompt = null;
+    
     window.addEventListener('beforeinstallprompt', (e) => {
+        console.log('beforeinstallprompt event fired');
         e.preventDefault();
         deferredPrompt = e;
         showInstallButton();
+        
+        // Optional: Log event for debugging
+        console.log('PWA install prompt available');
     });
 
     window.addEventListener('appinstalled', () => {
+        console.log('App installed');
         hideInstallButton();
         deferredPrompt = null;
         showToast('Thinko installed successfully!');
     });
 
+    // Check if already installed
+    if (window.matchMedia('(display-mode: standalone)').matches) {
+        console.log('Already installed');
+        hideInstallButton();
+    }
+
+    // Add click handler
     elements.installButton?.addEventListener('click', async () => {
-        if (!deferredPrompt) return;
+        if (!deferredPrompt) {
+            console.log('No install prompt available');
+            return;
+        }
         
+        console.log('Showing install prompt');
         deferredPrompt.prompt();
+        
         const { outcome } = await deferredPrompt.userChoice;
+        console.log('User response:', outcome);
         
         if (outcome === 'accepted') {
             showToast('Installing Thinko...');
@@ -463,10 +490,12 @@ function setupPWAInstall() {
         deferredPrompt = null;
     });
 
-    if (window.matchMedia('(display-mode: standalone)').matches) {
-        hideInstallButton();
-    }
+    // Debugging: Force show button for testing (remove in production)
+    // setTimeout(showInstallButton, 3000);
 }
+
+// Call this function when your app initializes
+setupPWAInstall();
 
 // Setup event listeners
 function setupEventListeners() {
