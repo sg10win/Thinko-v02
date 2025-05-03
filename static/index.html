@@ -5,89 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>THINKO - Riddle Game</title>
     <meta name="theme-color" content="#ffffff">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <!-- PWA Meta Tags -->
     <link rel="manifest" href="/static/manifest.json">
-    <meta name="theme-color" content="#ffffff">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Thinko">
     <link rel="apple-touch-icon" href="/static/icons/icon-192.png">
-    <!-- Apple Touch Icons -->
-    <link rel="apple-touch-icon" href="/static/icons/icon-180.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="/static/icons/icon-152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/static/icons/icon-180.png">
-    <link rel="apple-touch-icon" sizes="167x167" href="/static/icons/icon-167.png">
-
-    <!-- Apple Launch Images -->
-    <link rel="apple-touch-startup-image" href="/static/splash/launch-640x1136.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
-    <link rel="apple-touch-startup-image" href="/static/splash/launch-750x1294.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
-    <link rel="apple-touch-startup-image" href="/static/splash/launch-1242x2148.png" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
-    <link rel="apple-touch-startup-image" href="/static/splash/launch-1125x2436.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
-
-    <!-- iOS Meta Tags -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Thinko">
-
     <!-- Favicon -->
     <link rel="icon" href="/static/icons/favicon.ico" type="image/x-icon">
-    <link rel="icon" type="image/png" sizes="192x192" href="/static/icons/icon-192.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="/static/icons/icon-512.png">
-    <link rel="stylesheet" href="/static/style.css">
     <style>
-        /* White Background */
+        /* Base Styles */
         body {
             background-color: white;
             margin: 0;
             padding: 0;
             min-height: 100vh;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
         }
-
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            padding-bottom: 100px; /* Space for social buttons */
+        }
+        
         /* Install Button Styles */
-        .install-btn {
+        #installButton {
             position: fixed;
-            bottom: 90px;
+            bottom: 80px;
             right: 20px;
             background: #0066ff;
             color: white;
             border: none;
             border-radius: 30px;
-            padding: 12px 24px;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            padding: 12px 20px;
             font-weight: 600;
-            font-size: 1rem;
             cursor: pointer;
-            box-shadow: 0 4px 20px rgba(0, 102, 255, 0.4);
+            box-shadow: 0 4px 12px rgba(0, 102, 255, 0.3);
             display: none;
             align-items: center;
             gap: 8px;
             z-index: 1000;
             transition: all 0.3s ease;
-            opacity: 0;
-            transform: translateY(20px);
         }
-
-        .install-btn.visible {
-            display: flex;
-            opacity: 1;
-            transform: translateY(0);
-            animation: install-pulse 2s infinite;
-        }
-
-        .install-btn-social {
-            background: #0066ff;
-            color: white;
-            box-shadow: 0 2px 10px rgba(0, 102, 255, 0.3);
-        }
-
-        @keyframes install-pulse {
-            0% { box-shadow: 0 4px 20px rgba(0, 102, 255, 0.4); }
-            50% { box-shadow: 0 6px 25px rgba(0, 102, 255, 0.6); }
-            100% { box-shadow: 0 4px 20px rgba(0, 102, 255, 0.4); }
-        }
-
-        /* Social Buttons Container */
+        
+        /* Social Buttons */
         .social-buttons {
             position: fixed;
             bottom: 0;
@@ -99,10 +61,9 @@
             padding: 15px;
             background: white;
             border-top: 1px solid #e0e3e7;
-            box-shadow: 0 -2px 15px rgba(0, 0, 0, 0.08);
             z-index: 999;
         }
-
+        
         .social-btn {
             width: 50px;
             height: 50px;
@@ -113,24 +74,18 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
             font-size: 1.2rem;
         }
-
-        .social-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        
+        #socialInstallBtn {
+            display: none;
+            background: #0066ff;
+            color: white;
         }
-
-        /* Adjust container padding for social buttons */
-        .container {
-            padding-bottom: 90px;
-        }
-
-        /* Hide install button in standalone mode */
+        
+        /* Hide in standalone mode */
         @media all and (display-mode: standalone) {
-            .install-btn, .install-btn-social {
+            #installButton, #socialInstallBtn {
                 display: none !important;
             }
         }
@@ -138,28 +93,27 @@
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1 class="title">THINKO</h1>
-            <div class="stats-container">
-                <div class="stat-box">
-                    <span class="stat-label">Level</span>
-                    <span id="levelDisplay" class="stat-value">1</span>
-                </div>
-                <div class="stat-box">
-                    <span class="stat-label">Streak</span>
-                    <span id="streakDisplay" class="stat-value">0</span>
-                </div>
-                <div class="stat-box">
-                    <span class="stat-label">XP</span>
-                    <span id="xpDisplay" class="stat-value">0/100</span>
-                </div>
+        <!-- Your existing game content here -->
+        <h1 class="title">THINKO</h1>
+        <div class="stats-container">
+            <div class="stat-box">
+                <span class="stat-label">Level</span>
+                <span id="levelDisplay" class="stat-value">1</span>
             </div>
-        </header>
-
+            <div class="stat-box">
+                <span class="stat-label">Streak</span>
+                <span id="streakDisplay" class="stat-value">0</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-label">XP</span>
+                <span id="xpDisplay" class="stat-value">0/100</span>
+            </div>
+        </div>
+        
         <div id="dailyChallenge" class="daily-badge">
             <span></span>
         </div>
-
+        
         <main>
             <div class="progress-container">
                 <div class="progress-bar" id="progressBar"></div>
@@ -171,100 +125,64 @@
             </div>
             <button id="hintBtn">Show Hint</button>
         </main>
-
+        
         <div id="achievementToast" class="toast">
             <span id="toastMessage"></span>
         </div>
     </div>
 
-    <!-- Social Buttons with Install Button -->
+    <!-- Social Buttons -->
     <div class="social-buttons">
         <button id="shareBtn" class="social-btn">📤</button>
         <button id="leaderboardBtn" class="social-btn">🏆</button>
-        <button id="socialInstallBtn" class="social-btn install-btn-social" style="display: none;">📲</button>
+        <button id="socialInstallBtn" class="social-btn">📲</button>
     </div>
 
     <!-- Floating Install Button -->
-    <button id="installButton" class="install-btn" aria-label="Install Thinko">
-        <svg class="install-icon" viewBox="0 0 24 24">
-            <path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
-        </svg>
-        <span class="install-text">Install Thinko</span>
+    <button id="installButton">
+        <span>Install Thinko</span>
     </button>
 
+    <!-- Your existing audio elements -->
     <audio id="successSound" src="/static/assets/sounds/success.wav" preload="auto"></audio>
     <audio id="levelUpSound" src="/static/assets/sounds/level-up.mp3" preload="auto"></audio>
 
+    <!-- PWA Installation Handler -->
     <script>
-        // ===== PWA INSTALLATION HANDLER ===== //
-        let deferredPrompt;
-        const installButton = document.getElementById('installButton');
-        const socialInstallBtn = document.getElementById('socialInstallBtn');
-
-        function showInstallPromotion() {
-            installButton.style.display = 'flex';
-            setTimeout(() => {
-                installButton.classList.add('visible');
-            }, 100);
-            
-            socialInstallBtn.style.display = 'flex';
-        }
-
-        function hideInstallPromotion() {
-            installButton.classList.remove('visible');
-            setTimeout(() => {
-                installButton.style.display = 'none';
-            }, 300);
-            
-            socialInstallBtn.style.display = 'none';
-        }
-
-        function setupPWAInstall() {
-            window.addEventListener('beforeinstallprompt', (e) => {
-                e.preventDefault();
-                deferredPrompt = e;
-                showInstallPromotion();
+    // Simple PWA installation handler
+    let deferredPrompt;
+    const installButton = document.getElementById('installButton');
+    const socialInstallBtn = document.getElementById('socialInstallBtn');
+    
+    window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        installButton.style.display = 'flex';
+        socialInstallBtn.style.display = 'flex';
+    });
+    
+    function installPWA() {
+        if (deferredPrompt) {
+            deferredPrompt.prompt();
+            deferredPrompt.userChoice.then((choiceResult) => {
+                if (choiceResult.outcome === 'accepted') {
+                    console.log('User accepted install');
+                }
+                deferredPrompt = null;
             });
-
-            window.addEventListener('appinstalled', () => {
-                hideInstallPromotion();
-                showToast('Thinko installed successfully!');
-            });
-
-            [installButton, socialInstallBtn].forEach(btn => {
-                btn?.addEventListener('click', async () => {
-                    if (!deferredPrompt) return;
-                    
-                    deferredPrompt.prompt();
-                    const { outcome } = await deferredPrompt.userChoice;
-                    
-                    if (outcome === 'accepted') {
-                        showToast('Installing Thinko...');
-                    }
-                    
-                    hideInstallPromotion();
-                    deferredPrompt = null;
-                });
-            });
-
-            if (window.matchMedia('(display-mode: standalone)').matches) {
-                hideInstallPromotion();
-            }
         }
-
-        // Initialize when DOM is loaded
-        document.addEventListener('DOMContentLoaded', setupPWAInstall);
-
-        // Toast function (if not already defined)
-        function showToast(message) {
-            const toast = document.getElementById('achievementToast');
-            if (toast) {
-                toast.querySelector('#toastMessage').textContent = message;
-                toast.classList.add('show');
-                setTimeout(() => toast.classList.remove('show'), 3000);
-            }
-        }
+    }
+    
+    installButton.addEventListener('click', installPWA);
+    socialInstallBtn.addEventListener('click', installPWA);
+    
+    window.addEventListener('appinstalled', () => {
+        installButton.style.display = 'none';
+        socialInstallBtn.style.display = 'none';
+    });
     </script>
+
+    <!-- Your existing game script -->
     <script src="/static/script.js"></script>
 </body>
 </html>
