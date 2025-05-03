@@ -1,8 +1,8 @@
-// Game Configuration
+// ===== GAME CONFIGURATION =====
 const TYPING_SPEED = 30;
 const XP_PER_LEVEL = 100;
 
-// DOM Elements
+// ===== DOM ELEMENTS =====
 const elements = {
     riddle: document.getElementById('riddle'),
     answerInput: document.getElementById('answerInput'),
@@ -21,10 +21,11 @@ const elements = {
     saveBtn: document.getElementById('saveBtn'),
     successSound: document.getElementById('successSound'),
     errorSound: document.getElementById('errorSound'),
-    levelUpSound: document.getElementById('levelUpSound')
+    levelUpSound: document.getElementById('levelUpSound'),
+    container: document.querySelector('.container')
 };
 
-// Player State
+// ===== GAME STATE =====
 let gameState = {
     currentRiddle: null,
     isTyping: false,
@@ -40,7 +41,10 @@ let gameState = {
     }
 };
 
-// Storage Utilities
+// ===== PWA INSTALLATION STATE =====
+let deferredPrompt = null;
+
+// ===== STORAGE UTILITIES =====
 const storage = {
     save: () => {
         try {
@@ -50,6 +54,7 @@ const storage = {
             console.error('Error saving game:', error);
         }
     },
+
     load: () => {
         try {
             const savedData = localStorage.getItem('thinkoPlayerData');
@@ -58,7 +63,6 @@ const storage = {
                 
                 // Data migration for future updates
                 if (!parsedData._version || parsedData._version < 1.0) {
-                    // Handle legacy data format if needed
                     parsedData._version = 1.0;
                 }
                 
@@ -82,12 +86,13 @@ const storage = {
         }
         return false;
     },
+
     clear: () => {
         localStorage.removeItem('thinkoPlayerData');
     }
 };
 
-// Initialize game
+// ===== GAME INITIALIZATION =====
 function initGame() {
     // Load saved data
     if (!storage.load()) {
@@ -107,7 +112,7 @@ function initGame() {
     window.addEventListener('beforeunload', () => storage.save());
 }
 
-// Check if daily challenge should reset
+// ===== GAME LOGIC FUNCTIONS =====
 function checkDailyReset() {
     const today = new Date().toDateString();
     
@@ -133,7 +138,6 @@ function checkDailyReset() {
     updateDailyBadge();
 }
 
-// Update all stat displays
 function updateStatsDisplay() {
     if (elements.levelDisplay) elements.levelDisplay.textContent = gameState.player.level;
     if (elements.streakDisplay) elements.streakDisplay.textContent = gameState.player.streak;
@@ -142,7 +146,6 @@ function updateStatsDisplay() {
     updateDailyBadge();
 }
 
-// Update progress bar
 function updateProgressBar() {
     if (!elements.progressBar) return;
     
@@ -159,7 +162,6 @@ function updateProgressBar() {
     }
 }
 
-// Update daily challenge badge
 function updateDailyBadge() {
     if (!elements.dailyBadge) return;
     
@@ -172,7 +174,6 @@ function updateDailyBadge() {
     }
 }
 
-// Fetch a random riddle
 async function fetchRiddle(daily = false) {
     try {
         gameState.hintUsed = false;
@@ -217,7 +218,6 @@ async function fetchRiddle(daily = false) {
     }
 }
 
-// Typewriter effect with single cursor
 function typeWriter(text, i = 0, target = null, isHint = false) {
     if (i === 0) {
         gameState.isTyping = true;
@@ -277,8 +277,8 @@ async function verifyAnswer() {
         }
     }
 }
-// Handle correct answer
-async function handleCorrectAnswer() {
+
+function handleCorrectAnswer() {
     const isDaily = elements.riddle && elements.riddle.classList.contains('daily-riddle');
     const today = new Date().toDateString();
     
@@ -323,16 +323,15 @@ async function handleCorrectAnswer() {
     }
     
     updateStatsDisplay();
-    storage.save(); // Save progress
+    storage.save();
     
     // Clear input and get new riddle
     if (elements.answerInput) elements.answerInput.value = '';
     setTimeout(() => {
-        fetchRiddle(false); // Always return to normal mode after any answer
+        fetchRiddle(false);
     }, isDaily ? 1500 : 1000);
 }
 
-// Handle incorrect answer
 function handleIncorrectAnswer() {
     if (elements.errorSound) {
         elements.errorSound.currentTime = 0;
@@ -342,19 +341,19 @@ function handleIncorrectAnswer() {
     // Add all animation classes
     if (elements.answerInput) {
         elements.answerInput.classList.remove('input-error', 'shake');
-        void elements.answerInput.offsetWidth; // Trigger reflow
+        void elements.answerInput.offsetWidth;
         elements.answerInput.classList.add('input-error');
     }
     
     if (elements.submitBtn) {
         elements.submitBtn.classList.remove('button-error', 'shake');
-        void elements.submitBtn.offsetWidth; // Trigger reflow
+        void elements.submitBtn.offsetWidth;
         elements.submitBtn.classList.add('button-error');
     }
     
     if (elements.container) {
         elements.container.classList.remove('incorrect-animation', 'shake');
-        void elements.container.offsetWidth; // Trigger reflow
+        void elements.container.offsetWidth;
         elements.container.classList.add('incorrect-animation');
     }
     
@@ -362,13 +361,13 @@ function handleIncorrectAnswer() {
     setTimeout(() => {
         if (elements.answerInput) {
             elements.answerInput.classList.remove('input-error', 'shake');
-            elements.answerInput.style.borderColor = ''; // Reset to default
-            elements.answerInput.style.boxShadow = ''; // Reset to default
+            elements.answerInput.style.borderColor = '';
+            elements.answerInput.style.boxShadow = '';
         }
         
         if (elements.submitBtn) {
             elements.submitBtn.classList.remove('button-error', 'shake');
-            elements.submitBtn.style.backgroundColor = ''; // Reset to default
+            elements.submitBtn.style.backgroundColor = '';
         }
         
         if (elements.container) {
@@ -381,7 +380,7 @@ function handleIncorrectAnswer() {
         navigator.vibrate([100, 50, 100]);
     }
 }
-// Show hint
+
 function showHint() {
     if (gameState.isTyping || !gameState.currentRiddle?.hint || !elements.riddle || gameState.hintUsed) return;
 
@@ -403,7 +402,6 @@ function showHint() {
     typeWriter(gameState.currentRiddle.hint, 0, hintContainer, true);
 }
 
-// Show toast notification
 function showToast(message) {
     if (!elements.toast || !elements.toastMessage) return;
     
@@ -415,89 +413,62 @@ function showToast(message) {
     }, 3000);
 }
 
-// ===== PWA INSTALLATION HANDLER ===== //
-let deferredPrompt;
-
-function showInstallButton() {
+// ===== PWA INSTALLATION FUNCTIONS =====
+function showInstallPromotion() {
     if (elements.installButton) {
-        // Reset any previous state
         elements.installButton.style.display = 'flex';
-        elements.installButton.style.opacity = '0';
-        elements.installButton.style.transform = 'translateY(20px)';
-        
-        // Trigger reflow
-        void elements.installButton.offsetWidth;
-        
-        // Animate in
-        elements.installButton.classList.add('visible');
+        setTimeout(() => {
+            elements.installButton.style.opacity = '1';
+            elements.installButton.style.transform = 'translateY(0)';
+        }, 100);
     }
 }
 
-function hideInstallButton() {
+function hideInstallPromotion() {
     if (elements.installButton) {
-        elements.installButton.classList.remove('visible');
+        elements.installButton.style.opacity = '0';
+        elements.installButton.style.transform = 'translateY(20px)';
         setTimeout(() => {
             elements.installButton.style.display = 'none';
-        }, 300); // Match this with your CSS transition
+        }, 300);
     }
 }
 
 function setupPWAInstall() {
-    // Reset any existing prompt
-    deferredPrompt = null;
-    
     window.addEventListener('beforeinstallprompt', (e) => {
-        console.log('beforeinstallprompt event fired');
         e.preventDefault();
         deferredPrompt = e;
-        showInstallButton();
-        
-        // Optional: Log event for debugging
-        console.log('PWA install prompt available');
+        showInstallPromotion();
     });
 
     window.addEventListener('appinstalled', () => {
-        console.log('App installed');
-        hideInstallButton();
+        hideInstallPromotion();
         deferredPrompt = null;
         showToast('Thinko installed successfully!');
     });
 
-    // Check if already installed
-    if (window.matchMedia('(display-mode: standalone)').matches) {
-        console.log('Already installed');
-        hideInstallButton();
+    if (elements.installButton) {
+        elements.installButton.addEventListener('click', async () => {
+            if (!deferredPrompt) return;
+            
+            deferredPrompt.prompt();
+            const { outcome } = await deferredPrompt.userChoice;
+            
+            if (outcome === 'accepted') {
+                showToast('Installing Thinko...');
+            }
+            
+            hideInstallPromotion();
+            deferredPrompt = null;
+        });
     }
 
-    // Add click handler
-    elements.installButton?.addEventListener('click', async () => {
-        if (!deferredPrompt) {
-            console.log('No install prompt available');
-            return;
-        }
-        
-        console.log('Showing install prompt');
-        deferredPrompt.prompt();
-        
-        const { outcome } = await deferredPrompt.userChoice;
-        console.log('User response:', outcome);
-        
-        if (outcome === 'accepted') {
-            showToast('Installing Thinko...');
-        }
-        
-        hideInstallButton();
-        deferredPrompt = null;
-    });
-
-    // Debugging: Force show button for testing (remove in production)
-    // setTimeout(showInstallButton, 3000);
+    if (window.matchMedia('(display-mode: standalone)').matches) {
+        hideInstallPromotion();
+    }
 }
 
-// Call this function when your app initializes
-setupPWAInstall();
-
-// Setup event listeners
+// ===== EVENT LISTENERS SETUP =====
 function setupEventListeners() {
     // Answer submission
     if (elements.answerInput) {
@@ -554,8 +525,7 @@ function setupEventListeners() {
     }
 }
 
-
-// Start the game when DOM is loaded
+// ===== START THE GAME =====
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initGame);
 } else {
