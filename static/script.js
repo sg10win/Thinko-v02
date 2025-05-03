@@ -1,5 +1,5 @@
 // ===== GAME CONFIGURATION =====
-let TYPING_SPEED = 20;
+const TYPING_SPEED = 20;
 const XP_PER_LEVEL = 100;
 
 // ===== DOM ELEMENTS =====
@@ -219,11 +219,7 @@ async function fetchRiddle(daily = false) {
 }
 
 function typeWriter(text, i = 0, target = null, isHint = false) {
-    if text[i] == ',' or text[i] == '.'{
-        TYPING_SPEED = 10
-    }else{
-        TYPING_SPEED = 20
-
+   
     if (i === 0) {
         gameState.isTyping = true;
         if (!target) {
