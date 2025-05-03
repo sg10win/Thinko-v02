@@ -526,49 +526,6 @@ function setupEventListeners() {
 }
 
 
-// PWA Installation Logic
-let deferredPrompt;
-const installButton = document.getElementById('installButton');
-
-// Only show install button if PWA isn't installed
-function showInstallButton() {
-  const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
-  if (!isStandalone && deferredPrompt) {
-    installButton.style.display = 'flex';
-  }
-}
-
-window.addEventListener('beforeinstallprompt', (e) => {
-  // Prevent Chrome 67 and earlier from automatically showing prompt
-  e.preventDefault();
-  // Stash the event so it can be triggered later
-  deferredPrompt = e;
-  // Show the install button
-  showInstallButton();
-});
-
-installButton.addEventListener('click', async () => {
-  if (deferredPrompt) {
-    // Show the install prompt
-    deferredPrompt.prompt();
-    // Wait for the user to respond to the prompt
-    const { outcome } = await deferredPrompt.userChoice;
-    // Hide the install button regardless
-    installButton.style.display = 'none';
-    // Clear the saved prompt
-    deferredPrompt = null;
-  }
-});
-
-// Hide install button if app is already installed
-window.addEventListener('appinstalled', () => {
-  installButton.style.display = 'none';
-  deferredPrompt = null;
-});
-
-// Initial check on page load
-showInstallButton();
-
 // Start the game when DOM is loaded
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initGame);
