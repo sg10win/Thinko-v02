@@ -1,5 +1,5 @@
 // ===== GAME CONFIGURATION =====
-const TYPING_SPEED = 40;
+const TYPING_SPEED = 35;
 const XP_PER_LEVEL = 100;
 
 // ===== DOM ELEMENTS =====
