@@ -109,61 +109,82 @@ body {
   100% { transform: scale(1); }
 }
 
+/* Progress Bar Container */
 .progress-container {
   width: 100%;
-  height: 14px;  /* Increased thickness */
-  background-color: #f0f2f5;  /* Lighter background for contrast */
-  border-radius: 8px;  /* More rounded corners */
-  margin: 0.5rem 0 1.5rem 0;  /* Tighter vertical spacing */
+  height: 20px;  /* Extra thick size */
+  background-color: #f0f3f7;  /* Soft light blue-gray */
+  border-radius: 10px;  /* Fully rounded ends */
+  margin: 0.75rem 0;  /* Perfectly balanced spacing */
   overflow: hidden;
   position: relative;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);  /* Inner shadow for depth */
-  border: 1px solid #e0e3e7;  /* Subtle border */
+  box-shadow: 
+    inset 0 2px 4px rgba(0, 0, 0, 0.08),  /* Inner depth */
+    0 1px 2px rgba(0, 0, 0, 0.05);  /* Subtle outer shadow */
+  border: 1px solid #d9e2ec;  /* Delicate border */
 }
 
+/* Animated Progress Fill */
 .progress-bar {
   height: 100%;
   width: 0%;
   background: linear-gradient(
     90deg,
-    var(--deepseek-blue),
-    var(--deepseek-light-blue)
+    #0066ff,  /* DeepSeek blue start */
+    #3399ff,  /* Bright middle */
+    #0066ff   /* DeepSeek blue end */
   );
-  border-radius: 8px;
-  transition: width 0.7s ease;
+  border-radius: 10px;
+  transition: width 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
   position: relative;
   overflow: hidden;
-  box-shadow: 0 2px 4px rgba(0, 102, 255, 0.2);  /* Outer glow */
+  box-shadow: 
+    0 0 8px rgba(0, 102, 255, 0.4),  /* Blue glow */
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);  /* Top highlight */
 }
 
-/* Enhanced wave animation */
+/* Shimmer Wave Animation */
 .progress-bar::after {
   content: '';
   position: absolute;
-  top: 0;
+  top: -20%;
   left: 0;
   right: 0;
-  bottom: 0;
+  bottom: -20%;
   background: linear-gradient(
     90deg,
-    rgba(255, 255, 255, 0),
-    rgba(255, 255, 255, 0.5),
-    rgba(255, 255, 255, 0)
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.7) 50%,
+    rgba(255, 255, 255, 0) 100%
   );
-  animation: progress-wave 1.5s linear infinite;
-  opacity: 0.6;
+  animation: progress-wave 1.8s linear infinite;
+  transform: translateX(-100%) skewX(-15deg);
+  opacity: 0.7;
 }
 
-/* More prominent level-up animation */
+/* Level Up Celebration Effect */
 .progress-bar.level-up {
-  animation: progress-pop 0.7s ease-out;
+  animation: 
+    progress-pop 0.8s ease-out,
+    progress-pulse 0.8s 0.3s ease-in-out;
+}
+
+/* Keyframe Animations */
+@keyframes progress-wave {
+  0% { transform: translateX(-100%) skewX(-15deg); }
+  100% { transform: translateX(300%) skewX(-15deg); }
 }
 
 @keyframes progress-pop {
-  0% { transform: scaleY(1); }
-  25% { transform: scaleY(1.3); opacity: 0.8; }
-  50% { transform: scaleY(0.95); }
-  100% { transform: scaleY(1); opacity: 1; }
+  0% { transform: scaleX(1) scaleY(1); }
+  30% { transform: scaleX(1.05) scaleY(1.4); }
+  60% { transform: scaleX(0.98) scaleY(0.95); }
+  100% { transform: scaleX(1) scaleY(1); }
+}
+
+@keyframes progress-pulse {
+  0%, 100% { box-shadow: 0 0 8px rgba(0, 102, 255, 0.4); }
+  50% { box-shadow: 0 0 20px rgba(0, 102, 255, 0.6); }
 }
 .riddle-box {
   background-color: var(--deepseek-bg);
