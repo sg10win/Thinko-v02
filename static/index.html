@@ -36,31 +36,51 @@
     <link rel="icon" type="image/png" sizes="512x512" href="/static/icons/icon-512.png">
     <link rel="stylesheet" href="/static/style.css">
     <style>
-        .install-btn {
+        /* Install button in social buttons */
+        .social-buttons .install-btn {
+            display: none; /* Hidden by default */
+            background: #0066ff;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Floating install button */
+        #floatingInstallBtn {
             position: fixed;
-            bottom: 20px;
+            bottom: 90px;
             right: 20px;
-            background: #0f0;
-            color: #111;
+            background: #0066ff;
+            color: white;
             border: none;
             border-radius: 30px;
-            padding: 10px 20px;
-            font-family: 'Courier New', monospace;
-            font-weight: bold;
+            padding: 12px 20px;
+            font-weight: 600;
             cursor: pointer;
-            box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+            box-shadow: 0 4px 12px rgba(0, 102, 255, 0.3);
             display: none;
             align-items: center;
             gap: 8px;
             z-index: 1000;
         }
         
-
+        /* Hide in standalone mode */
+        @media all and (display-mode: standalone) {
+            .social-buttons .install-btn,
+            #floatingInstallBtn {
+                display: none !important;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        
+        <header>
             <h1 class="title">THINKO</h1>
             <div class="stats-container">
                 <div class="stat-box">
@@ -76,13 +96,13 @@
                     <span id="xpDisplay" class="stat-value">0/100</span>
                 </div>
             </div>
-        
+        </header>
 
         <div id="dailyChallenge" class="daily-badge">
             <span></span>
         </div>
 
-       <main>
+        <main>
             <div class="progress-container">
                 <div class="progress-bar" id="progressBar"></div>
             </div>
@@ -92,35 +112,71 @@
                 <button id="submitBtn">Submit</button>
             </div>
             <button id="hintBtn">Show Hint</button>
-    </main>
+        </main>
 
         <div id="achievementToast" class="toast">
             <span id="toastMessage"></span>
         </div>
     </div>
-            <!-- Add this button to your HTML -->
-    
 
+    <!-- Social Buttons -->
     <div class="social-buttons">
         <button id="shareBtn" class="social-btn">📤</button>
         <button id="leaderboardBtn" class="social-btn">🏆</button>
-        <button id="installButton" class="install-btn">📲 Install</button>
+        <button id="installButton" class="social-btn install-btn">📲</button>
     </div>
 
-    
-
-   <button id="installButton" class="install-btn" aria-label="Install Thinko">
-  <svg class="install-icon" viewBox="0 0 24 24">
-    <path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
-  </svg>
-  <span class="install-text">Install</span>
-</button>
+    <!-- Floating Install Button -->
+    <button id="floatingInstallBtn">
+        <span>Install Thinko</span>
+    </button>
 
     <audio id="successSound" src="/static/assets/sounds/success.wav" preload="auto"></audio>
-    <!--<audio id="errorSound" src="/static/assets/sounds/error.mp3" preload="auto"></audio>-->
     <audio id="levelUpSound" src="/static/assets/sounds/level-up.mp3" preload="auto"></audio>
-    
 
+    <!-- PWA Installation Script -->
+    <script>
+    // Simple PWA installation handler
+    let deferredPrompt;
+    const installButton = document.getElementById('installButton');
+    const floatingInstallBtn = document.getElementById('floatingInstallBtn');
+    
+    window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        // Show both install buttons
+        installButton.style.display = 'flex';
+        floatingInstallBtn.style.display = 'flex';
+    });
+    
+    function installPWA() {
+        if (deferredPrompt) {
+            deferredPrompt.prompt();
+            deferredPrompt.userChoice.then((choiceResult) => {
+                if (choiceResult.outcome === 'accepted') {
+                    console.log('User accepted install');
+                }
+                deferredPrompt = null;
+            });
+        }
+    }
+    
+    installButton.addEventListener('click', installPWA);
+    floatingInstallBtn.addEventListener('click', installPWA);
+    
+    window.addEventListener('appinstalled', () => {
+        installButton.style.display = 'none';
+        floatingInstallBtn.style.display = 'none';
+    });
+    
+    // Check if already installed
+    if (window.matchMedia('(display-mode: standalone)').matches) {
+        installButton.style.display = 'none';
+        floatingInstallBtn.style.display = 'none';
+    }
+    </script>
+
+    <!-- Your existing game script -->
     <script src="/static/script.js"></script>
 </body>
 </html>
