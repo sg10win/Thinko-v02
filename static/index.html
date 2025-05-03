@@ -134,49 +134,7 @@
     <audio id="successSound" src="/static/assets/sounds/success.wav" preload="auto"></audio>
     <audio id="levelUpSound" src="/static/assets/sounds/level-up.mp3" preload="auto"></audio>
 
-    <!-- PWA Installation Script -->
-    <script>
-    // Simple PWA installation handler
-    let deferredPrompt;
-    const installButton = document.getElementById('installButton');
-    const floatingInstallBtn = document.getElementById('floatingInstallBtn');
-    
-    window.addEventListener('beforeinstallprompt', (e) => {
-        e.preventDefault();
-        deferredPrompt = e;
-        // Show both install buttons
-        installButton.style.display = 'flex';
-        floatingInstallBtn.style.display = 'flex';
-    });
-    
-    function installPWA() {
-        if (deferredPrompt) {
-            deferredPrompt.prompt();
-            deferredPrompt.userChoice.then((choiceResult) => {
-                if (choiceResult.outcome === 'accepted') {
-                    console.log('User accepted install');
-                }
-                deferredPrompt = null;
-            });
-        }
-    }
-    
-    installButton.addEventListener('click', installPWA);
-    floatingInstallBtn.addEventListener('click', installPWA);
-    
-    window.addEventListener('appinstalled', () => {
-        installButton.style.display = 'none';
-        floatingInstallBtn.style.display = 'none';
-    });
-    
-    // Check if already installed
-    if (window.matchMedia('(display-mode: standalone)').matches) {
-        installButton.style.display = 'none';
-        floatingInstallBtn.style.display = 'none';
-    }
-    </script>
-
-    <!-- Your existing game script -->
+   
     <script src="/static/script.js"></script>
 </body>
 </html>
