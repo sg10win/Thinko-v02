@@ -417,42 +417,86 @@ function showToast(message) {
 
 // ===== PWA INSTALLATION HANDLER ===== //
 let deferredPrompt;
-    const installButton = document.getElementById('installButton');
-    const floatingInstallBtn = document.getElementById('floatingInstallBtn');
+
+function showInstallButton() {
+    if (elements.installButton) {
+        // Reset any previous state
+        elements.installButton.style.display = 'flex';
+        elements.installButton.style.opacity = '0';
+        elements.installButton.style.transform = 'translateY(20px)';
+        
+        // Trigger reflow
+        void elements.installButton.offsetWidth;
+        
+        // Animate in
+        elements.installButton.classList.add('visible');
+    }
+}
+
+function hideInstallButton() {
+    if (elements.installButton) {
+        elements.installButton.classList.remove('visible');
+        setTimeout(() => {
+            elements.installButton.style.display = 'none';
+        }, 300); // Match this with your CSS transition
+    }
+}
+
+function setupPWAInstall() {
+    // Reset any existing prompt
+    deferredPrompt = null;
     
     window.addEventListener('beforeinstallprompt', (e) => {
+        console.log('beforeinstallprompt event fired');
         e.preventDefault();
         deferredPrompt = e;
-        // Show both install buttons
-        installButton.style.display = 'flex';
-        floatingInstallBtn.style.display = 'flex';
+        showInstallButton();
+        
+        // Optional: Log event for debugging
+        console.log('PWA install prompt available');
     });
-    
-    function installPWA() {
-        if (deferredPrompt) {
-            deferredPrompt.prompt();
-            deferredPrompt.userChoice.then((choiceResult) => {
-                if (choiceResult.outcome === 'accepted') {
-                    console.log('User accepted install');
-                }
-                deferredPrompt = null;
-            });
-        }
-    }
-    
-    installButton.addEventListener('click', installPWA);
-    floatingInstallBtn.addEventListener('click', installPWA);
-    
+
     window.addEventListener('appinstalled', () => {
-        installButton.style.display = 'none';
-        floatingInstallBtn.style.display = 'none';
+        console.log('App installed');
+        hideInstallButton();
+        deferredPrompt = null;
+        showToast('Thinko installed successfully!');
     });
-    
+
     // Check if already installed
     if (window.matchMedia('(display-mode: standalone)').matches) {
-        installButton.style.display = 'none';
-        floatingInstallBtn.style.display = 'none';
+        console.log('Already installed');
+        hideInstallButton();
     }
+
+    // Add click handler
+    elements.installButton?.addEventListener('click', async () => {
+        if (!deferredPrompt) {
+            console.log('No install prompt available');
+            return;
+        }
+        
+        console.log('Showing install prompt');
+        deferredPrompt.prompt();
+        
+        const { outcome } = await deferredPrompt.userChoice;
+        console.log('User response:', outcome);
+        
+        if (outcome === 'accepted') {
+            showToast('Installing Thinko...');
+        }
+        
+        hideInstallButton();
+        deferredPrompt = null;
+    });
+
+    // Debugging: Force show button for testing (remove in production)
+    // setTimeout(showInstallButton, 3000);
+}
+
+// Call this function when your app initializes
+setupPWAInstall();
+
 // Setup event listeners
 function setupEventListeners() {
     // Answer submission
