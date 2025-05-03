@@ -394,7 +394,7 @@ function showHint() {
     // Create new container with riddle text and separator
     elements.riddle.innerHTML = `
         <div class="riddle-text">${riddleText.replace('<span class="blink"></span>', '')}</div>
-        <div class="hint-separator">-----</div>
+        
         <div class="hint-container"></div>
     `;
     
