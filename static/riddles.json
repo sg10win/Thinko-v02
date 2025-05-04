@@ -301,13 +301,6 @@
         "explanation": "The brothers share one sister, not one each. Total: 3 brothers + 1 sister = 4 siblings."
     },
     {
-        "id": "logic_47",
-        "question": "What is the next number: 2, 10, 12, 16, 17, 18, 19, __?",
-        "answer": "200",
-        "hint": "Numbers starting with 'T' in English",
-        "explanation": "Sequence is numbers starting with 'T': Two, Ten, Twelve, Sixteen, Seventeen, etc. Next is 'Two hundred'."
-    },
-    {
         "id": "logic_48",
         "question": "If 1 = 5, 2 = 10, 3 = 15, 4 = 20, then 5 = ?",
         "answer": "1",
