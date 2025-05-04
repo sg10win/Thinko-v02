@@ -212,6 +212,8 @@ body {
   position: relative;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   margin-top: 1rem;  /* Reduced space above riddle box */
+  font-family: 'Fragment Mono', monospace;
+  line-height: 1.6; /* Improves scanning */
 
 }
 
