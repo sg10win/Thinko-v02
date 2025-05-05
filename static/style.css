@@ -295,7 +295,7 @@ body {
 /* Correct Feedback Popup - Positioned Near Hint Button */
 .correct-feedback {
   position: fixed;
-  bottom: 180px; /* Adjust this value to position it above the answer input */
+  bottom: 500px; /* Adjust this value to position it above the answer input */
   left: 50%;
   transform: translateX(-50%);
   background: var(--success-green);
