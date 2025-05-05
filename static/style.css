@@ -460,10 +460,10 @@ body {
   padding-bottom: 90px;
 }
 
-/* Correct Feedback Popup - Positioned Near Hint Button */
+/* Correct Feedback Popup - CSS Only Solution */
 .correct-feedback {
-  position: absolute; /* Changed from fixed to absolute */
-  bottom: calc(100% + 20px); /* Positions it above the parent container */
+  position: fixed;
+  bottom: calc(100% - 200px); /* Adjust this value to position near hint button */
   left: 50%;
   transform: translateX(-50%);
   background: var(--success-green);
@@ -472,7 +472,7 @@ body {
   border-radius: 30px;
   font-weight: 600;
   opacity: 0;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition: opacity 0.3s ease;
   z-index: 1000;
   box-shadow: 0 4px 20px rgba(0, 204, 102, 0.4);
   display: flex;
@@ -483,23 +483,21 @@ body {
   max-width: 90vw;
   text-align: center;
   white-space: nowrap;
+  margin-bottom: 10px; /* Additional spacing */
 }
 
 .correct-feedback.show {
   opacity: 1;
-  transform: translateX(-50%) translateY(-10px);
 }
 
 .correct-feedback::before {
   content: "✓";
   font-weight: bold;
   font-size: 1.2em;
-  margin-right: 8px;
 }
 
-/* Add this container around your answer/hint elements */
-.answer-feedback-container {
+/* This ensures the feedback appears above the answer/hint area */
+.answer-container {
   position: relative;
-  width: 100%;
-  margin-top: 1.5rem;
+  margin-bottom: 60px; /* Creates space for the feedback to appear */
 }
