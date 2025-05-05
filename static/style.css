@@ -496,8 +496,4 @@ body {
   font-size: 1.2em;
 }
 
-/* This ensures the feedback appears above the answer/hint area */
-.answer-container {
-  position: relative;
-  margin-bottom: 60px; /* Creates space for the feedback to appear */
-}
+
