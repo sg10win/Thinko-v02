@@ -92,6 +92,31 @@ const storage = {
     }
 };
 
+
+
+
+
+
+
+
+function checkColorScheme() {
+  const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  document.documentElement.classList.toggle('dark-mode', isDarkMode);
+  
+  // Optional: Save user preference
+  if (localStorage.getItem('darkMode') === 'true') {
+    document.documentElement.classList.add('dark-mode');
+  } else if (localStorage.getItem('darkMode') === 'false') {
+    document.documentElement.classList.remove('dark-mode');
+  }
+}
+
+
+
+
+
+
+
 // ===== GAME INITIALIZATION =====
 function initGame() {
     // Load saved data
@@ -110,6 +135,11 @@ function initGame() {
     
     // Save when window is closed
     window.addEventListener('beforeunload', () => storage.save());
+    // Listen for system color scheme changes
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', checkColorScheme);
+
+// Run on initial load
+    document.addEventListener('DOMContentLoaded', checkColorScheme);
 }
 
 // ===== GAME LOGIC FUNCTIONS =====
