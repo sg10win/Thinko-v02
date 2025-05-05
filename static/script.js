@@ -352,7 +352,6 @@ function handleCorrectAnswer() {
         gameState.player.level += 1;
         gameState.player.xp = gameState.player.xp % XP_PER_LEVEL;
         
-        showToast(`Level Up! Now level ${gameState.player.level}`);
         if (elements.levelUpSound) {
             elements.levelUpSound.currentTime = 0;
             elements.levelUpSound.play();
