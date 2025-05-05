@@ -22,7 +22,9 @@ const elements = {
     successSound: document.getElementById('successSound'),
     errorSound: document.getElementById('errorSound'),
     levelUpSound: document.getElementById('levelUpSound'),
-    container: document.querySelector('.container')
+    container: document.querySelector('.container'),
+    correctFeedback: document.querySelector('.correct-feedback'),
+
 };
 
 // ===== GAME STATE =====
@@ -319,6 +321,17 @@ function handleCorrectAnswer() {
         elements.successSound.play();
     }
     
+    // Show correct feedback
+    if (elements.correctFeedback) {
+        elements.correctFeedback.textContent = isDaily ? 'Daily Challenge Complete!' : 'Correct Answer!';
+        elements.correctFeedback.classList.add('show');
+        
+        // Auto-hide after 3 seconds
+        setTimeout(() => {
+            elements.correctFeedback.classList.remove('show');
+        }, 3000);
+    }
+    
     // Streak logic
     if (gameState.player.lastPlayed !== today) {
         const yesterday = new Date();
@@ -344,13 +357,6 @@ function handleCorrectAnswer() {
             elements.levelUpSound.currentTime = 0;
             elements.levelUpSound.play();
         }
-    }
-    
-    if (isDaily) {
-        gameState.player.dailyCompletedToday = true;
-        showToast('Daily challenge completed! +50 XP');
-    } else {
-        showToast('Correct! +20 XP');
     }
     
     updateStatsDisplay();
