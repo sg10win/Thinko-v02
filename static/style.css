@@ -463,7 +463,7 @@ body {
 /* Correct Feedback Popup - CSS Only Solution */
 .correct-feedback {
   position: fixed;
-  bottom: calc(100% - 200px); /* Adjust this value to position near hint button */
+  bottom: calc(100% - 300px); /* Changed from 200px to 300px to move it lower */
   left: 50%;
   transform: translateX(-50%);
   background: var(--success-green);
@@ -483,7 +483,7 @@ body {
   max-width: 90vw;
   text-align: center;
   white-space: nowrap;
-  margin-bottom: 10px; /* Additional spacing */
+  margin-bottom: 10px;
 }
 
 .correct-feedback.show {
