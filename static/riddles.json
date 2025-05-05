@@ -1,142 +1,352 @@
 [
     {
-        "id": "logic_1",
-        "question": "What comes once in a minute, twice in a moment, but never in a thousand years?",
-        "answer": "m",
-        "hint": "It's about letters, not time.",
-        "explanation": "The letter 'm' appears once in 'minute', twice in 'moment', and not at all in 'a thousand years'."
+        "id": "1",
+        "question": "How many times do the hands of a clock overlap in 12 hours?",
+        "answer": "11",
+        "hint": "It's not once every hour.",
+        "explanation": "They align every ~65 minutes, so 11 times in 12 hours."
     },
     {
-        "id": "logic_2",
-        "question": "What number becomes even when you remove one letter?",
-        "answer": "seven",
-        "hint": "Take off the first letter.",
-        "explanation": "Remove the 's' from 'seven' and you get the word 'even'."
+        "id": "2",
+        "question": "A bat and a ball cost $1.10 together. The bat costs $1 more than the ball. How much does the ball cost?",
+        "answer": "0.05",
+        "hint": "It's not 10 cents.",
+        "explanation": "If the ball is $0.05, the bat is $1.05, total = $1.10."
     },
     {
-        "id": "logic_3",
-        "question": "I am a three-digit number. My tens digit is five more than my ones digit. My hundreds digit is eight less than my tens digit. What number am I?",
-        "answer": "194",
-        "hint": "Build it from ones to hundreds.",
-        "explanation": "Ones = 4, Tens = 9, Hundreds = 1. So, the number is 194."
+        "id": "3",
+        "question": "If a plane crashes on the border of the U.S. and Canada, where do they bury the survivors?",
+        "answer": "nowhere",
+        "hint": "Reread the question.",
+        "explanation": "You don't bury survivors."
     },
     {
-        "id": "logic_4",
-        "question": "If two’s company and three’s a crowd, what are four and five?",
-        "answer": "nine",
-        "hint": "Add them up.",
-        "explanation": "4 + 5 = 9."
+        "id": "4",
+        "question": "What's the angle between the hands of a clock at 3:15?",
+        "answer": "7.5",
+        "hint": "The hour hand isn't on 3.",
+        "explanation": "Hour hand is 1/4 between 3 and 4, so 7.5 degrees apart."
     },
     {
-        "id": "logic_5",
-        "question": "I add five to nine and get two. What am I?",
-        "answer": "clock",
-        "hint": "Think about time.",
-        "explanation": "On a clock, 9 + 5 hours = 2 o'clock."
-    },
-    {
-        "id": "logic_6",
-        "question": "What two numbers multiply to give 36 and add to give 13?",
-        "answer": "9 and 4",
-        "hint": "Check small factors of 36.",
-        "explanation": "9 × 4 = 36 and 9 + 4 = 13."
-    },
-    {
-        "id": "logic_7",
-        "question": "You buy a shirt for $97 and pay with a $100 bill. The shopkeeper gives $3 change. How much did the shirt cost?",
-        "answer": "97",
-        "hint": "Don’t overthink it.",
-        "explanation": "You gave $100 and got $3 back. The shirt cost $97."
-    },
-    {
-        "id": "logic_8",
-        "question": "Divide 30 by half and add 10. What’s the result?",
-        "answer": "70",
-        "hint": "Dividing by half is multiplying by 2.",
-        "explanation": "30 ÷ 0.5 = 60, and 60 + 10 = 70."
-    },
-    {
-        "id": "logic_9",
-        "question": "If I have four eggs, I break two, cook two, and eat two, how many eggs do I have left?",
+        "id": "5",
+        "question": "If you're running a race and pass the person in second place, what place are you in?",
         "answer": "2",
-        "hint": "The same two can be cooked and eaten.",
-        "explanation": "You still have the two unbroken eggs."
+        "hint": "Think carefully about their position.",
+        "explanation": "You take their place, so you're now 2nd."
     },
     {
-        "id": "logic_10",
-        "question": "What number is next in the sequence: 1, 4, 9, 16, 25, ?",
-        "answer": "36",
-        "hint": "Perfect squares.",
-        "explanation": "These are squares: 1², 2², 3², 4², 5². Next is 6² = 36."
+        "id": "6",
+        "question": "How many 9s are there between 1 and 100?",
+        "answer": "20",
+        "hint": "Check every number.",
+        "explanation": "There are 10 in the ones place (9,19,...99) and 10 in the tens (90-99)."
     },
     {
-        "id": "logic_11",
-        "question": "If 1 = 5, 2 = 25, 3 = 325, 4 = 4325, then 5 = ?",
-        "answer": "1",
-        "hint": "It’s a pattern joke.",
-        "explanation": "The first line says 1 = 5, so 5 = 1."
-    },
-    {
-        "id": "logic_12",
-        "question": "I am a number. Multiply me by 4, then subtract 6. The result is 18. What number am I?",
-        "answer": "6",
-        "hint": "Reverse the operations.",
-        "explanation": "x × 4 - 6 = 18 → x = (18 + 6) ÷ 4 = 6."
-    },
-    {
-        "id": "logic_13",
-        "question": "What’s always in front of you but can’t be seen?",
-        "answer": "future",
-        "hint": "It hasn’t happened yet.",
-        "explanation": "The future is ahead but invisible."
-    },
-    {
-        "id": "logic_14",
-        "question": "Which month has 28 days?",
-        "answer": "all",
-        "hint": "Not just February.",
-        "explanation": "All 12 months have at least 28 days."
-    },
-    {
-        "id": "logic_15",
-        "question": "A farmer has 17 sheep. All but 9 run away. How many are left?",
+        "id": "7",
+        "question": "A farmer has 17 sheep. All but 9 run away. How many does he have left?",
         "answer": "9",
-        "hint": "All but 9 ran away.",
-        "explanation": "If all but 9 ran away, 9 are still there."
+        "hint": "It says 'all but 9'.",
+        "explanation": "He still has 9 sheep."
     },
     {
-        "id": "logic_16",
-        "question": "What 3-digit number reads the same upside down?",
-        "answer": "609",
-        "hint": "Use a calculator screen.",
-        "explanation": "609 becomes 906 when flipped, still readable."
+        "id": "8",
+        "question": "How many squares are on a standard chessboard?",
+        "answer": "204",
+        "hint": "More than just the 8x8.",
+        "explanation": "It includes all possible square sizes: 1x1 to 8x8. Total = 204."
     },
     {
-        "id": "logic_17",
-        "question": "What’s half of two plus two?",
-        "answer": "3",
-        "hint": "Order of operations.",
-        "explanation": "½ × 2 + 2 = 1 + 2 = 3."
-    },
-    {
-        "id": "logic_18",
-        "question": "If it takes 5 machines 5 minutes to make 5 widgets, how long would it take 100 machines to make 100 widgets?",
+        "id": "9",
+        "question": "If it takes 5 machines 5 minutes to make 5 widgets, how long for 100 machines to make 100 widgets?",
         "answer": "5",
-        "hint": "Work happens in parallel.",
-        "explanation": "Each machine makes 1 widget in 5 minutes."
+        "hint": "Not 100 minutes.",
+        "explanation": "Each machine makes 1 widget in 5 minutes, so 100 machines = 100 widgets in 5 minutes."
     },
     {
-        "id": "logic_19",
-        "question": "How many sides does a circle have?",
+        "id": "10",
+        "question": "You're in a dark room with a candle, a lamp, and a fireplace. You only have one match. What do you light first?",
+        "answer": "match",
+        "hint": "Think about the sequence.",
+        "explanation": "You must light the match first."
+    },
+    {
+        "id": "11",
+        "question": "You cut a cube into 27 smaller cubes. How many of the small cubes have paint on only one face?",
+        "answer": "6",
+        "hint": "Visualize the center of each face.",
+        "explanation": "Each of the 6 faces has 1 center cube with paint on only one side."
+    },
+    {
+        "id": "12",
+        "question": "How many edges does a cube have?",
+        "answer": "12",
+        "hint": "Visualize or count carefully.",
+        "explanation": "A cube has 4 edges per face, but many are shared. Total = 12."
+    },
+    {
+        "id": "13",
+        "question": "If you fold a cube from paper, how many corners does it have?",
+        "answer": "8",
+        "hint": "Count the points where edges meet.",
+        "explanation": "A cube always has 8 corners (vertices)."
+    },
+    {
+        "id": "14",
+        "question": "If today is Monday, what day will it be in 100 days?",
+        "answer": "Wednesday",
+        "hint": "Think modulo 7.",
+        "explanation": "100 mod 7 = 2, so Monday + 2 days = Wednesday."
+    },
+    {
+        "id": "15",
+        "question": "How many numbers between 1 and 100 are divisible by both 2 and 5?",
+        "answer": "10",
+        "hint": "LCM of 2 and 5 is 10.",
+        "explanation": "There are 10 multiples of 10 between 1 and 100."
+    },
+    {
+        "id": "16",
+        "question": "A rectangular room has 4 corners. A spider is in one corner and wants to get to the opposite one on the ceiling. What's the shortest path?",
+        "answer": "along walls",
+        "hint": "Unfold the room.",
+        "explanation": "The shortest path is along two walls, not diagonally in 3D."
+    },
+    {
+        "id": "17",
+        "question": "How many handshakes happen in a room with 10 people if everyone shakes hands once?",
+        "answer": "45",
+        "hint": "It's a triangle number.",
+        "explanation": "n(n-1)/2 = 10×9/2 = 45."
+    },
+    {
+        "id": "18",
+        "question": "How many circles are there in the digits 0 to 9?",
+        "answer": "6",
+        "hint": "Count the holes: 0, 6, 8, 9.",
+        "explanation": "0, 6, and 9 have 1 each, 8 has 2. Total = 6."
+    },
+    {
+        "id": "19",
+        "question": "A car's odometer reads 15951. After 2 hours it reads the same backwards. What's the smallest next such number?",
+        "answer": "16061",
+        "hint": "Find the next palindrome.",
+        "explanation": "Next palindrome after 15951 is 16061."
+    },
+    {
+        "id": "20",
+        "question": "What's the maximum number of pieces a pizza can be cut into with 3 straight cuts?",
+        "answer": "7",
+        "hint": "Each cut can intersect previous ones.",
+        "explanation": "Max pieces with 3 cuts = 7 (a known problem)."
+    },
+    {
+        "id": "21",
+        "question": "How many zeros are at the end of 100! (factorial)?",
+        "answer": "24",
+        "hint": "Count factors of 5.",
+        "explanation": "100/5 + 100/25 + 100/125 = 20 + 4 = 24."
+    },
+    {
+        "id": "22",
+        "question": "You flip a coin 10 times. What's the probability of exactly 10 heads?",
+        "answer": "1/1024",
+        "hint": "Each flip is 50%.",
+        "explanation": "0.5^10 = 1/1024."
+    },
+    {
+        "id": "23",
+        "question": "A train 100 meters long moves at 50 m/s. How many seconds to cross a tunnel 100m long?",
+        "answer": "4",
+        "hint": "Total distance = train + tunnel.",
+        "explanation": "200 meters / 50 m/s = 4 seconds."
+    },
+    {
+        "id": "24",
+        "question": "How many triangles are there in a pentagram?",
+        "answer": "35",
+        "hint": "Count overlapping ones too.",
+        "explanation": "A full pentagram has 35 distinct triangles."
+    },
+    {
+        "id": "25",
+        "question": "How many minutes are in 1 week?",
+        "answer": "10080",
+        "hint": "7 days × 24 hrs × 60 min.",
+        "explanation": "7×24×60 = 10,080 minutes."
+    },
+    {
+        "id": "26",
+        "question": "How many degrees does the hour hand move in 1 minute?",
+        "answer": "0.5",
+        "hint": "It moves slowly.",
+        "explanation": "360° / 12 hrs / 60 min = 0.5° per min."
+    },
+    {
+        "id": "27",
+        "question": "Which weighs more: a kilo of feathers or a kilo of steel?",
+        "answer": "neither",
+        "hint": "They're both 1 kilo.",
+        "explanation": "1 kg = 1 kg, regardless of material."
+    },
+    {
+        "id": "28",
+        "question": "You see a boat full of people. It hasn't sunk, but not a single person is on board. How?",
+        "answer": "married",
+        "hint": "Wordplay.",
+        "explanation": "They're all married, not 'single'."
+    },
+    {
+        "id": "29",
+        "question": "How many straight lines can be drawn between 4 non-overlapping points?",
+        "answer": "6",
+        "hint": "It's a combination.",
+        "explanation": "4C2 = 6 lines between 4 points."
+    },
+    {
+        "id": "30",
+        "question": "What's the smallest number that is evenly divisible by all numbers from 1 to 10?",
+        "answer": "2520",
+        "hint": "It's the least common multiple.",
+        "explanation": "LCM(1..10) = 2520."
+    },
+    {
+        "id": "31",
+        "question": "How many faces does a dodecahedron have?",
+        "answer": "12",
+        "hint": "It's a 3D shape with pentagon faces.",
+        "explanation": "A dodecahedron has 12 pentagonal faces."
+    },
+    {
+        "id": "32",
+        "question": "A man walks 1 km south, 1 km east, 1 km north and returns to his starting point. Where is he?",
+        "answer": "pole",
+        "hint": "Think extreme locations.",
+        "explanation": "At the North Pole, this is possible."
+    },
+    {
+        "id": "33",
+        "question": "What 3-digit number has all digits equal and divisible by 3?",
+        "answer": "111",
+        "hint": "Try repeating digits: 111, 222...",
+        "explanation": "111, 222... all divisible by 3, but 111 is the smallest."
+    },
+    {
+        "id": "34",
+        "question": "How many centimeters are in 1 kilometer?",
+        "answer": "100000",
+        "hint": "Use metric conversion.",
+        "explanation": "1000 meters × 100 cm = 100,000 cm."
+    },
+    {
+        "id": "35",
+        "question": "A 4-digit palindrome divisible by 11?",
+        "answer": "1221",
+        "hint": "Test 4-digit mirrored numbers.",
+        "explanation": "1221 / 11 = 111."
+    },
+    {
+        "id": "36",
+        "question": "What's the angle between the hands at 9:00?",
+        "answer": "90",
+        "hint": "Think clock face.",
+        "explanation": "Hour hand at 9, minute at 12. 3-hour gap = 90°."
+    },
+    {
+        "id": "37",
+        "question": "A paper is folded in half 6 times. How many layers are there?",
+        "answer": "64",
+        "hint": "It doubles each time.",
+        "explanation": "2^6 = 64 layers."
+    },
+    {
+        "id": "38",
+        "question": "What's the sum of angles in a hexagon?",
+        "answer": "720",
+        "hint": "Use (n-2)×180.",
+        "explanation": "Hexagon has 6 sides. (6-2)×180 = 720°."
+    },
+    {
+        "id": "39",
+        "question": "How many sides does a nonagon have?",
+        "answer": "9",
+        "hint": "Prefix 'nona'.",
+        "explanation": "'Nonagon' = 9-sided polygon."
+    },
+    {
+        "id": "40",
+        "question": "How many diagonals does a pentagon have?",
+        "answer": "5",
+        "hint": "Use formula: n(n-3)/2.",
+        "explanation": "5(5-3)/2 = 5."
+    },
+    {
+        "id": "41",
+        "question": "What is the only even prime number?",
         "answer": "2",
-        "hint": "Think inside and outside.",
-        "explanation": "A circle has an inside and an outside."
+        "hint": "Only one breaks the odd rule.",
+        "explanation": "All other primes are odd. Only 2 is even and prime."
     },
     {
-        "id": "logic_20",
-        "question": "I have two digits. When you reverse me, I become four times bigger. What number am I?",
-        "answer": "21",
-        "hint": "Try small 2-digit numbers.",
-        "explanation": "21 reversed is 12. 12 × 4 = 48, not correct. Wait—it's 12 reversed is 21. 21 = 4 × 5.25 — ok, this one's off."
+        "id": "42",
+        "question": "How many corners does a triangle have?",
+        "answer": "3",
+        "hint": "Basic geometry.",
+        "explanation": "Every triangle has 3 vertices."
+    },
+    {
+        "id": "43",
+        "question": "How many letters in the English alphabet?",
+        "answer": "26",
+        "hint": "It's basic, but stress might trick you.",
+        "explanation": "Standard English has 26 letters."
+    },
+    {
+        "id": "44",
+        "question": "A cube is dropped into red paint, fully submerged. How many faces are painted?",
+        "answer": "6",
+        "hint": "It's covered on all sides.",
+        "explanation": "Submerged completely = 6 painted faces."
+    },
+    {
+        "id": "45",
+        "question": "You cut a cube into 64 equal parts. How many have paint on two faces?",
+        "answer": "24",
+        "hint": "Think about edges but not corners.",
+        "explanation": "Each edge has middle painted cubes: 12 edges × 2 = 24."
+    },
+    {
+        "id": "46",
+        "question": "How many legs do 7 spiders have?",
+        "answer": "56",
+        "hint": "Multiply fast!",
+        "explanation": "7×8 = 56 legs."
+    },
+    {
+        "id": "47",
+        "question": "How many 2-digit numbers are there?",
+        "answer": "90",
+        "hint": "From 10 to 99.",
+        "explanation": "99 - 10 + 1 = 90 numbers."
+    },
+    {
+        "id": "48",
+        "question": "What's the square root of 144?",
+        "answer": "12",
+        "hint": "Memorized square numbers help.",
+        "explanation": "12×12 = 144."
+    },
+    {
+        "id": "49",
+        "question": "You see 3 cubes stacked on top of each other. How many faces are hidden?",
+        "answer": "13",
+        "hint": "Each cube has 6 faces, some are touching.",
+        "explanation": "3 cubes = 18 faces. 5 faces hidden per contact = 13 hidden."
+    },
+    {
+        "id": "50",
+        "question": "A digital clock shows 12:34. How many total segments are lit?",
+        "answer": "17",
+        "hint": "Count the segments of each digit.",
+        "explanation": "1(2)+2(5)+3(5)+4(5)=17 segments."
     }
 ]
