@@ -1,4 +1,5 @@
 :root {
+  /* Light Mode Colors */
   --deepseek-blue: #0066ff;
   --deepseek-light-blue: #3399ff;
   --deepseek-dark-blue: #0044cc;
@@ -10,24 +11,31 @@
   --error-red: #ff3333;
   --button-hover: #f0f7ff;
   --input-bg: #f8f9fa;
+  --card-bg: #ffffff;
   --correct-glow: 0 0 10px rgba(0, 204, 102, 0.3);
   --incorrect-glow: 0 0 10px rgba(255, 51, 51, 0.3);
+  --shadow-color: rgba(0, 0, 0, 0.1);
 }
 
-/* Dark mode colors */
+/* Dark Mode Colors */
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg-color: #121212;
-    --text-color: #f5f5f5;
-    --border-color: #333333;
-    --button-bg: #3399ff;
-    --button-text: #ffffff;
-    --input-bg: #1e1e1e;
-    --card-bg: #1e1e1e;
+    --deepseek-bg: #0a0a12;
+    --deepseek-text: #e0e0e0;
+    --deepseek-text-light: #aaaaaa;
+    --deepseek-border: #2a2a3a;
+    --input-bg: #1a1a24;
+    --card-bg: #1e1e2a;
+    --button-hover: #1a2a3a;
     --shadow-color: rgba(0, 0, 0, 0.3);
+    
+    /* Special dark mode accents */
+    --deepseek-blue: #3a86ff;
+    --deepseek-light-blue: #5d9cff;
+    --success-green: #00e676;
+    --error-red: #ff5252;
   }
 }
-
 
 * {
   box-sizing: border-box;
@@ -43,6 +51,7 @@ body {
   min-height: 100vh;
   padding: 20px;
   line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .container {
@@ -60,17 +69,16 @@ body {
   font-weight: 700;
   user-select: none;
   -webkit-user-select: none;
+  text-shadow: 0 0 10px rgba(58, 134, 255, 0.2);
 }
 
 .stats-container {
   display: flex;
   justify-content: space-around;
-  margin: 1.5rem 0;
+  margin: 1.5rem 0 0.8rem;
   gap: 0.5rem;
   flex-wrap: wrap;
   user-select: none;
-  margin-bottom: 0.8rem;  /* Reduced space below stats */
-
 }
 
 .stat-box {
@@ -81,6 +89,7 @@ body {
   border: 1px solid var(--deepseek-border);
   border-radius: 8px;
   flex-grow: 1;
+  box-shadow: 0 2px 5px var(--shadow-color);
 }
 
 .stat-label {
@@ -109,7 +118,7 @@ body {
   cursor: pointer;
   z-index: 10;
   user-select: none;
-  box-shadow: 0 2px 5px rgba(0, 102, 255, 0.2);
+  box-shadow: 0 2px 5px rgba(0, 102, 255, 0.3);
   animation: pulse 2s infinite;
 }
 
@@ -118,125 +127,83 @@ body {
   animation: none;
 }
 
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-  100% { transform: scale(1); }
-}
-
-/* Progress Bar Container */
+/* Massive Progress Bar */
 .progress-container {
   width: 100%;
-  height: 20px; /* Maintain same thickness on all devices */
-  background-color: #f0f3f7;
-  border-radius: 10px;
-  margin: 0.75rem 0;
+  height: 24px; /* Much thicker */
+  background-color: var(--input-bg);
+  border-radius: 12px;
+  margin: 1rem 0;
   overflow: hidden;
   position: relative;
-  box-shadow: 
-    inset 0 2px 4px rgba(0, 0, 0, 0.08),
-    0 1px 2px rgba(0, 0, 0, 0.05);
-  border: 1px solid #d9e2ec;
+  box-shadow: inset 0 2px 4px var(--shadow-color);
+  border: 1px solid var(--deepseek-border);
 }
 
-/* Mobile-optimized progress bar */
-@media (max-width: 768px) {
-  .progress-container {
-    height: 18px; /* Slightly thinner but still substantial */
-    border-radius: 8px;
-    margin: 0.5rem 0; /* Tighter spacing on mobile */
-  }
-  
-  .progress-bar::after {
-    top: -15%; /* Adjusted wave for mobile thickness */
-    bottom: -15%;
-  }
-}
-
-/* Animated Progress Fill */
 .progress-bar {
   height: 100%;
   width: 0%;
   background: linear-gradient(
     90deg,
-    #0066ff,  /* DeepSeek blue start */
-    #3399ff,  /* Bright middle */
-    #0066ff   /* DeepSeek blue end */
+    var(--deepseek-blue),
+    var(--deepseek-light-blue),
+    var(--deepseek-blue)
   );
-  border-radius: 10px;
-  transition: width 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+  border-radius: 12px;
+  transition: width 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
   position: relative;
   overflow: hidden;
   box-shadow: 
-    0 0 8px rgba(0, 102, 255, 0.4),  /* Blue glow */
-    inset 0 1px 0 rgba(255, 255, 255, 0.3);  /* Top highlight */
+    0 0 10px rgba(58, 134, 255, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
-/* Shimmer Wave Animation */
+/* Enhanced Wave Animation */
 .progress-bar::after {
   content: '';
   position: absolute;
-  top: -20%;
+  top: -25%;
   left: 0;
   right: 0;
-  bottom: -20%;
+  bottom: -25%;
   background: linear-gradient(
     90deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.7) 50%,
-    rgba(255, 255, 255, 0) 100%
+    transparent,
+    rgba(255, 255, 255, 0.6),
+    transparent
   );
-  animation: progress-wave 1.8s linear infinite;
-  transform: translateX(-100%) skewX(-15deg);
-  opacity: 0.7;
+  animation: progress-wave 2s linear infinite;
+  transform: translateX(-100%) skewX(-20deg);
+  opacity: 0.5;
 }
 
-/* Level Up Celebration Effect */
 .progress-bar.level-up {
   animation: 
     progress-pop 0.8s ease-out,
     progress-pulse 0.8s 0.3s ease-in-out;
 }
 
-/* Keyframe Animations */
-@keyframes progress-wave {
-  0% { transform: translateX(-100%) skewX(-15deg); }
-  100% { transform: translateX(300%) skewX(-15deg); }
-}
-
-@keyframes progress-pop {
-  0% { transform: scaleX(1) scaleY(1); }
-  30% { transform: scaleX(1.05) scaleY(1.4); }
-  60% { transform: scaleX(0.98) scaleY(0.95); }
-  100% { transform: scaleX(1) scaleY(1); }
-}
-
-@keyframes progress-pulse {
-  0%, 100% { box-shadow: 0 0 8px rgba(0, 102, 255, 0.4); }
-  50% { box-shadow: 0 0 20px rgba(0, 102, 255, 0.6); }
-}
+/* Riddle Box with Improved Dark Mode */
 .riddle-box {
-  background-color: var(--deepseek-bg);
+  background-color: var(--card-bg);
   padding: 1.5rem;
   border-radius: 12px;
   min-height: 200px;
   border: 1px solid var(--deepseek-border);
-  margin-bottom: 1.5rem;
-  font-size: 1.4rem;
+  margin: 1rem 0 1.5rem;
+  font-size: 1.2rem;
   line-height: 1.6;
   position: relative;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  margin-top: 1rem;  /* Reduced space above riddle box */
+  box-shadow: 0 4px 12px var(--shadow-color);
   font-family: 'Fragment Mono', monospace;
-  line-height: 1.6; /* Improves scanning */
-
 }
 
 .daily-riddle {
   border: 2px solid var(--deepseek-blue);
-  box-shadow: 0 0 15px rgba(0, 102, 255, 0.1);
+  box-shadow: 0 0 20px rgba(58, 134, 255, 0.15);
 }
 
+/* Answer Input & Buttons */
 .answer-container {
   display: flex;
   gap: 10px;
@@ -247,12 +214,12 @@ body {
 
 #answerInput {
   flex: 1;
-  padding: 12px 15px;
+  padding: 14px 16px;
   font-size: 1rem;
   border: 1px solid var(--deepseek-border);
   background-color: var(--input-bg);
   color: var(--deepseek-text);
-  border-radius: 8px;
+  border-radius: 10px;
   font-family: inherit;
   transition: all 0.3s ease;
   min-width: 0;
@@ -261,38 +228,34 @@ body {
 #answerInput:focus {
   border-color: var(--deepseek-light-blue);
   outline: none;
-  box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.1);
+  box-shadow: 0 0 0 3px rgba(58, 134, 255, 0.2);
 }
 
 #submitBtn {
-  padding: 12px 20px;
+  padding: 14px 24px;
   font-size: 1rem;
   border: none;
   background-color: var(--deepseek-blue);
   color: white;
-  border-radius: 8px;
+  border-radius: 10px;
   font-family: inherit;
   cursor: pointer;
   transition: all 0.3s ease;
-  white-space: nowrap;
-  user-select: none;
   font-weight: 600;
   flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0, 102, 255, 0.3);
 }
 
 #submitBtn:hover {
   background-color: var(--deepseek-dark-blue);
-  transform: translateY(-1px);
-}
-
-#submitBtn:active {
-  transform: translateY(0);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 102, 255, 0.4);
 }
 
 #hintBtn {
   width: 100%;
   margin-top: 0.5rem;
-  background-color: white;
+  background-color: var(--card-bg);
   color: var(--deepseek-blue);
   padding: 12px;
   border: 1px solid var(--deepseek-blue);
@@ -302,318 +265,63 @@ body {
   font-size: 1rem;
   transition: all 0.3s ease;
   font-weight: 600;
-  user-select: none;
 }
 
 #hintBtn:hover {
   background-color: var(--button-hover);
 }
 
-#hintBtn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+/* Animations */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
 }
 
-.hint-container {
-  margin-top: 1rem;
-  color: var(--deepseek-text-light);
-  font-style: italic;
-  padding: 12px;
-  background-color: var(--input-bg);
-  border-radius: 8px;
+@keyframes progress-wave {
+  0% { transform: translateX(-100%) skewX(-20deg); }
+  100% { transform: translateX(300%) skewX(-20deg); }
 }
 
-.toast {
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--deepseek-text);
-  color: white;
-  padding: 12px 24px;
-  border-radius: 8px;
-  font-weight: bold;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  z-index: 1000;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+@keyframes progress-pop {
+  0% { transform: scaleX(1) scaleY(1); }
+  30% { transform: scaleX(1.05) scaleY(1.5); }
+  60% { transform: scaleX(0.98) scaleY(0.95); }
+  100% { transform: scaleX(1) scaleY(1); }
 }
 
-.toast.show {
-  opacity: 1;
+@keyframes progress-pulse {
+  0%, 100% { box-shadow: 0 0 10px rgba(58, 134, 255, 0.4); }
+  50% { box-shadow: 0 0 20px rgba(58, 134, 255, 0.6); }
 }
 
-@keyframes shake {
-  0% { transform: translateX(0); }
-  20% { transform: translateX(-8px); }
-  40% { transform: translateX(8px); }
-  60% { transform: translateX(-8px); }
-  80% { transform: translateX(8px); }
-  100% { transform: translateX(0); }
-}
-
-@keyframes input-error {
-  0% { border-color: var(--error-red); box-shadow: var(--incorrect-glow); }
-  50% { border-color: var(--error-red); box-shadow: 0 0 15px var(--error-red); }
-  100% { border-color: var(--error-red); box-shadow: var(--incorrect-glow); }
-}
-
-@keyframes button-error {
-  0% { background-color: var(--error-red); transform: translateY(0); }
-  50% { background-color: #ff6666; transform: translateY(-3px); }
-  100% { background-color: var(--error-red); transform: translateY(0); }
-}
-
-.incorrect-animation {
-  animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
-}
-
-.input-error {
-  animation: input-error 0.5s ease-in-out;
-  border-color: var(--error-red) !important;
-}
-
-.button-error {
-  animation: button-error 0.5s ease-in-out;
-  background-color: var(--error-red) !important;
-}
-
-.correct-animation {
-  animation: pop 0.5s;
-  border-color: var(--success-green) !important;
-  box-shadow: var(--correct-glow);
-}
-
-/* Mobile adjustments */
+/* Mobile Responsiveness */
 @media (max-width: 600px) {
-  body {
-    padding: 15px;
+  .progress-container {
+    height: 18px;
+    border-radius: 10px;
   }
   
   .title {
     font-size: 2rem;
-    margin-bottom: 1rem;
-  }
-  
-  .stat-box {
-    min-width: 70px;
-    padding: 0.6rem 0.4rem;
-  }
-  
-  .stat-label {
-    font-size: 0.7rem;
-  }
-  
-  .stat-value {
-    font-size: 1rem;
-  }
-  
-  .progress-container {
-    height: 10px;
-    margin-bottom: 1rem;
   }
   
   .riddle-box {
     padding: 1.2rem;
+    font-size: 1.1rem;
     min-height: 160px;
-    font-size: 1rem;
-  }
-  
-  .daily-badge {
-    top: 0.5rem;
-    right: 0.5rem;
-    font-size: 0.8rem;
-    padding: 0.3rem 0.6rem;
-  }
-  
-  .answer-container {
-    flex-direction: row;
-    margin: 1rem 0;
-    gap: 8px;
   }
   
   #answerInput {
-    padding: 10px 12px;
-    font-size: 0.95rem;
+    padding: 12px 14px;
   }
   
   #submitBtn {
-    padding: 10px 15px;
-    font-size: 0.95rem;
-  }
-  
-  #hintBtn {
-    padding: 10px;
-    font-size: 0.95rem;
+    padding: 12px 18px;
   }
 }
 
-@media (max-width: 400px) {
-  .answer-container {
-    flex-direction: row;
-  }
-  
-  #submitBtn {
-    padding: 10px 12px;
-  }
-}
-/* Social Buttons Container */
-.social-buttons {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  padding: 12px;
-  background: white;
-  border-top: 1px solid #e0e3e7;
-  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
-  z-index: 100;
-}
-
-/* Individual Social Buttons */
-.social-btn {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background: white;
-  border: 1px solid #e0e3e7;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-}
-
-.social-btn:hover {
-  background: #f5f8ff;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 102, 255, 0.1);
-}
-
-.social-btn:active {
-  transform: translateY(0);
-}
-
-/* Mobile-specific social button adjustments */
-@media (max-width: 480px) {
-  .social-buttons {
-    gap: 10px;
-    padding: 10px;
-  }
-  
-  .social-btn {
-    width: 44px;
-    height: 44px;
-  }
-}
-
-/* Ensure content doesn't hide behind social buttons */
-.container {
-  padding-bottom: 80px; /* Space for social buttons */
-}
-
-@media (max-width: 768px) {
-  .container {
-    padding-bottom: 70px; /* Slightly less space on mobile */
-  }
-}
-
-
-/* Install Button - Make it Pop! */
-.install-btn {
-  position: fixed;
-  bottom: 90px; /* Position above social buttons */
-  right: 20px;
-  background: var(--deepseek-blue);
-  color: white;
-  border: none;
-  border-radius: 30px;
-  padding: 12px 24px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-  font-weight: 600;
-  font-size: 1rem;
-  cursor: pointer;
-  box-shadow: 
-    0 4px 12px rgba(0, 102, 255, 0.3),
-    0 2px 4px rgba(0, 0, 0, 0.1);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  z-index: 1000;
-  transition: all 0.3s ease;
-  animation: install-pulse 2s infinite;
-  transform: translateY(0);
-  opacity: 1;
-}
-
-.install-btn:hover {
-  background: var(--deepseek-dark-blue);
-  transform: translateY(-2px);
-  box-shadow: 
-    0 6px 16px rgba(0, 102, 255, 0.4),
-    0 3px 6px rgba(0, 0, 0, 0.1);
-}
-
-.install-btn:active {
-  transform: translateY(1px);
-  box-shadow: 
-    0 2px 8px rgba(0, 102, 255, 0.3),
-    0 1px 2px rgba(0, 0, 0, 0.1);
-}
-
-.install-icon {
-  width: 20px;
-  height: 20px;
-  fill: currentColor;
-}
-
-.install-text {
-  white-space: nowrap;
-}
-
-/* Pulsing Animation */
-@keyframes install-pulse {
-  0% { box-shadow: 0 4px 12px rgba(0, 102, 255, 0.3); }
-  50% { box-shadow: 0 6px 20px rgba(0, 102, 255, 0.5); }
-  100% { box-shadow: 0 4px 12px rgba(0, 102, 255, 0.3); }
-}
-
-/* Mobile Adjustments */
-@media (max-width: 768px) {
-  .install-btn {
-    bottom: 80px;
-    right: 15px;
-    padding: 10px 20px;
-    font-size: 0.9rem;
-  }
-  
-  .install-icon {
-    width: 18px;
-    height: 18px;
-  }
-}
-
-/* Hide in standalone mode */
-@media all and (display-mode: standalone) {
-  .install-btn {
-    display: none !important;
-  }
-}
-
-.install-btn {
-  position: fixed;
-  bottom: 90px; /* Positioned above social buttons */
-  right: 20px;
-  display: none; /* Hidden by default */
-  /* Rest of your install button styles */
-}
-
-
-/* Install Button Styles */
+/* Install Button */
 .install-btn {
   position: fixed;
   bottom: 90px;
@@ -623,12 +331,10 @@ body {
   border: none;
   border-radius: 30px;
   padding: 12px 24px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
   font-weight: 600;
-  font-size: 1rem;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0, 102, 255, 0.3);
-  display: none; /* Hidden by default */
+  box-shadow: 0 4px 16px rgba(58, 134, 255, 0.4);
+  display: none;
   align-items: center;
   gap: 8px;
   z-index: 1000;
@@ -645,14 +351,47 @@ body {
 }
 
 @keyframes install-pulse {
-  0% { box-shadow: 0 4px 12px rgba(0, 102, 255, 0.3); }
-  50% { box-shadow: 0 6px 20px rgba(0, 102, 255, 0.5); }
-  100% { box-shadow: 0 4px 12px rgba(0, 102, 255, 0.3); }
+  0% { box-shadow: 0 4px 16px rgba(58, 134, 255, 0.4); }
+  50% { box-shadow: 0 6px 24px rgba(58, 134, 255, 0.6); }
+  100% { box-shadow: 0 4px 16px rgba(58, 134, 255, 0.4); }
 }
 
-/* Hide in standalone mode */
-@media all and (display-mode: standalone) {
-  .install-btn {
-    display: none !important;
-  }
+/* Social Buttons */
+.social-buttons {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  padding: 12px;
+  background: var(--card-bg);
+  border-top: 1px solid var(--deepseek-border);
+  box-shadow: 0 -2px 10px var(--shadow-color);
+  z-index: 999;
+}
+
+.social-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--card-bg);
+  border: 1px solid var(--deepseek-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1.2rem;
+}
+
+.social-btn:hover {
+  background: var(--button-hover);
+  transform: translateY(-3px);
+}
+
+/* Ensure content doesn't hide behind buttons */
+.container {
+  padding-bottom: 80px;
 }
