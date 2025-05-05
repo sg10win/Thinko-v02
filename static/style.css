@@ -291,47 +291,7 @@ body {
   margin: 0.5rem 0;
 }
 
-/* Correct Feedback Popup - Fixed Version */
-/* Correct Feedback Popup - Positioned Near Hint Button */
-.correct-feedback {
-  position: fixed;
-  bottom: 500px; /* Adjust this value to position it above the answer input */
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--success-green);
-  color: white;
-  padding: 12px 24px;
-  border-radius: 30px;
-  font-weight: 600;
-  opacity: 0;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  z-index: 1000;
-  box-shadow: 0 4px 20px rgba(0, 204, 102, 0.4);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  pointer-events: none;
-  width: max-content;
-  max-width: 90%;
-  text-align: center;
-}
 
-.correct-feedback.show {
-  opacity: 1;
-  transform: translateX(-50%) translateY(-10px);
-  animation: feedbackFadeOut 2s 1s forwards;
-}
-
-@keyframes feedbackFadeOut {
-  0% {
-    opacity: 1;
-    transform: translateX(-50%) translateY(-10px);
-  }
-  100% {
-    opacity: 0;
-    transform: translateX(-50%) translateY(-30px);
-  }
-}
 
 /* Incorrect Answer Styling */
 .incorrect-animation {
