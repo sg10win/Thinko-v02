@@ -488,5 +488,146 @@
     "answer": "4",
     "hint": "Proportions!",
     "explanation": "2/3 = x/6 → x = 4."
+  },
+  {
+    "id": "math_421",
+    "question": "A clock shows 2:20. What’s the angle between the hour and minute hands?",
+    "answer": "50",
+    "hint": "Hour hand moves too.",
+    "explanation": "Hour hand at 2:20 is at 70°, minute hand at 120°, difference is 50°."
+  },
+  {
+    "id": "math_422",
+    "question": "You fold a square piece of paper diagonally. What shape is the crease?",
+    "answer": "line",
+    "hint": "Crease = fold path.",
+    "explanation": "A diagonal fold in a square is always a straight line."
+  },
+  {
+    "id": "math_423",
+    "question": "You roll two dice. What’s the probability of getting a double?",
+    "answer": "1/6",
+    "hint": "Count same-number outcomes.",
+    "explanation": "There are 6 doubles out of 36 combinations."
+  },
+  {
+    "id": "math_424",
+    "question": "A triangle has sides 5, 12, and 13. What type of triangle is it?",
+    "answer": "right",
+    "hint": "Check Pythagoras.",
+    "explanation": "5² + 12² = 13² → it’s a right triangle."
+  },
+  {
+    "id": "math_425",
+    "question": "You take 3 shirts and 4 pants. How many outfit combinations?",
+    "answer": "12",
+    "hint": "Basic multiplication.",
+    "explanation": "3 × 4 = 12 possible outfits."
+  },
+  {
+    "id": "math_426",
+    "question": "A cube has edge length 10. What’s its space diagonal length (corner to opposite corner)?",
+    "answer": "17.32",
+    "hint": "Use 3D Pythagorean theorem.",
+    "explanation": "√(10²+10²+10²) = √300 ≈ 17.32."
+  },
+  {
+    "id": "math_427",
+    "question": "How many ways to arrange the letters in 'LEVEL'?",
+    "answer": "30",
+    "hint": "Consider duplicates.",
+    "explanation": "5! / (2!×2!) = 120 / 4 = 30."
+  },
+  {
+    "id": "math_428",
+    "question": "If the perimeter of a circle is 31.4, what's its radius?",
+    "answer": "5",
+    "hint": "Use formula.",
+    "explanation": "C = 2πr → r = 31.4 / (2π) = 5."
+  },
+  {
+    "id": "math_429",
+    "question": "You choose 2 people from a group of 10. How many combinations?",
+    "answer": "45",
+    "hint": "Use C(n, k).",
+    "explanation": "10C2 = 45."
+  },
+  {
+    "id": "math_430",
+    "question": "You cut a cube into 27 smaller cubes. How many have exactly 1 face painted?",
+    "answer": "6",
+    "hint": "Visualize one face center per side.",
+    "explanation": "Each face has 1 center cube painted on 1 side. 6 faces = 6 cubes."
+  },
+  {
+    "id": "math_431",
+    "question": "A triangle has angles of 30° and 90°. What’s the third angle?",
+    "answer": "60",
+    "hint": "Sum of angles in triangle?",
+    "explanation": "180 - 90 - 30 = 60."
+  },
+  {
+    "id": "math_432",
+    "question": "A password is 3 digits long, digits 0–9. Repeats allowed. How many possible passwords?",
+    "answer": "1000",
+    "hint": "10 × 10 × 10.",
+    "explanation": "10³ = 1000."
+  },
+  {
+    "id": "math_433",
+    "question": "If 8 workers take 6 days, how many days will 4 workers need (same work)?",
+    "answer": "12",
+    "hint": "Work is constant.",
+    "explanation": "Half the workers → double the time."
+  },
+  {
+    "id": "math_434",
+    "question": "Which shape has the most sides: hexagon, octagon, decagon?",
+    "answer": "decagon",
+    "hint": "Count the sides.",
+    "explanation": "Decagon has 10 sides."
+  },
+  {
+    "id": "math_435",
+    "question": "You have 5 red and 3 green balls. What’s the probability of drawing a red one?",
+    "answer": "0.625",
+    "hint": "Total: 8 balls.",
+    "explanation": "5/8 = 0.625."
+  },
+  {
+    "id": "math_436",
+    "question": "What’s the smallest number with exactly three different prime factors?",
+    "answer": "30",
+    "hint": "Start multiplying small primes.",
+    "explanation": "2 × 3 × 5 = 30."
+  },
+  {
+    "id": "math_437",
+    "question": "You flip 3 coins. What's the probability of getting exactly two heads?",
+    "answer": "0.375",
+    "hint": "Use combinations.",
+    "explanation": "3C2 × (0.5)³ = 3 × 0.125 = 0.375."
+  },
+  {
+    "id": "math_438",
+    "question": "A cube has a volume of 64. What’s its surface area?",
+    "answer": "96",
+    "hint": "Find side length first.",
+    "explanation": "Side = 4 → surface area = 6×4² = 96."
+  },
+  {
+    "id": "math_439",
+    "question": "What number comes next: 2, 6, 12, 20, ?",
+    "answer": "30",
+    "hint": "Look at differences.",
+    "explanation": "Add 4,6,8,10... next is +10 → 20+10 = 30."
+  },
+  {
+    "id": "math_440",
+    "question": "A number is divisible by 3 and 4. What's the smallest number it must also be divisible by?",
+    "answer": "12",
+    "hint": "LCM of 3 and 4.",
+    "explanation": "LCM(3,4) = 12."
   }
+
 ]
