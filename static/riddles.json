@@ -628,6 +628,145 @@
     "answer": "12",
     "hint": "LCM of 3 and 4.",
     "explanation": "LCM(3,4) = 12."
+  },
+  {
+    "id": "math_441",
+    "question": "How many degrees are there in the interior angles of a pentagon?",
+    "answer": "540",
+    "hint": "Use (n-2)×180.",
+    "explanation": "A 5-sided shape has (5–2)×180 = 540 degrees."
+  },
+  {
+    "id": "math_442",
+    "question": "You have 4 coins. Each can be either heads or tails. How many total outcomes?",
+    "answer": "16",
+    "hint": "Binary choice per coin.",
+    "explanation": "2⁴ = 16 possible combinations."
+  },
+  {
+    "id": "math_443",
+    "question": "What's the sum of angles in a hexagon?",
+    "answer": "720",
+    "hint": "Same formula: (n-2)×180.",
+    "explanation": "6-sided → (6–2)×180 = 720."
+  },
+  {
+    "id": "math_444",
+    "question": "What’s the area of a circle with radius 7?",
+    "answer": "154",
+    "hint": "Use πr², round π to 3.14.",
+    "explanation": "3.14 × 49 = 153.86 ≈ 154."
+  },
+  {
+    "id": "math_445",
+    "question": "A square has perimeter 32. What's the side length?",
+    "answer": "8",
+    "hint": "Perimeter = 4×side.",
+    "explanation": "32 ÷ 4 = 8."
+  },
+  {
+    "id": "math_446",
+    "question": "You flip a fair coin 5 times. What's the expected number of heads?",
+    "answer": "2.5",
+    "hint": "Each flip = 0.5 chance.",
+    "explanation": "5 × 0.5 = 2.5 expected heads."
+  },
+  {
+    "id": "math_447",
+    "question": "How many edges does a cube have?",
+    "answer": "12",
+    "hint": "Visualize it.",
+    "explanation": "Each face has 4 edges, but many are shared → total 12."
+  },
+  {
+    "id": "math_448",
+    "question": "A book has 300 pages. You read 25 pages per day. How many days to finish?",
+    "answer": "12",
+    "hint": "Just divide.",
+    "explanation": "300 ÷ 25 = 12."
+  },
+  {
+    "id": "math_449",
+    "question": "What’s the smallest 3-digit number divisible by 9?",
+    "answer": "108",
+    "hint": "Start at 100, go up.",
+    "explanation": "108 is the first 3-digit number divisible by 9."
+  },
+  {
+    "id": "math_450",
+    "question": "What’s 15% of 200?",
+    "answer": "30",
+    "hint": "Convert to decimal.",
+    "explanation": "0.15 × 200 = 30."
+  },
+  {
+    "id": "math_451",
+    "question": "How many diagonals does a hexagon have?",
+    "answer": "9",
+    "hint": "Use formula: n(n–3)/2.",
+    "explanation": "6(6–3)/2 = 9 diagonals."
+  },
+  {
+    "id": "math_452",
+    "question": "What’s the average of the first 10 positive integers?",
+    "answer": "5.5",
+    "hint": "Use (first + last)/2.",
+    "explanation": "(1+10)/2 = 5.5."
+  },
+  {
+    "id": "math_453",
+    "question": "If 5 pens cost $3.00, what’s the cost of 1 pen?",
+    "answer": "0.6",
+    "hint": "Divide.",
+    "explanation": "3 ÷ 5 = 0.6."
+  },
+  {
+    "id": "math_454",
+    "question": "A right triangle has legs 6 and 8. What's the hypotenuse?",
+    "answer": "10",
+    "hint": "Use Pythagorean theorem.",
+    "explanation": "√(6²+8²) = √100 = 10."
+  },
+  {
+    "id": "math_455",
+    "question": "How many sides does a dodecagon have?",
+    "answer": "12",
+    "hint": "Know your polygons.",
+    "explanation": "Dodecagon = 12 sides."
+  },
+  {
+    "id": "math_456",
+    "question": "What’s 2³ × 5?",
+    "answer": "40",
+    "hint": "Exponent first.",
+    "explanation": "8 × 5 = 40."
+  },
+  {
+    "id": "math_457",
+    "question": "How many square meters in a 10m by 15m rectangle?",
+    "answer": "150",
+    "hint": "Area = length × width.",
+    "explanation": "10 × 15 = 150 m²."
+  },
+  {
+    "id": "math_458",
+    "question": "You double a number and subtract 6. The result is 10. What was the number?",
+    "answer": "8",
+    "hint": "Solve 2x - 6 = 10.",
+    "explanation": "2x = 16 → x = 8."
+  },
+  {
+    "id": "math_459",
+    "question": "A car goes 60 km in 0.5 hours. What’s the speed in km/h?",
+    "answer": "120",
+    "hint": "Speed = distance/time.",
+    "explanation": "60 / 0.5 = 120 km/h."
+  },
+  {
+    "id": "math_460",
+    "question": "What is the sum of even numbers from 2 to 10?",
+    "answer": "30",
+    "hint": "Just add them: 2+4+6+8+10.",
+    "explanation": "Sum = 30."
   }
-
 ]
