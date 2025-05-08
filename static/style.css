@@ -193,7 +193,7 @@ body {
   min-height: 200px;
   border: 1px solid var(--deepseek-border);
   margin: 1rem 0;
-  font-size: 0.8rem;
+  font-size: 0.5rem;
   line-height: 1.6;
   position: relative;
   box-shadow: 0 4px 12px var(--shadow-color);
