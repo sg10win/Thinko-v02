@@ -348,5 +348,145 @@
         "answer": "17",
         "hint": "Count the segments of each digit.",
         "explanation": "1(2)+2(5)+3(5)+4(5)=17 segments."
-    }
+    },
+  {
+    "id": "math_401",
+    "question": "You have a rope that burns completely in 1 hour but not at a uniform rate. How do you measure exactly 45 minutes?",
+    "answer": "burn",
+    "hint": "Use two ropes.",
+    "explanation": "Burn one rope from both ends and the other from one end. When the first finishes (30 min), burn the second from the other end. It’ll take 15 more minutes."
+  },
+  {
+    "id": "math_402",
+    "question": "What’s the sum of the first 20 odd numbers?",
+    "answer": "400",
+    "hint": "There’s a shortcut.",
+    "explanation": "Sum of first n odd numbers = n². 20² = 400."
+  },
+  {
+    "id": "math_403",
+    "question": "A square and a circle have the same perimeter. Which has the larger area?",
+    "answer": "circle",
+    "hint": "Think of geometry efficiency.",
+    "explanation": "Among all shapes with the same perimeter, the circle encloses the largest area."
+  },
+  {
+    "id": "math_404",
+    "question": "If you triple a number and subtract 4, you get 11. What was the number?",
+    "answer": "5",
+    "hint": "Set up an equation.",
+    "explanation": "3x - 4 = 11 → x = 5."
+  },
+  {
+    "id": "math_405",
+    "question": "How many 2-digit numbers have the digit 7 in them?",
+    "answer": "19",
+    "hint": "Count tens and units.",
+    "explanation": "From 10–99, digit 7 appears in 70–79 (10) and in units: 17, 27, ..., 97 (9), some overlap. Total = 19."
+  },
+  {
+    "id": "math_406",
+    "question": "What’s the angle between the hour and minute hands at 3:15?",
+    "answer": "7.5",
+    "hint": "Hour hand moves too.",
+    "explanation": "Hour hand at 3:15 is 97.5°, minute hand at 90°. Difference = 7.5°."
+  },
+  {
+    "id": "math_407",
+    "question": "You double your money 3 times. If you end with $160, how much did you start with?",
+    "answer": "20",
+    "hint": "Reverse the doubling.",
+    "explanation": "160 ÷ 2 ÷ 2 ÷ 2 = 20."
+  },
+  {
+    "id": "math_408",
+    "question": "If a cube’s surface area is 54, what’s its volume?",
+    "answer": "27",
+    "hint": "Start with side length.",
+    "explanation": "Surface area = 6a² → a = 3, volume = 3³ = 27."
+  },
+  {
+    "id": "math_409",
+    "question": "You randomly pick a digit 1–9. What’s the probability it’s prime?",
+    "answer": "0.444",
+    "hint": "Which digits are prime?",
+    "explanation": "Prime digits: 2, 3, 5, 7 → 4/9 ≈ 0.444."
+  },
+  {
+    "id": "math_410",
+    "question": "What’s the smallest number divisible by 3, 4, and 5?",
+    "answer": "60",
+    "hint": "Use LCM.",
+    "explanation": "LCM(3,4,5) = 60."
+  },
+  {
+    "id": "math_411",
+    "question": "How many ways can 3 people sit on a bench with 3 seats?",
+    "answer": "6",
+    "hint": "Simple permutation.",
+    "explanation": "3! = 6."
+  },
+  {
+    "id": "math_412",
+    "question": "A spinner is divided into 4 equal sections: red, blue, green, yellow. What's the probability of not landing on red in two spins?",
+    "answer": "0.5625",
+    "hint": "Think complementary event.",
+    "explanation": "P(not red) = 0.75 → 0.75 × 0.75 = 0.5625."
+  },
+  {
+    "id": "math_413",
+    "question": "You multiply a number by itself and get 49. What’s the number?",
+    "answer": "7",
+    "hint": "Square root.",
+    "explanation": "√49 = 7."
+  },
+  {
+    "id": "math_414",
+    "question": "What’s the only even prime number?",
+    "answer": "2",
+    "hint": "All others have 2 as a factor.",
+    "explanation": "2 is the only even number that’s prime."
+  },
+  {
+    "id": "math_415",
+    "question": "You throw 2 dice. What’s the probability the sum is 7?",
+    "answer": "1/6",
+    "hint": "Count the combinations.",
+    "explanation": "6 ways out of 36 = 1/6."
+  },
+  {
+    "id": "math_416",
+    "question": "If 3 pencils cost $1.50, what’s the cost of 10 pencils?",
+    "answer": "5",
+    "hint": "Find unit price.",
+    "explanation": "$0.50 per pencil × 10 = $5."
+  },
+  {
+    "id": "math_417",
+    "question": "You add 5 to a number and double it to get 20. What’s the number?",
+    "answer": "5",
+    "hint": "Set up an equation.",
+    "explanation": "(x + 5) × 2 = 20 → x = 5."
+  },
+  {
+    "id": "math_418",
+    "question": "You have a 3×3×3 cube made of 27 smaller cubes. How many are not on the surface?",
+    "answer": "1",
+    "hint": "Visualize inside the cube.",
+    "explanation": "Only the center cube is completely hidden."
+  },
+  {
+    "id": "math_419",
+    "question": "What’s the next number: 1, 4, 9, 16, ?",
+    "answer": "25",
+    "hint": "Perfect squares.",
+    "explanation": "1², 2², 3²... next is 5² = 25."
+  },
+  {
+    "id": "math_420",
+    "question": "You mix red and blue paint in a 2:3 ratio. If you have 6 liters of blue, how much red?",
+    "answer": "4",
+    "hint": "Proportions!",
+    "explanation": "2/3 = x/6 → x = 4."
+  }
 ]
