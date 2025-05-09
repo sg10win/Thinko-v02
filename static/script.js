@@ -102,7 +102,6 @@ function startHexagonBallAnimation(container) {
   canvas.style.width = "100%";
   canvas.style.height = "100%";
   canvas.style.display = "block";
-  canvas.id = "hexagonCanvas_" + Math.random().toString(36).substring(2);
   container.appendChild(canvas);
 
   const ctx = canvas.getContext("2d");
@@ -119,11 +118,11 @@ function startHexagonBallAnimation(container) {
     ball: {
       x: 0,
       y: 0,
-      vx: 0.002,
-      vy: 0,
-      radius: 0.05,
+      vx: 0.1,
+      vy: -0.1,
+      radius: 0.04, // percentage of hex size
     },
-    gravity: 0.0003,
+    gravity: 0.3, // scaled by canvas size
     bounce: 0.8,
     friction: 0.99,
   };
@@ -140,16 +139,17 @@ function startHexagonBallAnimation(container) {
     return points;
   }
 
-  function pointInPolygon(x, y, polygon) {
-    let inside = false;
-    for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
-      const xi = polygon[i].x, yi = polygon[i].y;
-      const xj = polygon[j].x, yj = polygon[j].y;
-      const intersect = ((yi > y) !== (yj > y)) &&
-        (x < (xj - xi) * (y - yi) / (yj - yi + 0.00001) + xi);
-      if (intersect) inside = !inside;
-    }
-    return inside;
+  function reflect(ball, a, b) {
+    const dx = b.x - a.x;
+    const dy = b.y - a.y;
+    const length = Math.sqrt(dx * dx + dy * dy);
+    const nx = -dy / length;
+    const ny = dx / length;
+    const dot = ball.vx * nx + ball.vy * ny;
+    ball.vx -= 2 * dot * nx;
+    ball.vy -= 2 * dot * ny;
+    ball.vx *= state.bounce;
+    ball.vy *= state.bounce;
   }
 
   function draw() {
@@ -165,65 +165,69 @@ function startHexagonBallAnimation(container) {
 
     const hex = hexPoints(cx, cy, hexRadius, state.rotation);
 
+    // Draw hexagon
     ctx.beginPath();
     ctx.moveTo(hex[0].x, hex[0].y);
     for (let i = 1; i < hex.length; i++) {
       ctx.lineTo(hex[i].x, hex[i].y);
     }
     ctx.closePath();
-    ctx.strokeStyle = "#333";
+    ctx.strokeStyle = "#000";
     ctx.lineWidth = 3;
     ctx.stroke();
 
     const ball = state.ball;
-    const radius = hexRadius * ball.radius;
+    const r = hexRadius * ball.radius;
 
-    ball.vy += state.gravity * minSize;
+    // Gravity
+    ball.vy += state.gravity * (minSize / 500);
     ball.vx *= state.friction;
     ball.vy *= state.friction;
 
-    ball.x += ball.vx * minSize;
-    ball.y += ball.vy * minSize;
+    // Update position
+    ball.x += ball.vx;
+    ball.y += ball.vy;
 
-    const globalBallX = cx + ball.x;
-    const globalBallY = cy + ball.y;
+    const px = cx + ball.x * minSize;
+    const py = cy + ball.y * minSize;
 
-    if (!pointInPolygon(globalBallX, globalBallY, hex)) {
-      for (let i = 0; i < hex.length; i++) {
-        const a = hex[i];
-        const b = hex[(i + 1) % hex.length];
-        const dx = b.x - a.x;
-        const dy = b.y - a.y;
-        const normal = { x: -dy, y: dx };
-        const mag = Math.sqrt(normal.x ** 2 + normal.y ** 2);
-        normal.x /= mag;
-        normal.y /= mag;
+    // Collision with hexagon edges
+    for (let i = 0; i < hex.length; i++) {
+      const a = hex[i];
+      const b = hex[(i + 1) % hex.length];
+      const dx = b.x - a.x;
+      const dy = b.y - a.y;
+      const len = Math.sqrt(dx * dx + dy * dy);
+      const nx = -dy / len;
+      const ny = dx / len;
+      const dist = (px - a.x) * nx + (py - a.y) * ny;
 
-        const dist = (globalBallX - a.x) * normal.x + (globalBallY - a.y) * normal.y;
-        if (dist < radius) {
-          ball.vx -= 2 * (ball.vx * normal.x + ball.vy * normal.y) * normal.x;
-          ball.vy -= 2 * (ball.vx * normal.x + ball.vy * normal.y) * normal.y;
-          ball.vx *= state.bounce;
-          ball.vy *= state.bounce;
-          ball.x -= normal.x * (radius - dist);
-          ball.y -= normal.y * (radius - dist);
-        }
+      if (dist < r) {
+        // Push ball out of wall
+        ball.x -= (r - dist) * nx / minSize;
+        ball.y -= (r - dist) * ny / minSize;
+        reflect(ball, a, b);
       }
     }
 
+    // Draw ball
     ctx.beginPath();
-    ctx.arc(globalBallX, globalBallY, radius, 0, 2 * Math.PI);
+    ctx.arc(px, py, r, 0, Math.PI * 2);
     ctx.fillStyle = "red";
     ctx.fill();
+    ctx.strokeStyle = "#000";
     ctx.stroke();
 
     requestAnimationFrame(draw);
   }
 
-  state.ball.x = 0;
-  state.ball.y = 0;
+  // Start with offset position
+  state.ball.x = 0.1;
+  state.ball.y = -0.2;
+
   draw();
 }
+
 
 
 
