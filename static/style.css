@@ -524,6 +524,6 @@ body {
 
 #hexagonCanvas {
     display: block;
-    background-color: transparent;
+    background-color: var(--deepseek-bg);
     
 }
