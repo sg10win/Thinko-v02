@@ -38,6 +38,8 @@
     --deepseek-light-blue: #5d9cff;
     --success-green: #00e676;
     --error-red: #ff5252;
+     --hexagon-color: var(--deepseek-text-light);  /* Red hexagon */
+  --ball-color: var(--deepseek-blue);     /* Green ball */
   }
 }
 
