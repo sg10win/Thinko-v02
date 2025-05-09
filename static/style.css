@@ -507,6 +507,9 @@ body {
 }
 
 #hexagonContainer {
+   position: absolute;
+  top: 1rem;
+  left: 1rem;
     width: 90px;
     height: 90px;
     display: flex;
@@ -518,7 +521,6 @@ body {
 
 #hexagonCanvas {
     display: block;
-    background: transparent;
     background-color: --deepseek-bg;
     
 }
