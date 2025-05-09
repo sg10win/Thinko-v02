@@ -1,772 +1,773 @@
+
 [
     {
         "id": "1",
-        "question": "How many times do the hands of a clock overlap in 12 hours?",
+        "question": "כמה פעמים מחוגי השעון חופפים במשך 12 שעות?",
         "answer": "11",
-        "hint": "It's not once every hour.",
-        "explanation": "They align every ~65 minutes, so 11 times in 12 hours."
+        "hint": "זה לא פעם בשעה.",
+        "explanation": "הם מתיישרים כל כ-65 דקות, אז 11 פעמים ב-12 שעות."
     },
     {
         "id": "2",
-        "question": "A bat and a ball cost $1.10 together. The bat costs $1 more than the ball. How much does the ball cost?",
+        "question": "מחבט וכדור עולים יחד 1.10 דולר. המחבט עולה דולר אחד יותר מהכדור. כמה עולה הכדור?",
         "answer": "0.05",
-        "hint": "It's not 10 cents.",
-        "explanation": "If the ball is $0.05, the bat is $1.05, total = $1.10."
+        "hint": "זה לא 10 סנט.",
+        "explanation": "אם הכדור עולה 0.05 דולר, המחבט עולה 1.05 דולר, סך הכל 1.10 דולר."
     },
     {
         "id": "3",
-        "question": "If a plane crashes on the border of the U.S. and Canada, where do they bury the survivors?",
-        "answer": "nowhere",
-        "hint": "Reread the question.",
-        "explanation": "You don't bury survivors."
+        "question": "אם מטוס מתרסק על הגבול בין ארה\"ב לקנדה, היכן קוברים את הניצולים?",
+        "answer": "אף מקום",
+        "hint": "קרא שוב את השאלה.",
+        "explanation": "לא קוברים ניצולים."
     },
     {
         "id": "4",
-        "question": "What's the angle between the hands of a clock at 3:15?",
+        "question": "מה הזווית בין מחוגי השעון בשעה 3:15?",
         "answer": "7.5",
-        "hint": "The hour hand isn't on 3.",
-        "explanation": "Hour hand is 1/4 between 3 and 4, so 7.5 degrees apart."
+        "hint": "מחוג השעות לא נמצא בדיוק על 3.",
+        "explanation": "מחוג השעות נמצא רבע דרך בין 3 ל-4, אז הזווית ביניהם היא 7.5 מעלות."
     },
     {
         "id": "5",
-        "question": "If you're running a race and pass the person in second place, what place are you in?",
+        "question": "אם אתה רץ במרוץ ועובר את האדם במקום השני, באיזה מקום אתה נמצא?",
         "answer": "2",
-        "hint": "Think carefully about their position.",
-        "explanation": "You take their place, so you're now 2nd."
+        "hint": "תחשוב היטב על המיקום שלהם.",
+        "explanation": "אתה תופס את מקומם, אז עכשיו אתה במקום השני."
     },
     {
         "id": "6",
-        "question": "How many 9s are there between 1 and 100?",
+        "question": "כמה ספרות 9 יש בין 1 ל-100?",
         "answer": "20",
-        "hint": "Check every number.",
-        "explanation": "There are 10 in the ones place (9,19,...99) and 10 in the tens (90-99)."
+        "hint": "בדוק כל מספר.",
+        "explanation": "יש 10 בספרת האחדות (9,19,...99) ו-10 בספרת העשרות (90-99)."
     },
     {
         "id": "7",
-        "question": "A farmer has 17 sheep. All but 9 run away. How many does he have left?",
+        "question": "לחקלאי יש 17 כבשים. כל הכבשים ברחו חוץ מ-9. כמה כבשים נשארו לו?",
         "answer": "9",
-        "hint": "It says 'all but 9'.",
-        "explanation": "He still has 9 sheep."
+        "hint": "נאמר 'כל חוץ מ-9'.",
+        "explanation": "נשארו לו 9 כבשים."
     },
     {
         "id": "8",
-        "question": "How many squares are on a standard chessboard?",
+        "question": "כמה ריבועים יש בלוח שחמט סטנדרטי?",
         "answer": "204",
-        "hint": "More than just the 8x8.",
-        "explanation": "It includes all possible square sizes: 1x1 to 8x8. Total = 204."
+        "hint": "יותר מאשר רק 8x8.",
+        "explanation": "זה כולל את כל הגדלים האפשריים של ריבועים: מ-1x1 עד 8x8. סך הכל 204."
     },
     {
         "id": "9",
-        "question": "If it takes 5 machines 5 minutes to make 5 widgets, how long for 100 machines to make 100 widgets?",
+        "question": "אם 5 מכונות לוקחות 5 דקות כדי לייצר 5 מוצרים, כמה זמן ייקח ל-100 מכונות לייצר 100 מוצרים?",
         "answer": "5",
-        "hint": "Not 100 minutes.",
-        "explanation": "Each machine makes 1 widget in 5 minutes, so 100 machines = 100 widgets in 5 minutes."
+        "hint": "לא 100 דקות.",
+        "explanation": "כל מכונה מייצרת מוצר אחד ב-5 דקות, אז 100 מכונות = 100 מוצרים ב-5 דקות."
     },
     {
         "id": "10",
-        "question": "You're in a dark room with a candle, a lamp, and a fireplace. You only have one match. What do you light first?",
-        "answer": "match",
-        "hint": "Think about the sequence.",
-        "explanation": "You must light the match first."
+        "question": "אתה בחדר חשוך עם נר, מנורה וקמין. יש לך רק גפרור אחד. מה אתה מדליק קודם?",
+        "answer": "גפרור",
+        "hint": "תחשוב על הרצף.",
+        "explanation": "אתה חייב להדליק את הגפרור קודם."
     },
     {
         "id": "11",
-        "question": "You cut a cube into 27 smaller cubes. How many of the small cubes have paint on only one face?",
+        "question": "אתה חותך קובייה ל-27 קוביות קטנות. כמה מהקוביות הקטנות יצבעו רק בצד אחד?",
         "answer": "6",
-        "hint": "Visualize the center of each face.",
-        "explanation": "Each of the 6 faces has 1 center cube with paint on only one side."
+        "hint": "דמיין את מרכז כל פאה.",
+        "explanation": "כל אחת מ-6 הפאות כוללת קובייה מרכזית עם צבע רק בצד אחד."
     },
     {
         "id": "12",
-        "question": "How many edges does a cube have?",
+        "question": "כמה צלעות יש לקובייה?",
         "answer": "12",
-        "hint": "Visualize or count carefully.",
-        "explanation": "A cube has 4 edges per face, but many are shared. Total = 12."
+        "hint": "דמיין או ספור בזהירות.",
+        "explanation": "לקובייה יש 4 צלעות לכל פאה, אך רבות משותפות. סך הכל 12."
     },
     {
         "id": "13",
-        "question": "If you fold a cube from paper, how many corners does it have?",
+        "question": "אם אתה מקפל קובייה מנייר, כמה פינות יש לה?",
         "answer": "8",
-        "hint": "Count the points where edges meet.",
-        "explanation": "A cube always has 8 corners (vertices)."
+        "hint": "ספור את הנקודות בהן הצלעות נפגשות.",
+        "explanation": "לקובייה תמיד יש 8 פינות (קודקודים)."
     },
     {
         "id": "14",
-        "question": "If today is Monday, what day will it be in 100 days?",
-        "answer": "Wednesday",
-        "hint": "Think modulo 7.",
-        "explanation": "100 mod 7 = 2, so Monday + 2 days = Wednesday."
+        "question": "אם היום יום שני, איזה יום יהיה בעוד 100 ימים?",
+        "answer": "רביעי",
+        "hint": "תחשוב מודולו 7.",
+        "explanation": "100 מודולו 7 = 2, אז יום שני + 2 ימים = יום רביעי."
     },
     {
         "id": "15",
-        "question": "How many numbers between 1 and 100 are divisible by both 2 and 5?",
+        "question": "כמה מספרים בין 1 ל-100 מתחלקים גם ב-2 וגם ב-5?",
         "answer": "10",
-        "hint": "LCM of 2 and 5 is 10.",
-        "explanation": "There are 10 multiples of 10 between 1 and 100."
+        "hint": "הכפ\"מ של 2 ו-5 הוא 10.",
+        "explanation": "יש 10 כפולות של 10 בין 1 ל-100."
     },
     {
         "id": "16",
-        "question": "A rectangular room has 4 corners. A spider is in one corner and wants to get to the opposite one on the ceiling. What's the shortest path?",
-        "answer": "along walls",
-        "hint": "Unfold the room.",
-        "explanation": "The shortest path is along two walls, not diagonally in 3D."
+        "question": "בחדר מלבני יש 4 פינות. עכביש נמצא בפינה אחת ורוצה להגיע לפינה הנגדית בתקרה. מה הדרך הקצרה ביותר?",
+        "answer": "לאורך הקירות",
+        "hint": "פתח את החדר.",
+        "explanation": "הדרך הקצרה ביותר היא לאורך שתי קירות, לא אלכסונית בתלת מימד."
     },
     {
         "id": "17",
-        "question": "How many handshakes happen in a room with 10 people if everyone shakes hands once?",
+        "question": "כמה לחיצות ידיים יתקיימו בחדר עם 10 אנשים אם כל אחד לוחץ יד פעם אחת?",
         "answer": "45",
-        "hint": "It's a triangle number.",
+        "hint": "זה מספר משולש.",
         "explanation": "n(n-1)/2 = 10×9/2 = 45."
     },
     {
         "id": "18",
-        "question": "How many circles are there in the digits 0 to 9?",
+        "question": "כמה עיגולים יש בספרות 0 עד 9?",
         "answer": "6",
-        "hint": "Count the holes: 0, 6, 8, 9.",
-        "explanation": "0, 6, and 9 have 1 each, 8 has 2. Total = 6."
+        "hint": "ספור את החורים: 0, 6, 8, 9.",
+        "explanation": "ל-0, 6, ו-9 יש 1 כל אחד, ל-8 יש 2. סך הכל 6."
     },
     {
         "id": "19",
-        "question": "A car's odometer reads 15951. After 2 hours it reads the same backwards. What's the smallest next such number?",
+        "question": "מד מרחק של מכונית מראה 15951. אחרי שעתיים הוא מראה את אותו מספר הפוך. מה המספר הבא הקטן ביותר כזה?",
         "answer": "16061",
-        "hint": "Find the next palindrome.",
-        "explanation": "Next palindrome after 15951 is 16061."
+        "hint": "מצא את הפלינדרום הבא.",
+        "explanation": "הפלינדרום הבא אחרי 15951 הוא 16061."
     },
     {
         "id": "20",
-        "question": "What's the maximum number of pieces a pizza can be cut into with 3 straight cuts?",
+        "question": "מה המספר המקסימלי של חתיכות שניתן לחלק פיצה עם 3 חתכים ישרים?",
         "answer": "7",
-        "hint": "Each cut can intersect previous ones.",
-        "explanation": "Max pieces with 3 cuts = 7 (a known problem)."
+        "hint": "כל חתך יכול לחצות קודמים.",
+        "explanation": "המקסימום עם 3 חתכים = 7 (בעיה ידועה)."
     },
     {
         "id": "21",
-        "question": "How many zeros are at the end of 100! (factorial)?",
+        "question": "כמה אפסים יש בסוף של 100! (עצרת)?",
         "answer": "24",
-        "hint": "Count factors of 5.",
+        "hint": "ספור גורמים של 5.",
         "explanation": "100/5 + 100/25 + 100/125 = 20 + 4 = 24."
     },
     {
         "id": "22",
-        "question": "You flip a coin 10 times. What's the probability of exactly 10 heads?",
+        "question": "אתה מטיל מטבע 10 פעמים. מה ההסתברות לקבל בדיוק 10 פעמים עץ?",
         "answer": "1/1024",
-        "hint": "Each flip is 50%.",
+        "hint": "כל הטלה היא 50%.",
         "explanation": "0.5^10 = 1/1024."
     },
     {
         "id": "23",
-        "question": "A train 100 meters long moves at 50 m/s. How many seconds to cross a tunnel 100m long?",
+        "question": "רכבת באורך 100 מטרים נעה במהירות 50 מטר לשנייה. כמה שניות ייקח לה לחצות מנהרה באורך 100 מטר?",
         "answer": "4",
-        "hint": "Total distance = train + tunnel.",
-        "explanation": "200 meters / 50 m/s = 4 seconds."
+        "hint": "מרחק כולל = רכבת + מנהרה.",
+        "explanation": "200 מטרים / 50 מטר לשנייה = 4 שניות."
     },
     {
         "id": "24",
-        "question": "How many triangles are there in a pentagram?",
+        "question": "כמה משולשים יש בפנטגרם?",
         "answer": "35",
-        "hint": "Count overlapping ones too.",
-        "explanation": "A full pentagram has 35 distinct triangles."
+        "hint": "ספור גם כאלה חופפים.",
+        "explanation": "פנטגרם מלא כולל 35 משולשים ייחודיים."
     },
     {
         "id": "25",
-        "question": "How many minutes are in 1 week?",
+        "question": "כמה דקות יש בשבוע אחד?",
         "answer": "10080",
-        "hint": "7 days × 24 hrs × 60 min.",
-        "explanation": "7×24×60 = 10,080 minutes."
+        "hint": "7 ימים × 24 שעות × 60 דקות.",
+        "explanation": "7×24×60 = 10,080 דקות."
     },
     {
         "id": "26",
-        "question": "How many degrees does the hour hand move in 1 minute?",
+        "question": "כמה מעלות מחוג השעות זז בדקה אחת?",
         "answer": "0.5",
-        "hint": "It moves slowly.",
-        "explanation": "360° / 12 hrs / 60 min = 0.5° per min."
+        "hint": "הוא זז לאט.",
+        "explanation": "360° / 12 שעות / 60 דקות = 0.5° לדקה."
     },
     {
         "id": "27",
-        "question": "Which weighs more: a kilo of feathers or a kilo of steel?",
-        "answer": "neither",
-        "hint": "They're both 1 kilo.",
-        "explanation": "1 kg = 1 kg, regardless of material."
+        "question": "מה שוקל יותר: קילוגרם נוצות או קילוגרם פלדה?",
+        "answer": "אף אחד",
+        "hint": "שניהם קילוגרם אחד.",
+        "explanation": "1 ק\"ג = 1 ק\"ג, ללא קשר לחומר."
     },
     {
         "id": "28",
-        "question": "You see a boat full of people. It hasn't sunk, but not a single person is on board. How?",
-        "answer": "married",
-        "hint": "Wordplay.",
-        "explanation": "They're all married, not 'single'."
+        "question": "אתה רואה סירה מלאה באנשים. היא לא שקעה, אך אף אדם לא נמצא על הסירה. איך?",
+        "answer": "נשואים",
+        "hint": "משחק מילים.",
+        "explanation": "כולם נשואים, לא 'רווקים'."
     },
     {
         "id": "29",
-        "question": "How many straight lines can be drawn between 4 non-overlapping points?",
+        "question": "כמה קווים ישרים ניתן לצייר בין 4 נקודות שאינן חופפות?",
         "answer": "6",
-        "hint": "It's a combination.",
-        "explanation": "4C2 = 6 lines between 4 points."
+        "hint": "זה שילוב.",
+        "explanation": "4C2 = 6 קווים בין 4 נקודות."
     },
     {
         "id": "30",
-        "question": "What's the smallest number that is evenly divisible by all numbers from 1 to 10?",
+        "question": "מה המספר הקטן ביותר שמתחלק בכל המספרים מ-1 עד 10?",
         "answer": "2520",
-        "hint": "It's the least common multiple.",
-        "explanation": "LCM(1..10) = 2520."
+        "hint": "זה הכפ\"מ.",
+        "explanation": "הכפ\"מ של 1..10 = 2520."
     },
     {
         "id": "31",
-        "question": "How many faces does a dodecahedron have?",
+        "question": "כמה פאות יש לדודקהדרון?",
         "answer": "12",
-        "hint": "It's a 3D shape with pentagon faces.",
-        "explanation": "A dodecahedron has 12 pentagonal faces."
+        "hint": "זה צורה תלת מימדית עם פאות מחומשות.",
+        "explanation": "לדודקהדרון יש 12 פאות מחומשות."
     },
     {
         "id": "32",
-        "question": "A man walks 1 km south, 1 km east, 1 km north and returns to his starting point. Where is he?",
-        "answer": "pole",
-        "hint": "Think extreme locations.",
-        "explanation": "At the North Pole, this is possible."
+        "question": "אדם הולך 1 ק\"מ דרום, 1 ק\"מ מזרח, 1 ק\"מ צפון וחוזר לנקודת ההתחלה. איפה הוא?",
+        "answer": "קוטב",
+        "hint": "תחשוב על מיקומים קיצוניים.",
+        "explanation": "בקוטב הצפוני, זה אפשרי."
     },
     {
         "id": "33",
-        "question": "What 3-digit number has all digits equal and divisible by 3?",
+        "question": "מהו מספר תלת-ספרתי עם כל הספרות שוות שמתחלק ב-3?",
         "answer": "111",
-        "hint": "Try repeating digits: 111, 222...",
-        "explanation": "111, 222... all divisible by 3, but 111 is the smallest."
+        "hint": "נסה ספרות חוזרות: 111, 222...",
+        "explanation": "111, 222... כולם מתחלקים ב-3, אך 111 הוא הקטן ביותר."
     },
     {
         "id": "34",
-        "question": "How many centimeters are in 1 kilometer?",
+        "question": "כמה סנטימטרים יש בקילומטר אחד?",
         "answer": "100000",
-        "hint": "Use metric conversion.",
-        "explanation": "1000 meters × 100 cm = 100,000 cm."
+        "hint": "השתמש בהמרה מטרית.",
+        "explanation": "1000 מטרים × 100 ס\"מ = 100,000 ס\"מ."
     },
     {
         "id": "35",
-        "question": "A 4-digit palindrome divisible by 11?",
+        "question": "פלינדרום תלת-ספרתי שמתחלק ב-11?",
         "answer": "1221",
-        "hint": "Test 4-digit mirrored numbers.",
+        "hint": "בדוק מספרים תלת-ספרתיים מראה.",
         "explanation": "1221 / 11 = 111."
     },
     {
         "id": "36",
-        "question": "What's the angle between the hands at 9:00?",
+        "question": "מה הזווית בין המחוגים בשעה 9:00?",
         "answer": "90",
-        "hint": "Think clock face.",
-        "explanation": "Hour hand at 9, minute at 12. 3-hour gap = 90°."
+        "hint": "תחשוב על פני השעון.",
+        "explanation": "מחוג השעות על 9, הדקות על 12. הפרש של 3 שעות = 90°."
     },
     {
         "id": "37",
-        "question": "A paper is folded in half 6 times. How many layers are there?",
+        "question": "דף נייר מקופל לחצי 6 פעמים. כמה שכבות יש?",
         "answer": "64",
-        "hint": "It doubles each time.",
-        "explanation": "2^6 = 64 layers."
+        "hint": "זה מוכפל כל פעם.",
+        "explanation": "2^6 = 64 שכבות."
     },
     {
         "id": "38",
-        "question": "What's the sum of angles in a hexagon?",
+        "question": "מה סכום הזוויות במשושה?",
         "answer": "720",
-        "hint": "Use (n-2)×180.",
-        "explanation": "Hexagon has 6 sides. (6-2)×180 = 720°."
+        "hint": "השתמש בנוסחה: (n-2)×180.",
+        "explanation": "למשושה 6 צלעות. (6-2)×180 = 720°."
     },
     {
         "id": "39",
-        "question": "How many sides does a nonagon have?",
+        "question": "כמה צלעות יש לתשעון?",
         "answer": "9",
-        "hint": "Prefix 'nona'.",
-        "explanation": "'Nonagon' = 9-sided polygon."
+        "hint": "הקידומת 'תשע'.",
+        "explanation": "'תשעון' = מצולע עם 9 צלעות."
     },
     {
         "id": "40",
-        "question": "How many diagonals does a pentagon have?",
+        "question": "כמה אלכסונים יש למחומש?",
         "answer": "5",
-        "hint": "Use formula: n(n-3)/2.",
+        "hint": "השתמש בנוסחה: n(n-3)/2.",
         "explanation": "5(5-3)/2 = 5."
     },
     {
         "id": "41",
-        "question": "What is the only even prime number?",
+        "question": "מהו המספר הזוגי היחיד שהוא ראשוני?",
         "answer": "2",
-        "hint": "Only one breaks the odd rule.",
-        "explanation": "All other primes are odd. Only 2 is even and prime."
+        "hint": "רק אחד שובר את כלל האי-זוגיות.",
+        "explanation": "כל שאר הראשוניים אי-זוגיים. רק 2 הוא זוגי וראשוני."
     },
     {
         "id": "42",
-        "question": "How many corners does a triangle have?",
+        "question": "כמה קודקודים יש למשולש?",
         "answer": "3",
-        "hint": "Basic geometry.",
-        "explanation": "Every triangle has 3 vertices."
+        "hint": "גיאומטריה בסיסית.",
+        "explanation": "לכל משולש יש 3 קודקודים."
     },
     {
         "id": "43",
-        "question": "How many letters in the English alphabet?",
+        "question": "כמה אותיות יש באלפבית האנגלי?",
         "answer": "26",
-        "hint": "It's basic, but stress might trick you.",
-        "explanation": "Standard English has 26 letters."
+        "hint": "זה בסיסי, אך לחץ עלול להטעות.",
+        "explanation": "אנגלית סטנדרטית כוללת 26 אותיות."
     },
     {
         "id": "44",
-        "question": "A cube is dropped into red paint, fully submerged. How many faces are painted?",
+        "question": "קובייה טבולה לחלוטין בצבע אדום. כמה פאות נצבעו?",
         "answer": "6",
-        "hint": "It's covered on all sides.",
-        "explanation": "Submerged completely = 6 painted faces."
+        "hint": "היא מכוסה מכל הצדדים.",
+        "explanation": "טבילה מלאה = 6 פאות צבועות."
     },
     {
         "id": "45",
-        "question": "You cut a cube into 64 equal parts. How many have paint on two faces?",
+        "question": "אתה חותך קובייה ל-64 חלקים שווים. כמה מהם יצבעו בשתי פאות?",
         "answer": "24",
-        "hint": "Think about edges but not corners.",
-        "explanation": "Each edge has middle painted cubes: 12 edges × 2 = 24."
+        "hint": "תחשוב על מקצועות אך לא קודקודים.",
+        "explanation": "כל מקצוע כולל קוביות אמצע צבועות: 12 מקצועות × 2 = 24."
     },
     {
         "id": "46",
-        "question": "How many legs do 7 spiders have?",
+        "question": "כמה רגליים יש ל-7 עכבישים?",
         "answer": "56",
-        "hint": "Multiply fast!",
-        "explanation": "7×8 = 56 legs."
+        "hint": "הכפל מהר!",
+        "explanation": "7×8 = 56 רגליים."
     },
     {
         "id": "47",
-        "question": "How many 2-digit numbers are there?",
+        "question": "כמה מספרים דו-ספרתיים יש?",
         "answer": "90",
-        "hint": "From 10 to 99.",
-        "explanation": "99 - 10 + 1 = 90 numbers."
+        "hint": "מ-10 עד 99.",
+        "explanation": "99 - 10 + 1 = 90 מספרים."
     },
     {
         "id": "48",
-        "question": "What's the square root of 144?",
+        "question": "מה השורש הריבועי של 144?",
         "answer": "12",
-        "hint": "Memorized square numbers help.",
+        "hint": "מספרים ריבועיים בע\"פ עוזרים.",
         "explanation": "12×12 = 144."
     },
     {
         "id": "49",
-        "question": "You see 3 cubes stacked on top of each other. How many faces are hidden?",
+        "question": "אתה רואה 3 קוביות מונחות זו על זו. כמה פאות מוסתרות?",
         "answer": "13",
-        "hint": "Each cube has 6 faces, some are touching.",
-        "explanation": "3 cubes = 18 faces. 5 faces hidden per contact = 13 hidden."
+        "hint": "לכל קובייה 6 פאות, חלקן נוגעות.",
+        "explanation": "3 קוביות = 18 פאות. 5 פאות מוסתרות לכל מגע = 13 מוסתרות."
     },
     {
         "id": "50",
-        "question": "A digital clock shows 12:34. How many total segments are lit?",
+        "question": "שעון דיגיטלי מראה 12:34. כמה מקטעים דולקים בסך הכל?",
         "answer": "17",
-        "hint": "Count the segments of each digit.",
-        "explanation": "1(2)+2(5)+3(5)+4(5)=17 segments."
+        "hint": "ספור את המקטעים של כל ספרה.",
+        "explanation": "1(2)+2(5)+3(5)+4(5)=17 מקטעים."
     },
   {
     "id": "math_401",
-    "question": "You have a rope that burns completely in 1 hour but not at a uniform rate. How do you measure exactly 45 minutes?",
-    "answer": "burn",
-    "hint": "Use two ropes.",
-    "explanation": "Burn one rope from both ends and the other from one end. When the first finishes (30 min), burn the second from the other end. It’ll take 15 more minutes."
+    "question": "יש לך חבל שנשרף לחלוטין תוך שעה אך לא בקצב אחיד. איך מודדים בדיוק 45 דקות?",
+    "answer": "שריפה",
+    "hint": "השתמש בשני חבלים.",
+    "explanation": "הצת חבל אחד משני הקצוות ואת השני מקצה אחד. כשהראשון מסיים (30 דקות), הצת את השני מהקצה השני. זה ייקח עוד 15 דקות."
   },
   {
     "id": "math_402",
-    "question": "What’s the sum of the first 20 odd numbers?",
+    "question": "מה סכום 20 המספרים האי-זוגיים הראשונים?",
     "answer": "400",
-    "hint": "There’s a shortcut.",
-    "explanation": "Sum of first n odd numbers = n². 20² = 400."
+    "hint": "יש קיצור דרך.",
+    "explanation": "סכום n המספרים האי-זוגיים הראשונים = n². 20² = 400."
   },
   {
     "id": "math_403",
-    "question": "A square and a circle have the same perimeter. Which has the larger area?",
-    "answer": "circle",
-    "hint": "Think of geometry efficiency.",
-    "explanation": "Among all shapes with the same perimeter, the circle encloses the largest area."
+    "question": "לריבוע ולמעגל יש אותו היקף. לאיזה מהם יש שטח גדול יותר?",
+    "answer": "מעגל",
+    "hint": "תחשוב על יעילות גיאומטרית.",
+    "explanation": "מבין כל הצורות עם אותו היקף, למעגל יש את השטח הגדול ביותר."
   },
   {
     "id": "math_404",
-    "question": "If you triple a number and subtract 4, you get 11. What was the number?",
+    "question": "אם אתה מכפיל מספר ב-3 ומחסיר 4, מקבלים 11. מה היה המספר?",
     "answer": "5",
-    "hint": "Set up an equation.",
+    "hint": "הגדר משוואה.",
     "explanation": "3x - 4 = 11 → x = 5."
   },
   {
     "id": "math_405",
-    "question": "How many 2-digit numbers have the digit 7 in them?",
+    "question": "כמה מספרים דו-ספרתיים כוללים את הספרה 7?",
     "answer": "19",
-    "hint": "Count tens and units.",
-    "explanation": "From 10–99, digit 7 appears in 70–79 (10) and in units: 17, 27, ..., 97 (9), some overlap. Total = 19."
+    "hint": "ספור עשרות ואחדות.",
+    "explanation": "מ-10–99, הספרה 7 מופיעה ב-70–79 (10) ובאחדות: 17, 27, ..., 97 (9), עם חפיפה מסוימת. סך הכל 19."
   },
   {
     "id": "math_406",
-    "question": "What’s the angle between the hour and minute hands at 3:15?",
+    "question": "מה הזווית בין מחוגי השעון בשעה 3:15?",
     "answer": "7.5",
-    "hint": "Hour hand moves too.",
-    "explanation": "Hour hand at 3:15 is 97.5°, minute hand at 90°. Difference = 7.5°."
+    "hint": "מחוג השעות זז גם הוא.",
+    "explanation": "מחוג השעות ב-3:15 נמצא ב-97.5°, מחוג הדקות ב-90°. הפרש = 7.5°."
   },
   {
     "id": "math_407",
-    "question": "You double your money 3 times. If you end with $160, how much did you start with?",
+    "question": "אתה מכפיל את כספך 3 פעמים. אם בסוף יש לך 160 דולר, כמה התחלת?",
     "answer": "20",
-    "hint": "Reverse the doubling.",
+    "hint": "הפוך את ההכפלה.",
     "explanation": "160 ÷ 2 ÷ 2 ÷ 2 = 20."
   },
   {
     "id": "math_408",
-    "question": "If a cube’s surface area is 54, what’s its volume?",
+    "question": "אם שטח הפנים של קובייה הוא 54, מה הנפח שלה?",
     "answer": "27",
-    "hint": "Start with side length.",
-    "explanation": "Surface area = 6a² → a = 3, volume = 3³ = 27."
+    "hint": "התחל עם אורך הצלע.",
+    "explanation": "שטח פנים = 6a² → a = 3, נפח = 3³ = 27."
   },
   {
     "id": "math_409",
-    "question": "You randomly pick a digit 1–9. What’s the probability it’s prime?",
+    "question": "אתה בוחר באקראי ספרה מ-1 עד 9. מה ההסתברות שהיא ראשונית?",
     "answer": "0.444",
-    "hint": "Which digits are prime?",
-    "explanation": "Prime digits: 2, 3, 5, 7 → 4/9 ≈ 0.444."
+    "hint": "אילו ספרות ראשוניות?",
+    "explanation": "ספרות ראשוניות: 2, 3, 5, 7 → 4/9 ≈ 0.444."
   },
   {
     "id": "math_410",
-    "question": "What’s the smallest number divisible by 3, 4, and 5?",
+    "question": "מה המספר הקטן ביותר שמתחלק ב-3, 4 ו-5?",
     "answer": "60",
-    "hint": "Use LCM.",
-    "explanation": "LCM(3,4,5) = 60."
+    "hint": "השתמש בכפ\"מ.",
+    "explanation": "כפ\"מ(3,4,5) = 60."
   },
   {
     "id": "math_411",
-    "question": "How many ways can 3 people sit on a bench with 3 seats?",
+    "question": "בכמה דרכים יכולות 3 אנשים לשבת על ספסל עם 3 מושבים?",
     "answer": "6",
-    "hint": "Simple permutation.",
+    "hint": "תמורה פשוטה.",
     "explanation": "3! = 6."
   },
   {
     "id": "math_412",
-    "question": "A spinner is divided into 4 equal sections: red, blue, green, yellow. What's the probability of not landing on red in two spins?",
+    "question": "ספינר מחולק ל-4 חלקים שווים: אדום, כחול, ירוק, צהוב. מה ההסתברות לא לנחות על אדום בשתי סיבובים?",
     "answer": "0.5625",
-    "hint": "Think complementary event.",
-    "explanation": "P(not red) = 0.75 → 0.75 × 0.75 = 0.5625."
+    "hint": "תחשוב על אירוע משלים.",
+    "explanation": "P(לא אדום) = 0.75 → 0.75 × 0.75 = 0.5625."
   },
   {
     "id": "math_413",
-    "question": "You multiply a number by itself and get 49. What’s the number?",
+    "question": "אתה מכפיל מספר בעצמו ומקבל 49. מה המספר?",
     "answer": "7",
-    "hint": "Square root.",
+    "hint": "שורש ריבועי.",
     "explanation": "√49 = 7."
   },
   {
     "id": "math_414",
-    "question": "What’s the only even prime number?",
+    "question": "מהו המספר הזוגי היחיד שהוא ראשוני?",
     "answer": "2",
-    "hint": "All others have 2 as a factor.",
-    "explanation": "2 is the only even number that’s prime."
+    "hint": "כל האחרים כוללים את 2 כגורם.",
+    "explanation": "2 הוא המספר הזוגי היחיד שהוא ראשוני."
   },
   {
     "id": "math_415",
-    "question": "You throw 2 dice. What’s the probability the sum is 7?",
+    "question": "אתה מטיל 2 קוביות. מה ההסתברות שסכום התוצאות יהיה 7?",
     "answer": "1/6",
-    "hint": "Count the combinations.",
-    "explanation": "6 ways out of 36 = 1/6."
+    "hint": "ספור את השילובים.",
+    "explanation": "6 דרכים מתוך 36 = 1/6."
   },
   {
     "id": "math_416",
-    "question": "If 3 pencils cost $1.50, what’s the cost of 10 pencils?",
+    "question": "אם 3 עפרונות עולים 1.50 דולר, מה העלות של 10 עפרונות?",
     "answer": "5",
-    "hint": "Find unit price.",
-    "explanation": "$0.50 per pencil × 10 = $5."
+    "hint": "מצא מחיר ליחידה.",
+    "explanation": "0.50 דולר לעפרון × 10 = 5 דולר."
   },
   {
     "id": "math_417",
-    "question": "You add 5 to a number and double it to get 20. What’s the number?",
+    "question": "אתה מוסיף 5 למספר ומכפיל ב-2 ומקבל 20. מה היה המספר?",
     "answer": "5",
-    "hint": "Set up an equation.",
+    "hint": "הגדר משוואה.",
     "explanation": "(x + 5) × 2 = 20 → x = 5."
   },
   {
     "id": "math_418",
-    "question": "You have a 3×3×3 cube made of 27 smaller cubes. How many are not on the surface?",
+    "question": "יש לך קובייה 3×3×3 העשויה מ-27 קוביות קטנות. כמה מהן לא על פני השטח?",
     "answer": "1",
-    "hint": "Visualize inside the cube.",
-    "explanation": "Only the center cube is completely hidden."
+    "hint": "דמיין את פנים הקובייה.",
+    "explanation": "רק הקובייה המרכזית מוסתרת לחלוטין."
   },
   {
     "id": "math_419",
-    "question": "What’s the next number: 1, 4, 9, 16, ?",
+    "question": "מה המספר הבא: 1, 4, 9, 16, ?",
     "answer": "25",
-    "hint": "Perfect squares.",
-    "explanation": "1², 2², 3²... next is 5² = 25."
+    "hint": "ריבועים מושלמים.",
+    "explanation": "1², 2², 3²... הבא הוא 5² = 25."
   },
   {
     "id": "math_420",
-    "question": "You mix red and blue paint in a 2:3 ratio. If you have 6 liters of blue, how much red?",
+    "question": "אתה מערבב צבע אדום וכחול ביחס 2:3. אם יש לך 6 ליטר כחול, כמה אדום?",
     "answer": "4",
-    "hint": "Proportions!",
+    "hint": "יחסים!",
     "explanation": "2/3 = x/6 → x = 4."
   },
   {
     "id": "math_421",
-    "question": "A clock shows 2:20. What’s the angle between the hour and minute hands?",
+    "question": "שעון מראה 2:20. מה הזווית בין מחוגי השעות והדקות?",
     "answer": "50",
-    "hint": "Hour hand moves too.",
-    "explanation": "Hour hand at 2:20 is at 70°, minute hand at 120°, difference is 50°."
+    "hint": "מחוג השעות זז גם הוא.",
+    "explanation": "מחוג השעות ב-2:20 נמצא ב-70°, מחוג הדקות ב-120°, הפרש הוא 50°."
   },
   {
     "id": "math_422",
-    "question": "You fold a square piece of paper diagonally. What shape is the crease?",
-    "answer": "line",
-    "hint": "Crease = fold path.",
-    "explanation": "A diagonal fold in a square is always a straight line."
+    "question": "אתה מקפל דף נייר ריבועי באלכסון. איזה צורה הקו שנוצר?",
+    "answer": "קו",
+    "hint": "קו קיפול = מסלול קיפול.",
+    "explanation": "קיפול אלכסוני בריבוע הוא תמיד קו ישר."
   },
   {
     "id": "math_423",
-    "question": "You roll two dice. What’s the probability of getting a double?",
+    "question": "אתה מטיל שני קוביות. מה ההסתברות לקבל תוצאה זהה?",
     "answer": "1/6",
-    "hint": "Count same-number outcomes.",
-    "explanation": "There are 6 doubles out of 36 combinations."
+    "hint": "ספור תוצאות עם אותו מספר.",
+    "explanation": "יש 6 תוצאות זהות מתוך 36 שילובים."
   },
   {
     "id": "math_424",
-    "question": "A triangle has sides 5, 12, and 13. What type of triangle is it?",
-    "answer": "right",
-    "hint": "Check Pythagoras.",
-    "explanation": "5² + 12² = 13² → it’s a right triangle."
+    "question": "למשולש יש צלעות באורכים 5, 12, ו-13. איזה סוג משולש זה?",
+    "answer": "ישר זווית",
+    "hint": "בדוק פיתגורס.",
+    "explanation": "5² + 12² = 13² → זה משולש ישר זווית."
   },
   {
     "id": "math_425",
-    "question": "You take 3 shirts and 4 pants. How many outfit combinations?",
+    "question": "יש לך 3 חולצות ו-4 מכנסיים. כמה צירופי לבוש אפשריים?",
     "answer": "12",
-    "hint": "Basic multiplication.",
-    "explanation": "3 × 4 = 12 possible outfits."
+    "hint": "כפל בסיסי.",
+    "explanation": "3 × 4 = 12 צירופים אפשריים."
   },
   {
     "id": "math_426",
-    "question": "A cube has edge length 10. What’s its space diagonal length (corner to opposite corner)?",
+    "question": "לקובייה יש אורך מקצוע 10. מה אורך האלכסון המרחבי (מפינה לפינה נגדית)?",
     "answer": "17.32",
-    "hint": "Use 3D Pythagorean theorem.",
+    "hint": "השתמש במשפט פיתגורס תלת מימדי.",
     "explanation": "√(10²+10²+10²) = √300 ≈ 17.32."
   },
   {
     "id": "math_427",
-    "question": "How many ways to arrange the letters in 'LEVEL'?",
+    "question": "בכמה דרכים אפשר לסדר את האותיות במילה 'LEVEL'?",
     "answer": "30",
-    "hint": "Consider duplicates.",
+    "hint": "קח בחשבון כפילויות.",
     "explanation": "5! / (2!×2!) = 120 / 4 = 30."
   },
   {
     "id": "math_428",
-    "question": "If the perimeter of a circle is 31.4, what's its radius?",
+    "question": "אם היקף מעגל הוא 31.4, מה הרדיוס שלו?",
     "answer": "5",
-    "hint": "Use formula.",
+    "hint": "השתמש בנוסחה.",
     "explanation": "C = 2πr → r = 31.4 / (2π) = 5."
   },
   {
     "id": "math_429",
-    "question": "You choose 2 people from a group of 10. How many combinations?",
+    "question": "אתה בוחר 2 אנשים מקבוצה של 10. כמה צירופים אפשריים?",
     "answer": "45",
-    "hint": "Use C(n, k).",
+    "hint": "השתמש ב-C(n, k).",
     "explanation": "10C2 = 45."
   },
   {
     "id": "math_430",
-    "question": "You cut a cube into 27 smaller cubes. How many have exactly 1 face painted?",
+    "question": "אתה חותך קובייה ל-27 קוביות קטנות. כמה מהן צבועות בדיוק בצד אחד?",
     "answer": "6",
-    "hint": "Visualize one face center per side.",
-    "explanation": "Each face has 1 center cube painted on 1 side. 6 faces = 6 cubes."
+    "hint": "דמיין מרכז פאה אחת לכל צד.",
+    "explanation": "כל פאה כוללת קובייה מרכזית הצבועה בצד אחד. 6 פאות = 6 קוביות."
   },
   {
     "id": "math_431",
-    "question": "A triangle has angles of 30° and 90°. What’s the third angle?",
+    "question": "למשולש יש זוויות של 30° ו-90°. מה הזווית השלישית?",
     "answer": "60",
-    "hint": "Sum of angles in triangle?",
+    "hint": "סכום זוויות במשולש?",
     "explanation": "180 - 90 - 30 = 60."
   },
   {
     "id": "math_432",
-    "question": "A password is 3 digits long, digits 0–9. Repeats allowed. How many possible passwords?",
+    "question": "סיסמה באורך 3 ספרות, ספרות 0–9. אפשר חזרות. כמה סיסמאות אפשריות?",
     "answer": "1000",
     "hint": "10 × 10 × 10.",
     "explanation": "10³ = 1000."
   },
   {
     "id": "math_433",
-    "question": "If 8 workers take 6 days, how many days will 4 workers need (same work)?",
+    "question": "אם 8 עובדים לוקחים 6 ימים, כמה ימים יידרשו ל-4 עובדים (לאותה עבודה)?",
     "answer": "12",
-    "hint": "Work is constant.",
-    "explanation": "Half the workers → double the time."
+    "hint": "העבודה קבועה.",
+    "explanation": "חצי מהעובדים → פי שניים זמן."
   },
   {
     "id": "math_434",
-    "question": "Which shape has the most sides: hexagon, octagon, decagon?",
-    "answer": "decagon",
-    "hint": "Count the sides.",
-    "explanation": "Decagon has 10 sides."
+    "question": "איזו צורה בעלת הכי הרבה צלעות: משושה, מתומן, או מעושר?",
+    "answer": "מעושר",
+    "hint": "ספור את הצלעות.",
+    "explanation": "מעושר = 10 צלעות."
   },
   {
     "id": "math_435",
-    "question": "You have 5 red and 3 green balls. What’s the probability of drawing a red one?",
+    "question": "יש לך 5 כדורים אדומים ו-3 ירוקים. מה ההסתברות לשלוף כדור אדום?",
     "answer": "0.625",
-    "hint": "Total: 8 balls.",
+    "hint": "סה\"כ: 8 כדורים.",
     "explanation": "5/8 = 0.625."
   },
   {
     "id": "math_436",
-    "question": "What’s the smallest number with exactly three different prime factors?",
+    "question": "מה המספר הקטן ביותר עם בדיוק שלושה גורמים ראשוניים שונים?",
     "answer": "30",
-    "hint": "Start multiplying small primes.",
+    "hint": "התחל להכפיל ראשוניים קטנים.",
     "explanation": "2 × 3 × 5 = 30."
   },
   {
     "id": "math_437",
-    "question": "You flip 3 coins. What's the probability of getting exactly two heads?",
+    "question": "אתה מטיל 3 מטבעות. מה ההסתברות לקבל בדיוק שני עץ?",
     "answer": "0.375",
-    "hint": "Use combinations.",
+    "hint": "השתמש בשילובים.",
     "explanation": "3C2 × (0.5)³ = 3 × 0.125 = 0.375."
   },
   {
     "id": "math_438",
-    "question": "A cube has a volume of 64. What’s its surface area?",
+    "question": "לקובייה יש נפח 64. מה שטח הפנים שלה?",
     "answer": "96",
-    "hint": "Find side length first.",
-    "explanation": "Side = 4 → surface area = 6×4² = 96."
+    "hint": "מצא תחילה אורך צלע.",
+    "explanation": "צלע = 4 → שטח פנים = 6×4² = 96."
   },
   {
     "id": "math_439",
-    "question": "What number comes next: 2, 6, 12, 20, ?",
+    "question": "איזה מספר מגיע אחרי: 2, 6, 12, 20, ?",
     "answer": "30",
-    "hint": "Look at differences.",
-    "explanation": "Add 4,6,8,10... next is +10 → 20+10 = 30."
+    "hint": "הבט בהפרשים.",
+    "explanation": "הוסף 4,6,8,10... הבא הוא +10 → 20+10 = 30."
   },
   {
     "id": "math_440",
-    "question": "A number is divisible by 3 and 4. What's the smallest number it must also be divisible by?",
+    "question": "מספר מתחלק ב-3 וב-4. מה המספר הקטן ביותר שהוא חייב להתחלק בו?",
     "answer": "12",
-    "hint": "LCM of 3 and 4.",
-    "explanation": "LCM(3,4) = 12."
+    "hint": "כפ\"מ של 3 ו-4.",
+    "explanation": "כפ\"מ(3,4) = 12."
   },
   {
     "id": "math_441",
-    "question": "How many degrees are there in the interior angles of a pentagon?",
+    "question": "כמה מעלות יש בסכום הזוויות הפנימיות של מחומש?",
     "answer": "540",
-    "hint": "Use (n-2)×180.",
-    "explanation": "A 5-sided shape has (5–2)×180 = 540 degrees."
+    "hint": "השתמש ב-(n-2)×180.",
+    "explanation": "צורה עם 5 צלעות: (5–2)×180 = 540 מעלות."
   },
   {
     "id": "math_442",
-    "question": "You have 4 coins. Each can be either heads or tails. How many total outcomes?",
+    "question": "יש לך 4 מטבעות. כל אחד יכול להיות עץ או פלי. כמה תוצאות סך הכל?",
     "answer": "16",
-    "hint": "Binary choice per coin.",
-    "explanation": "2⁴ = 16 possible combinations."
+    "hint": "בחירה בינארית לכל מטבע.",
+    "explanation": "2⁴ = 16 צירופים אפשריים."
   },
   {
     "id": "math_443",
-    "question": "What's the sum of angles in a hexagon?",
+    "question": "מה סכום הזוויות במשושה?",
     "answer": "720",
-    "hint": "Same formula: (n-2)×180.",
-    "explanation": "6-sided → (6–2)×180 = 720."
+    "hint": "אותה נוסחה: (n-2)×180.",
+    "explanation": "6 צלעות → (6–2)×180 = 720."
   },
   {
     "id": "math_444",
-    "question": "What’s the area of a circle with radius 7?",
+    "question": "מה השטח של מעגל עם רדיוס 7?",
     "answer": "154",
-    "hint": "Use πr², round π to 3.14.",
+    "hint": "השתמש ב-πr², עגל את π ל-3.14.",
     "explanation": "3.14 × 49 = 153.86 ≈ 154."
   },
   {
     "id": "math_445",
-    "question": "A square has perimeter 32. What's the side length?",
+    "question": "לריבוע יש היקף 32. מה אורך הצלע?",
     "answer": "8",
-    "hint": "Perimeter = 4×side.",
+    "hint": "היקף = 4×צלע.",
     "explanation": "32 ÷ 4 = 8."
   },
   {
     "id": "math_446",
-    "question": "You flip a fair coin 5 times. What's the expected number of heads?",
+    "question": "אתה מטיל מטבע הוגן 5 פעמים. מה מספר הפעמים הצפוי לקבלת עץ?",
     "answer": "2.5",
-    "hint": "Each flip = 0.5 chance.",
-    "explanation": "5 × 0.5 = 2.5 expected heads."
+    "hint": "כל הטלה = סיכוי של 0.5.",
+    "explanation": "5 × 0.5 = 2.5 פעמים צפויות."
   },
   {
     "id": "math_447",
-    "question": "How many edges does a cube have?",
+    "question": "כמה מקצועות יש לקובייה?",
     "answer": "12",
-    "hint": "Visualize it.",
-    "explanation": "Each face has 4 edges, but many are shared → total 12."
+    "hint": "דמיין אותה.",
+    "explanation": "לכל פאה 4 מקצועות, אך רבים משותפים → סה\"כ 12."
   },
   {
     "id": "math_448",
-    "question": "A book has 300 pages. You read 25 pages per day. How many days to finish?",
+    "question": "בספר יש 300 עמודים. אתה קורא 25 עמודים ביום. כמה ימים יידרשו לסיום?",
     "answer": "12",
-    "hint": "Just divide.",
+    "hint": "פשוט חלק.",
     "explanation": "300 ÷ 25 = 12."
   },
   {
     "id": "math_449",
-    "question": "What’s the smallest 3-digit number divisible by 9?",
+    "question": "מה המספר התלת-ספרתי הקטן ביותר שמתחלק ב-9?",
     "answer": "108",
-    "hint": "Start at 100, go up.",
-    "explanation": "108 is the first 3-digit number divisible by 9."
+    "hint": "התחל ב-100, עלה למעלה.",
+    "explanation": "108 הוא המספר התלת-ספרתי הראשון שמתחלק ב-9."
   },
   {
     "id": "math_450",
-    "question": "What’s 15% of 200?",
+    "question": "מהו 15% מ-200?",
     "answer": "30",
-    "hint": "Convert to decimal.",
+    "hint": "המר לשבר עשרוני.",
     "explanation": "0.15 × 200 = 30."
   },
   {
     "id": "math_451",
-    "question": "How many diagonals does a hexagon have?",
+    "question": "כמה אלכסונים יש למשושה?",
     "answer": "9",
-    "hint": "Use formula: n(n–3)/2.",
-    "explanation": "6(6–3)/2 = 9 diagonals."
+    "hint": "השתמש בנוסחה: n(n–3)/2.",
+    "explanation": "6(6–3)/2 = 9 אלכסונים."
   },
   {
     "id": "math_452",
-    "question": "What’s the average of the first 10 positive integers?",
+    "question": "מה הממוצע של 10 המספרים החיוביים הראשונים?",
     "answer": "5.5",
-    "hint": "Use (first + last)/2.",
+    "hint": "השתמש ב-(ראשון + אחרון)/2.",
     "explanation": "(1+10)/2 = 5.5."
   },
   {
     "id": "math_453",
-    "question": "If 5 pens cost $3.00, what’s the cost of 1 pen?",
+    "question": "אם 5 עטים עולים 3.00 דולר, מה העלות של עט אחד?",
     "answer": "0.6",
-    "hint": "Divide.",
+    "hint": "חלק.",
     "explanation": "3 ÷ 5 = 0.6."
   },
   {
     "id": "math_454",
-    "question": "A right triangle has legs 6 and 8. What's the hypotenuse?",
+    "question": "למשולש ישר זווית יש ניצבים באורכים 6 ו-8. מה אורך היתר?",
     "answer": "10",
-    "hint": "Use Pythagorean theorem.",
+    "hint": "השתמש במשפט פיתגורס.",
     "explanation": "√(6²+8²) = √100 = 10."
   },
   {
     "id": "math_455",
-    "question": "How many sides does a dodecagon have?",
+    "question": "כמה צלעות יש לתריסרון?",
     "answer": "12",
-    "hint": "Know your polygons.",
-    "explanation": "Dodecagon = 12 sides."
+    "hint": "דע את המצולעים שלך.",
+    "explanation": "תריסרון = 12 צלעות."
   },
   {
     "id": "math_456",
-    "question": "What’s 2³ × 5?",
+    "question": "מהו 2³ × 5?",
     "answer": "40",
-    "hint": "Exponent first.",
+    "hint": "חזקה קודם.",
     "explanation": "8 × 5 = 40."
   },
   {
     "id": "math_457",
-    "question": "How many square meters in a 10m by 15m rectangle?",
+    "question": "כמה מטרים רבועים יש במלבן 10 מטר על 15 מטר?",
     "answer": "150",
-    "hint": "Area = length × width.",
-    "explanation": "10 × 15 = 150 m²."
+    "hint": "שטח = אורך × רוחב.",
+    "explanation": "10 × 15 = 150 מ\"ר."
   },
   {
     "id": "math_458",
-    "question": "You double a number and subtract 6. The result is 10. What was the number?",
+    "question": "אתה מכפיל מספר ומחסיר 6. התוצאה היא 10. מה היה המספר?",
     "answer": "8",
-    "hint": "Solve 2x - 6 = 10.",
+    "hint": "פתור 2x - 6 = 10.",
     "explanation": "2x = 16 → x = 8."
   },
   {
     "id": "math_459",
-    "question": "A car goes 60 km in 0.5 hours. What’s the speed in km/h?",
+    "question": "מכונית נוסעת 60 ק\"מ ב-0.5 שעות. מה המהירות בק\"מ/שעה?",
     "answer": "120",
-    "hint": "Speed = distance/time.",
-    "explanation": "60 / 0.5 = 120 km/h."
+    "hint": "מהירות = מרחק/זמן.",
+    "explanation": "60 / 0.5 = 120 קמ\"ש."
   },
   {
     "id": "math_460",
-    "question": "What is the sum of even numbers from 2 to 10?",
+    "question": "מה סכום המספרים הזוגיים מ-2 עד 10?",
     "answer": "30",
-    "hint": "Just add them: 2+4+6+8+10.",
-    "explanation": "Sum = 30."
+    "hint": "פשוט חבר אותם: 2+4+6+8+10.",
+    "explanation": "סכום = 30."
   }
 ]
