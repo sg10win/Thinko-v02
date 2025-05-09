@@ -97,124 +97,6 @@ const storage = {
 
 
 
-function startHexagonBallAnimation(container) {
-  const canvas = document.createElement("canvas");
-  canvas.style.width = "100%";
-  canvas.style.height = "100%";
-  canvas.style.display = "block";
-  container.appendChild(canvas);
-
-  const ctx = canvas.getContext("2d");
-
-  function resizeCanvas() {
-    canvas.width = canvas.clientWidth;
-    canvas.height = canvas.clientHeight;
-  }
-  window.addEventListener("resize", resizeCanvas);
-  resizeCanvas();
-
-  const state = {
-    rotation: 0,
-    ball: {
-      x: 0.05,
-      y: -0.1,
-      vx: 0.005,
-      vy: 0.01,
-      radius: 0.03,
-    },
-    gravity: 0.0005,
-    bounce: 0.85,
-    friction: 0.99,
-  };
-
-  function hexPoints(cx, cy, radius, rotation) {
-    const points = [];
-    for (let i = 0; i < 6; i++) {
-      const angle = rotation + i * Math.PI / 3;
-      points.push({
-        x: cx + radius * Math.cos(angle),
-        y: cy + radius * Math.sin(angle),
-      });
-    }
-    return points;
-  }
-
-  function reflect(ball, normal) {
-    const dot = ball.vx * normal.x + ball.vy * normal.y;
-    ball.vx -= 2 * dot * normal.x;
-    ball.vy -= 2 * dot * normal.y;
-    ball.vx *= state.bounce;
-    ball.vy *= state.bounce;
-  }
-
-  function draw() {
-    const w = canvas.width;
-    const h = canvas.height;
-    const cx = w / 2;
-    const cy = h / 2;
-    const minSize = Math.min(w, h);
-    const hexRadius = minSize * 0.4;
-
-    ctx.clearRect(0, 0, w, h);
-    state.rotation += 0.003;
-
-    const hex = hexPoints(cx, cy, hexRadius, state.rotation);
-
-    // Draw hexagon
-    ctx.beginPath();
-    ctx.moveTo(hex[0].x, hex[0].y);
-    for (let i = 1; i < 6; i++) ctx.lineTo(hex[i].x, hex[i].y);
-    ctx.closePath();
-    ctx.strokeStyle = "#000";
-    ctx.lineWidth = 2;
-    ctx.stroke();
-
-    // Update ball
-    const ball = state.ball;
-    const scale = minSize;
-    ball.vy += state.gravity * scale;
-    ball.vx *= state.friction;
-    ball.vy *= state.friction;
-    ball.x += ball.vx;
-    ball.y += ball.vy;
-
-    const px = cx + ball.x * scale;
-    const py = cy + ball.y * scale;
-    const r = ball.radius * scale;
-
-    // Collisions with hexagon walls
-    for (let i = 0; i < 6; i++) {
-      const a = hex[i];
-      const b = hex[(i + 1) % 6];
-      const dx = b.x - a.x;
-      const dy = b.y - a.y;
-      const len = Math.sqrt(dx * dx + dy * dy);
-      const nx = -dy / len;
-      const ny = dx / len;
-
-      const dist = (px - a.x) * nx + (py - a.y) * ny;
-      if (dist < r) {
-        // push out and reflect
-        ball.x += (r - dist) * nx / scale;
-        ball.y += (r - dist) * ny / scale;
-        reflect(ball, { x: nx, y: ny });
-      }
-    }
-
-    // Draw ball
-    ctx.beginPath();
-    ctx.arc(px, py, r, 0, Math.PI * 2);
-    ctx.fillStyle = "#e33";
-    ctx.fill();
-    ctx.strokeStyle = "#000";
-    ctx.stroke();
-
-    requestAnimationFrame(draw);
-  }
-
-  draw();
-}
-
 
 
 
@@ -244,7 +126,6 @@ function initGame() {
     setupEventListeners();
     setupPWAInstall();
     fetchRiddle();
-    startHexagonBallAnimation(document.querySelector(".hexagon-container"));
     updateStatsDisplay();
     
     // Auto-save every 5 minutes
