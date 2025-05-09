@@ -95,7 +95,130 @@ const storage = {
 };
 
 
-
+function createHexagonBounce(config) {
+    // Default configuration
+    const defaults = {
+        containerId: 'hexagonContainer',
+        size: 400,
+        hexagonColor: '#0d6efd',
+        ballColor: '#fd7e14',
+        rotationSpeed: 0.005,
+        ballSizeRatio: 0.0375,
+        gravityRatio: 0.0004
+    };
+    
+    // Merge config with defaults
+    const cfg = {...defaults, ...config};
+    
+    // Create canvas
+    const container = document.getElementById(cfg.containerId);
+    const canvas = document.createElement('canvas');
+    canvas.id = 'hexagonCanvas';
+    canvas.width = cfg.size;
+    canvas.height = cfg.size;
+    container.appendChild(canvas);
+    
+    const ctx = canvas.getContext('2d');
+    const ballRadius = cfg.size * cfg.ballSizeRatio;
+    const hexRadius = cfg.size * 0.375;
+    const gravity = cfg.size * cfg.gravityRatio;
+    
+    // Game state
+    let hexRotation = 0;
+    const ball = {
+        pos: { x: 0, y: 0 },
+        vel: { x: cfg.size * 0.005, y: cfg.size * 0.005 }
+    };
+    
+    function initBall() {
+        const angle = Math.random() * Math.PI * 2;
+        const dist = Math.random() * (hexRadius - ballRadius * 1.5);
+        ball.pos = {
+            x: Math.cos(angle) * dist,
+            y: Math.sin(angle) * dist
+        };
+    }
+    
+    function getHexVertices(rotation) {
+        return Array.from({ length: 6 }, (_, i) => ({
+            x: Math.cos(rotation + i * Math.PI/3) * hexRadius,
+            y: Math.sin(rotation + i * Math.PI/3) * hexRadius
+        }));
+    }
+    
+    function checkCollisions() {
+        const vertices = getHexVertices(hexRotation);
+        
+        vertices.forEach((p1, i) => {
+            const p2 = vertices[(i + 1) % 6];
+            const edge = { x: p2.x - p1.x, y: p2.y - p1.y };
+            const normal = { x: -edge.y, y: edge.x };
+            const len = Math.sqrt(normal.x**2 + normal.y**2);
+            normal.x /= len;
+            normal.y /= len;
+            
+            const dist = (ball.pos.x - p1.x) * normal.x + (ball.pos.y - p1.y) * normal.y;
+            
+            if (dist < ballRadius) {
+                const velDot = ball.vel.x * normal.x + ball.vel.y * normal.y;
+                ball.vel.x -= 2 * velDot * normal.x;
+                ball.vel.y -= 2 * velDot * normal.y;
+                
+                const fix = (ballRadius - dist) * 1.001;
+                ball.pos.x += normal.x * fix;
+                ball.pos.y += normal.y * fix;
+            }
+        });
+    }
+    
+    function update() {
+        ball.vel.y += gravity;
+        ball.pos.x += ball.vel.x;
+        ball.pos.y += ball.vel.y;
+        checkCollisions();
+        hexRotation += cfg.rotationSpeed;
+    }
+    
+    function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.save();
+        ctx.translate(canvas.width/2, canvas.height/2);
+        
+        // Hexagon
+        ctx.beginPath();
+        const vertices = getHexVertices(hexRotation);
+        ctx.moveTo(vertices[0].x, vertices[0].y);
+        vertices.slice(1).forEach(v => ctx.lineTo(v.x, v.y));
+        ctx.closePath();
+        ctx.strokeStyle = cfg.hexagonColor;
+        ctx.lineWidth = cfg.size * 0.008;
+        ctx.stroke();
+        
+        // Ball
+        ctx.beginPath();
+        ctx.arc(ball.pos.x, ball.pos.y, ballRadius, 0, Math.PI*2);
+        ctx.fillStyle = cfg.ballColor;
+        ctx.fill();
+        
+        ctx.restore();
+    }
+    
+    function animate() {
+        update();
+        draw();
+        requestAnimationFrame(animate);
+    }
+    
+    // Initialize
+    initBall();
+    animate();
+    
+    // Return API for control
+    return {
+        setRotationSpeed: (speed) => { cfg.rotationSpeed = speed },
+        getConfig: () => ({...cfg})
+    };
+}
 
 
 
@@ -126,6 +249,13 @@ function initGame() {
     setupEventListeners();
     setupPWAInstall();
     fetchRiddle();
+
+    createHexagonBounce({
+            containerId: 'hexagonContainer',
+            size: 400,
+            rotationSpeed: 0.005
+        });
+    
     updateStatsDisplay();
     
     // Auto-save every 5 minutes
