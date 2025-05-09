@@ -16,8 +16,8 @@
   --correct-glow: 0 0 10px rgba(0, 204, 102, 0.3);
   --incorrect-glow: 0 0 10px rgba(255, 51, 51, 0.3);
   --shadow-color: rgba(0, 0, 0, 0.1);
-  --hexagon-color: var(--deepseek-text-light);  /* Red hexagon */
-  --ball-color: var(--deepseek-blue);     /* Green ball */
+  --hexagon-color: var(--deepseek-blue);  /* Red hexagon */
+  --ball-color: var(--deepseek-text-light);     /* Green ball */
 }
 
 /* Dark Mode Colors */
@@ -38,8 +38,8 @@
     --deepseek-light-blue: #5d9cff;
     --success-green: #00e676;
     --error-red: #ff5252;
-     --hexagon-color: var(--deepseek-text-light);  /* Red hexagon */
-  --ball-color: var(--deepseek-blue);     /* Green ball */
+    --hexagon-color: var(--deepseek-blue);  /* Red hexagon */
+  --ball-color: var(--deepseek-text-light);     /* Green ball */
   }
 }
 
