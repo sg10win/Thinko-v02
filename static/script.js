@@ -195,7 +195,6 @@ function createHexagonBounce(config) {
         }
         
         // Rendering
-        ctx.fillStyle = cfg.bgColor || '#1a1a2e';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         
         ctx.save();
@@ -214,7 +213,6 @@ function createHexagonBounce(config) {
         // Ball
         ctx.beginPath();
         ctx.arc(ball.pos.x, ball.pos.y, ballRadius, 0, Math.PI*2);
-        ctx.fillStyle = cfg.ballColor;
         ctx.fill();
         
         ctx.restore();
