@@ -116,14 +116,14 @@ function startHexagonBallAnimation(container) {
   const state = {
     rotation: 0,
     ball: {
-      x: 0,
-      y: 0,
-      vx: 0.1,
-      vy: -0.1,
-      radius: 0.04, // percentage of hex size
+      x: 0.05,
+      y: -0.1,
+      vx: 0.005,
+      vy: 0.01,
+      radius: 0.03,
     },
-    gravity: 0.3, // scaled by canvas size
-    bounce: 0.8,
+    gravity: 0.0005,
+    bounce: 0.85,
     friction: 0.99,
   };
 
@@ -133,21 +133,16 @@ function startHexagonBallAnimation(container) {
       const angle = rotation + i * Math.PI / 3;
       points.push({
         x: cx + radius * Math.cos(angle),
-        y: cy + radius * Math.sin(angle)
+        y: cy + radius * Math.sin(angle),
       });
     }
     return points;
   }
 
-  function reflect(ball, a, b) {
-    const dx = b.x - a.x;
-    const dy = b.y - a.y;
-    const length = Math.sqrt(dx * dx + dy * dy);
-    const nx = -dy / length;
-    const ny = dx / length;
-    const dot = ball.vx * nx + ball.vy * ny;
-    ball.vx -= 2 * dot * nx;
-    ball.vy -= 2 * dot * ny;
+  function reflect(ball, normal) {
+    const dot = ball.vx * normal.x + ball.vy * normal.y;
+    ball.vx -= 2 * dot * normal.x;
+    ball.vy -= 2 * dot * normal.y;
     ball.vx *= state.bounce;
     ball.vy *= state.bounce;
   }
@@ -161,69 +156,61 @@ function startHexagonBallAnimation(container) {
     const hexRadius = minSize * 0.4;
 
     ctx.clearRect(0, 0, w, h);
-    state.rotation += 0.005;
+    state.rotation += 0.003;
 
     const hex = hexPoints(cx, cy, hexRadius, state.rotation);
 
     // Draw hexagon
     ctx.beginPath();
     ctx.moveTo(hex[0].x, hex[0].y);
-    for (let i = 1; i < hex.length; i++) {
-      ctx.lineTo(hex[i].x, hex[i].y);
-    }
+    for (let i = 1; i < 6; i++) ctx.lineTo(hex[i].x, hex[i].y);
     ctx.closePath();
     ctx.strokeStyle = "#000";
-    ctx.lineWidth = 3;
+    ctx.lineWidth = 2;
     ctx.stroke();
 
+    // Update ball
     const ball = state.ball;
-    const r = hexRadius * ball.radius;
-
-    // Gravity
-    ball.vy += state.gravity * (minSize / 500);
+    const scale = minSize;
+    ball.vy += state.gravity * scale;
     ball.vx *= state.friction;
     ball.vy *= state.friction;
-
-    // Update position
     ball.x += ball.vx;
     ball.y += ball.vy;
 
-    const px = cx + ball.x * minSize;
-    const py = cy + ball.y * minSize;
+    const px = cx + ball.x * scale;
+    const py = cy + ball.y * scale;
+    const r = ball.radius * scale;
 
-    // Collision with hexagon edges
-    for (let i = 0; i < hex.length; i++) {
+    // Collisions with hexagon walls
+    for (let i = 0; i < 6; i++) {
       const a = hex[i];
-      const b = hex[(i + 1) % hex.length];
+      const b = hex[(i + 1) % 6];
       const dx = b.x - a.x;
       const dy = b.y - a.y;
       const len = Math.sqrt(dx * dx + dy * dy);
       const nx = -dy / len;
       const ny = dx / len;
-      const dist = (px - a.x) * nx + (py - a.y) * ny;
 
+      const dist = (px - a.x) * nx + (py - a.y) * ny;
       if (dist < r) {
-        // Push ball out of wall
-        ball.x -= (r - dist) * nx / minSize;
-        ball.y -= (r - dist) * ny / minSize;
-        reflect(ball, a, b);
+        // push out and reflect
+        ball.x += (r - dist) * nx / scale;
+        ball.y += (r - dist) * ny / scale;
+        reflect(ball, { x: nx, y: ny });
       }
     }
 
     // Draw ball
     ctx.beginPath();
     ctx.arc(px, py, r, 0, Math.PI * 2);
-    ctx.fillStyle = "red";
+    ctx.fillStyle = "#e33";
     ctx.fill();
     ctx.strokeStyle = "#000";
     ctx.stroke();
 
     requestAnimationFrame(draw);
   }
-
-  // Start with offset position
-  state.ball.x = 0.1;
-  state.ball.y = -0.2;
 
   draw();
 }
