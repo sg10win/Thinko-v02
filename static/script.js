@@ -257,12 +257,19 @@ function initGame() {
     setupEventListeners();
     setupPWAInstall();
     fetchRiddle();
-
-    createHexagonBounce({
-            containerId: 'hexagonContainer',
-            size: 400,
-            rotationSpeed: 0.005
-        });
+    
+    // Default configuration - optimized for constant speed
+    const defaults = {
+        containerId: 'hexagonContainer',
+        size: 300, // Smaller default size
+        hexagonColor: '#0d6efd',
+        ballColor: '#fd7e14',
+        rotationSpeed: 0.008, // Slightly faster
+        ballSizeRatio: 0.04, // Slightly larger ball for visibility
+        gravityRatio: 0.0004,
+        minFrameTime: 16 // Ensures consistent speed (60fps)
+    };
+    createHexagonBounce(defaults);
     
     updateStatsDisplay();
     
