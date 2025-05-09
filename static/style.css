@@ -508,8 +508,8 @@ body {
 
 #hexagonContainer {
    position: absolute;
-  top: 0.5rem;
-  left: 0.5rem;
+  top: 0.2rem;
+  left: 0.2rem;
     width: 90px;
     height: 90px;
     display: flex;
