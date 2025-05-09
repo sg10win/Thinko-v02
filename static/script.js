@@ -113,12 +113,7 @@ function checkColorScheme() {
   }
 }
 
-document.querySelector('.hexagon-container').addEventListener('click', function() {
-  const ball = this.querySelector('.ball');
-  ball.style.animation = 'none';
-  void ball.offsetWidth; // Trigger reflow
-  ball.style.animation = 'bounce 2.5s infinite cubic-bezier(0.28, 0.84, 0.42, 1)';
-});
+
 
 
 // ===== GAME INITIALIZATION =====
