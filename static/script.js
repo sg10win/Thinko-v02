@@ -125,7 +125,7 @@ function initHexagonAnimation() {
         x: hexRadius * 0.015 * (Math.random() > 0.5 ? 1 : -1),
         y: hexRadius * 0.015 * (Math.random() > 0.5 ? 1 : -1)
     };
-    const gravity = 0.0.0004125; // Moon gravity (light pull)
+    const gravity = 0.0004125; // Moon gravity (light pull)
     const bounce = 1.0; // Perfect bounce (no energy loss)
 
     function getHexVertices() {
