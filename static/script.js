@@ -314,7 +314,20 @@ async function verifyAnswer() {
 function handleCorrectAnswer() {
     const isDaily = elements.riddle && elements.riddle.classList.contains('daily-riddle');
     const today = new Date().toDateString();
-    
+
+    if (isDaily) {
+        // Only update daily completion if it's a daily riddle
+        gameState.player.dailyCompletedToday = true;
+        updateDailyBadge(); // Update the visual state immediately
+        
+        // Disable the daily badge click handler
+        elements.dailyBadge.style.pointerEvents = 'none';
+        
+        // Re-enable after a short delay to prevent accidental clicks
+        setTimeout(() => {
+            elements.dailyBadge.style.pointerEvents = 'auto';
+        }, 1000);
+    }
     // Play success sound
     if (elements.successSound) {
         elements.successSound.currentTime = 0;
