@@ -97,7 +97,155 @@ const storage = {
 
 
 
+// Add this to your existing JavaScript
+function initHexagonAnimation() {
+    const canvas = document.getElementById('hexagonCanvas');
+    const container = document.querySelector('.hexagon-container');
+    
+    // Set canvas size
+    function resizeCanvas() {
+        const size = Math.min(container.clientWidth, container.clientHeight);
+        canvas.width = size;
+        canvas.height = size;
+    }
+    
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+    
+    const ctx = canvas.getContext('2d');
+    const center = { x: canvas.width/2, y: canvas.height/2 };
+    const hexRadius = canvas.width * 0.4; // Proportional to canvas
+    const ballRadius = hexRadius * 0.07;
+    
+    // Physics properties
+    let hexRotation = 0;
+    const hexSpeed = 0.003; // Slower rotation
+    let ballPos = { x: 0, y: 0 };
+    let ballVel = { 
+        x: hexRadius * 0.015 * (Math.random() > 0.5 ? 1 : -1),
+        y: hexRadius * 0.015 * (Math.random() > 0.5 ? 1 : -1)
+    };
+    const gravity = 0.0002; // Moon gravity (light pull)
+    const bounce = 1.0; // Perfect bounce (no energy loss)
 
+    function getHexVertices() {
+        const vertices = [];
+        for (let i = 0; i < 6; i++) {
+            const angle = hexRotation + i * Math.PI/3;
+            vertices.push({
+                x: Math.cos(angle) * hexRadius,
+                y: Math.sin(angle) * hexRadius
+            });
+        }
+        return vertices;
+    }
+
+    function checkCollisions() {
+        const vertices = getHexVertices();
+        
+        for (let i = 0; i < 6; i++) {
+            const p1 = vertices[i];
+            const p2 = vertices[(i+1)%6];
+            
+            // Edge vector and normal
+            const edge = { x: p2.x-p1.x, y: p2.y-p1.y };
+            const edgeLen = Math.sqrt(edge.x*edge.x + edge.y*edge.y);
+            const normal = { x: -edge.y/edgeLen, y: edge.x/edgeLen };
+            
+            // Distance from ball to edge
+            const ballToEdge = { x: ballPos.x-p1.x, y: ballPos.y-p1.y };
+            const dist = ballToEdge.x*normal.x + ballToEdge.y*normal.y;
+            
+            if (dist < ballRadius) {
+                // Collision response
+                const dot = ballVel.x*normal.x + ballVel.y*normal.y;
+                ballVel.x -= 2 * dot * normal.x * bounce;
+                ballVel.y -= 2 * dot * normal.y * bounce;
+                
+                // Reposition ball
+                const correction = (ballRadius - dist) * 1.01;
+                ballPos.x += normal.x * correction;
+                ballPos.y += normal.y * correction;
+            }
+        }
+    }
+
+    function update() {
+        // Apply moon gravity (pulls downward)
+        ballVel.y += gravity;
+        
+        // Update position
+        ballPos.x += ballVel.x;
+        ballPos.y += ballVel.y;
+        
+        // Check collisions
+        checkCollisions();
+        
+        // Rotate hexagon
+        hexRotation += hexSpeed;
+    }
+
+    function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.save();
+        ctx.translate(center.x, center.y);
+        
+        // Draw hexagon (using Deepseek blue)
+        ctx.beginPath();
+        const vertices = getHexVertices();
+        ctx.moveTo(vertices[0].x, vertices[0].y);
+        for (let i = 1; i < 6; i++) {
+            ctx.lineTo(vertices[i].x, vertices[i].y);
+        }
+        ctx.closePath();
+        ctx.strokeStyle = 'rgba(13, 110, 253, 0.7)'; // Deepseek blue
+        ctx.lineWidth = canvas.width * 0.008; // Proportional line width
+        ctx.stroke();
+        
+        // Draw ball (using Deepseek light blue)
+        const gradient = ctx.createRadialGradient(
+            ballPos.x, ballPos.y, 0,
+            ballPos.x, ballPos.y, ballRadius
+        );
+        gradient.addColorStop(0, 'rgba(51, 153, 255, 0.9)'); // Deepseek light blue
+        gradient.addColorStop(1, 'rgba(13, 110, 253, 0.9)'); // Deepseek blue
+        
+        ctx.beginPath();
+        ctx.arc(ballPos.x, ballPos.y, ballRadius, 0, Math.PI*2);
+        ctx.fillStyle = gradient;
+        ctx.fill();
+        
+        // Ball highlight
+        ctx.beginPath();
+        ctx.arc(
+            ballPos.x - ballRadius*0.3, 
+            ballPos.y - ballRadius*0.3, 
+            ballRadius*0.15, 
+            0, 
+            Math.PI*2
+        );
+        ctx.fillStyle = 'rgba(255,255,255,0.6)';
+        ctx.fill();
+        
+        ctx.restore();
+    }
+
+    function animate() {
+        update();
+        draw();
+        requestAnimationFrame(animate);
+    }
+
+    // Random starting position (within hexagon bounds)
+    const startAngle = Math.random() * Math.PI * 2;
+    const startDist = Math.random() * hexRadius * 0.7;
+    ballPos = {
+        x: Math.cos(startAngle) * startDist,
+        y: Math.sin(startAngle) * startDist
+    };
+
+    animate();
+}
 
 
 
