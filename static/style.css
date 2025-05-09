@@ -508,19 +508,19 @@ body {
 
 #hexagonContainer {
    position: absolute;
-  top: 1rem;
-  left: 1rem;
+  top: 0.5rem;
+  left: 0.5rem;
     width: 90px;
     height: 90px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: --deepseek-bg;
+    background-color: var(--card-bg);
     
 }
 
 #hexagonCanvas {
     display: block;
-    background-color: --deepseek-bg;
+    background-color: var(--card-bg);
     
 }
