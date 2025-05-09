@@ -96,16 +96,14 @@ const storage = {
 
 
 function createHexagonBounce(config) {
-    // Default configuration - optimized for constant speed
+    // Default configuration
     const defaults = {
         containerId: 'hexagonContainer',
-        size: 15, // Smaller default size
-        hexagonColor: '#0d6efd',
-        ballColor: '#fd7e14',
-        rotationSpeed: 0.008, // Slightly faster
-        ballSizeRatio: 0.04, // Slightly larger ball for visibility
+        size: 300,
+        rotationSpeed: 0.008,
+        ballSizeRatio: 0.04,
         gravityRatio: 0.0004,
-        minFrameTime: 16 // Ensures consistent speed (60fps)
+        minFrameTime: 16
     };
     
     const cfg = {...defaults, ...config};
@@ -120,17 +118,25 @@ function createHexagonBounce(config) {
     container.appendChild(canvas);
     
     const ctx = canvas.getContext('2d', { alpha: false });
-    const ballRadius = cfg.size * cfg.ballSizeRatio;
-    const hexRadius = cfg.size * 0.35; // Smaller hexagon
     
-    // Game state with fixed time step
+    // Get colors from CSS variables
+    const styles = getComputedStyle(document.documentElement);
+    const colors = {
+        hexagon: styles.getPropertyValue('--hexagon-color').trim() || '#0d6efd',
+        ball: styles.getPropertyValue('--ball-color').trim() || '#fd7e14',
+        bg: styles.getPropertyValue('--bg-color').trim() || '#1a1a2e'
+    };
+    
+    const ballRadius = cfg.size * cfg.ballSizeRatio;
+    const hexRadius = cfg.size * 0.35;
+    
+    // Game state
     let hexRotation = 0;
     const ball = {
         pos: { x: 0, y: 0 },
-        vel: { x: cfg.size * 0.006, y: cfg.size * 0.006 } // Slightly faster initial speed
+        vel: { x: cfg.size * 0.006, y: cfg.size * 0.006 }
     };
     
-    // Optimized physics functions
     function initBall() {
         const angle = Math.random() * Math.PI * 2;
         const dist = Math.random() * (hexRadius - ballRadius * 1.3);
@@ -175,16 +181,13 @@ function createHexagonBounce(config) {
         }
     }
     
-    // Animation loop with time control
     function animate(currentTime) {
         requestAnimationFrame(animate);
         
-        // Maintain consistent speed regardless of frame rate
-        const deltaTime = Math.min(currentTime - lastTime, 50); // Cap at 50ms
+        const deltaTime = Math.min(currentTime - lastTime, 50);
         if (deltaTime < cfg.minFrameTime) return;
         lastTime = currentTime;
         
-        // Fixed time step physics
         const steps = Math.floor(deltaTime / cfg.minFrameTime);
         for (let i = 0; i < steps; i++) {
             ball.vel.y += cfg.size * cfg.gravityRatio;
@@ -194,25 +197,27 @@ function createHexagonBounce(config) {
             hexRotation += cfg.rotationSpeed;
         }
         
-        // Rendering
+        // Use colors from CSS variables
+        ctx.fillStyle = colors.bg;
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         
         ctx.save();
         ctx.translate(canvas.width/2, canvas.height/2);
         
-        // Hexagon
+        // Hexagon with CSS color
         ctx.beginPath();
         const vertices = getHexVertices(hexRotation);
         ctx.moveTo(vertices[0].x, vertices[0].y);
         for (let i = 1; i < 6; i++) ctx.lineTo(vertices[i].x, vertices[i].y);
         ctx.closePath();
-        ctx.strokeStyle = cfg.hexagonColor;
+        ctx.strokeStyle = colors.hexagon;
         ctx.lineWidth = cfg.size * 0.01;
         ctx.stroke();
         
-        // Ball
+        // Ball with CSS color
         ctx.beginPath();
         ctx.arc(ball.pos.x, ball.pos.y, ballRadius, 0, Math.PI*2);
+        ctx.fillStyle = colors.ball;
         ctx.fill();
         
         ctx.restore();
@@ -224,11 +229,10 @@ function createHexagonBounce(config) {
     
     return {
         setRotationSpeed: (speed) => { cfg.rotationSpeed = speed },
+        getColors: () => ({...colors}),
         getConfig: () => ({...cfg})
     };
 }
-
-
 function checkColorScheme() {
   const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
   document.documentElement.classList.toggle('dark-mode', isDarkMode);
