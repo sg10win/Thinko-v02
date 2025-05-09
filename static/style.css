@@ -506,3 +506,84 @@ body {
   font-size: 1.2em;
 }
 
+/* HEXAGON BOUNCE ANIMATION */
+.hexagon-bounce-container {
+  position: relative;
+  width: 160px;
+  height: 180px;
+  margin: 15px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hexagon-border {
+  width: 140px;
+  height: 160px;
+  position: relative;
+  animation: spin-hexagon 15s linear infinite;
+  clip-path: polygon(
+    50% 0%,
+    90% 25%,
+    90% 75%,
+    50% 100%,
+    10% 75%,
+    10% 25%
+  );
+  background: rgba(var(--deepseek-blue-rgb), 0.1);
+}
+
+.moon-ball {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background: var(--deepseek-light-blue);
+  border-radius: 50%;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: 
+    moon-bounce-x 5.3s infinite cubic-bezier(0.33,0,0.67,1),
+    moon-bounce-y 3.7s infinite cubic-bezier(0.33,0,0.67,1);
+  box-shadow: 
+    0 0 12px rgba(var(--deepseek-light-blue-rgb), 0.7),
+    inset -3px -3px 5px rgba(0,0,0,0.2);
+}
+
+/* Physics-based animations */
+@keyframes spin-hexagon {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes moon-bounce-x {
+  0%, 100% { left: 20%; }
+  25% { left: 80%; }
+  50% { left: 50%; }
+  75% { left: 30%; }
+}
+
+@keyframes moon-bounce-y {
+  0%, 100% { 
+    top: 15%;
+    animation-timing-function: ease-out;
+  }
+  25% { 
+    top: 85%;
+    animation-timing-function: ease-in;
+  }
+  50% { 
+    top: 40%;
+    animation-timing-function: ease-out;
+  }
+  75% { 
+    top: 70%;
+    animation-timing-function: ease-in;
+  }
+}
+
+/* Add this to your root variables if not present */
+:root {
+  --deepseek-blue-rgb: 0, 102, 255;
+  --deepseek-light-blue-rgb: 51, 153, 255;
+}
