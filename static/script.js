@@ -96,19 +96,20 @@ const storage = {
 
 
 function createHexagonBounce(config) {
-    // Default configuration
+    // Default configuration - optimized for constant speed
     const defaults = {
         containerId: 'hexagonContainer',
-        size: 400,
+        size: 300, // Smaller default size
         hexagonColor: '#0d6efd',
         ballColor: '#fd7e14',
-        rotationSpeed: 0.005,
-        ballSizeRatio: 0.0375,
-        gravityRatio: 0.0004
+        rotationSpeed: 0.008, // Slightly faster
+        ballSizeRatio: 0.04, // Slightly larger ball for visibility
+        gravityRatio: 0.0004,
+        minFrameTime: 16 // Ensures consistent speed (60fps)
     };
     
-    // Merge config with defaults
     const cfg = {...defaults, ...config};
+    let lastTime = performance.now();
     
     // Create canvas
     const container = document.getElementById(cfg.containerId);
@@ -118,69 +119,85 @@ function createHexagonBounce(config) {
     canvas.height = cfg.size;
     container.appendChild(canvas);
     
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d', { alpha: false });
     const ballRadius = cfg.size * cfg.ballSizeRatio;
-    const hexRadius = cfg.size * 0.375;
-    const gravity = cfg.size * cfg.gravityRatio;
+    const hexRadius = cfg.size * 0.35; // Smaller hexagon
     
-    // Game state
+    // Game state with fixed time step
     let hexRotation = 0;
     const ball = {
         pos: { x: 0, y: 0 },
-        vel: { x: cfg.size * 0.005, y: cfg.size * 0.005 }
+        vel: { x: cfg.size * 0.006, y: cfg.size * 0.006 } // Slightly faster initial speed
     };
     
+    // Optimized physics functions
     function initBall() {
         const angle = Math.random() * Math.PI * 2;
-        const dist = Math.random() * (hexRadius - ballRadius * 1.5);
-        ball.pos = {
-            x: Math.cos(angle) * dist,
-            y: Math.sin(angle) * dist
-        };
+        const dist = Math.random() * (hexRadius - ballRadius * 1.3);
+        ball.pos = { x: Math.cos(angle) * dist, y: Math.sin(angle) * dist };
     }
     
     function getHexVertices(rotation) {
-        return Array.from({ length: 6 }, (_, i) => ({
-            x: Math.cos(rotation + i * Math.PI/3) * hexRadius,
-            y: Math.sin(rotation + i * Math.PI/3) * hexRadius
-        }));
+        const vertices = [];
+        for (let i = 0; i < 6; i++) {
+            const angle = rotation + i * Math.PI/3;
+            vertices.push({
+                x: Math.cos(angle) * hexRadius,
+                y: Math.sin(angle) * hexRadius
+            });
+        }
+        return vertices;
     }
     
     function checkCollisions() {
         const vertices = getHexVertices(hexRotation);
-        
-        vertices.forEach((p1, i) => {
+        for (let i = 0; i < 6; i++) {
+            const p1 = vertices[i];
             const p2 = vertices[(i + 1) % 6];
-            const edge = { x: p2.x - p1.x, y: p2.y - p1.y };
-            const normal = { x: -edge.y, y: edge.x };
-            const len = Math.sqrt(normal.x**2 + normal.y**2);
-            normal.x /= len;
-            normal.y /= len;
+            const edgeX = p2.x - p1.x;
+            const edgeY = p2.y - p1.y;
+            const normalX = -edgeY;
+            const normalY = edgeX;
+            const len = Math.sqrt(normalX**2 + normalY**2);
+            const normX = normalX/len;
+            const normY = normalY/len;
             
-            const dist = (ball.pos.x - p1.x) * normal.x + (ball.pos.y - p1.y) * normal.y;
-            
+            const dist = (ball.pos.x - p1.x) * normX + (ball.pos.y - p1.y) * normY;
             if (dist < ballRadius) {
-                const velDot = ball.vel.x * normal.x + ball.vel.y * normal.y;
-                ball.vel.x -= 2 * velDot * normal.x;
-                ball.vel.y -= 2 * velDot * normal.y;
+                const velDot = ball.vel.x * normX + ball.vel.y * normY;
+                ball.vel.x -= 2 * velDot * normX;
+                ball.vel.y -= 2 * velDot * normY;
                 
                 const fix = (ballRadius - dist) * 1.001;
-                ball.pos.x += normal.x * fix;
-                ball.pos.y += normal.y * fix;
+                ball.pos.x += normX * fix;
+                ball.pos.y += normY * fix;
             }
-        });
+        }
     }
     
-    function update() {
-        ball.vel.y += gravity;
-        ball.pos.x += ball.vel.x;
-        ball.pos.y += ball.vel.y;
-        checkCollisions();
-        hexRotation += cfg.rotationSpeed;
-    }
-    
-    function draw() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // Animation loop with time control
+    function animate(currentTime) {
+        requestAnimationFrame(animate);
+        
+        // Maintain consistent speed regardless of frame rate
+        const deltaTime = Math.min(currentTime - lastTime, 50); // Cap at 50ms
+        if (deltaTime < cfg.minFrameTime) return;
+        lastTime = currentTime;
+        
+        // Fixed time step physics
+        const steps = Math.floor(deltaTime / cfg.minFrameTime);
+        for (let i = 0; i < steps; i++) {
+            ball.vel.y += cfg.size * cfg.gravityRatio;
+            ball.pos.x += ball.vel.x;
+            ball.pos.y += ball.vel.y;
+            checkCollisions();
+            hexRotation += cfg.rotationSpeed;
+        }
+        
+        // Rendering
+        ctx.fillStyle = cfg.bgColor || '#1a1a2e';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
         ctx.save();
         ctx.translate(canvas.width/2, canvas.height/2);
         
@@ -188,10 +205,10 @@ function createHexagonBounce(config) {
         ctx.beginPath();
         const vertices = getHexVertices(hexRotation);
         ctx.moveTo(vertices[0].x, vertices[0].y);
-        vertices.slice(1).forEach(v => ctx.lineTo(v.x, v.y));
+        for (let i = 1; i < 6; i++) ctx.lineTo(vertices[i].x, vertices[i].y);
         ctx.closePath();
         ctx.strokeStyle = cfg.hexagonColor;
-        ctx.lineWidth = cfg.size * 0.008;
+        ctx.lineWidth = cfg.size * 0.01;
         ctx.stroke();
         
         // Ball
@@ -203,24 +220,15 @@ function createHexagonBounce(config) {
         ctx.restore();
     }
     
-    function animate() {
-        update();
-        draw();
-        requestAnimationFrame(animate);
-    }
-    
     // Initialize
     initBall();
-    animate();
+    requestAnimationFrame(animate);
     
-    // Return API for control
     return {
         setRotationSpeed: (speed) => { cfg.rotationSpeed = speed },
         getConfig: () => ({...cfg})
     };
 }
-
-
 
 
 function checkColorScheme() {
