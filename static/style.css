@@ -515,12 +515,13 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #ffff;
+    background-color: var(--bg-color);
+
     
 }
 
 #hexagonCanvas {
     display: block;
-    background-color: #ffff;
+    background-color: transparent;
     
 }
