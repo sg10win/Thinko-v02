@@ -100,7 +100,7 @@ function createHexagonBounce(config) {
     const defaults = {
         containerId: 'hexagonContainer',
         size: 300,
-        rotationSpeed: 0.008,
+        rotationSpeed: 0.015,
         ballSizeRatio: 0.04,
         gravityRatio: 0.0004,
         minFrameTime: 16
@@ -266,9 +266,9 @@ function initGame() {
         size: 90, // Smaller default size
         hexagonColor: '#0d6efd',
         ballColor: '#fd7e14',
-        rotationSpeed: 0.008, // Slightly faster
-        ballSizeRatio: 0.04, // Slightly larger ball for visibility
-        gravityRatio: 0.0004,
+        rotationSpeed: 0.015, // Slightly faster
+        ballSizeRatio: 0.06, // Slightly larger ball for visibility
+        gravityRatio: 0.0006,
         minFrameTime: 16 // Ensures consistent speed (60fps)
     };
     createHexagonBounce(defaults);
