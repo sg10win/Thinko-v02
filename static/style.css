@@ -513,10 +513,11 @@ body {
     justify-content: center;
     align-items: center;
     background-color: --deepseek-bg;
-    touch-action: none; /* Prevent touch interference */
+    
 }
 
 #hexagonCanvas {
     display: block;
     background: transparent;
+    touch-action: none; /* Prevent touch interference */
 }
