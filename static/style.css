@@ -16,6 +16,8 @@
   --correct-glow: 0 0 10px rgba(0, 204, 102, 0.3);
   --incorrect-glow: 0 0 10px rgba(255, 51, 51, 0.3);
   --shadow-color: rgba(0, 0, 0, 0.1);
+  --deepseek-blue-rgb: 0, 102, 255;
+  --deepseek-light-blue-rgb: 51, 153, 255;
 }
 
 /* Dark Mode Colors */
@@ -581,9 +583,11 @@ body {
     animation-timing-function: ease-in;
   }
 }
-
-/* Add this to your root variables if not present */
-:root {
-  --deepseek-blue-rgb: 0, 102, 255;
-  --deepseek-light-blue-rgb: 51, 153, 255;
+.moon-ball {
+  /* Add slight squash/stretch on impact */
+  transition: transform 0.2s ease;
 }
+.moon-ball:hover {
+  transform: translate(-50%, -50%) scale(1.1, 0.9);
+}
+
