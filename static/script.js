@@ -275,6 +275,7 @@ function initGame() {
     setupEventListeners();
     setupPWAInstall();
     fetchRiddle();
+    initHexagonAnimation();
     updateStatsDisplay();
     
     // Auto-save every 5 minutes
