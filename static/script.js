@@ -97,7 +97,6 @@ const storage = {
 
 
 
-// Add this to your existing JavaScript
 function initHexagonAnimation() {
     const canvas = document.getElementById('hexagonCanvas');
     const container = document.querySelector('.hexagon-container');
@@ -114,19 +113,19 @@ function initHexagonAnimation() {
     
     const ctx = canvas.getContext('2d');
     const center = { x: canvas.width/2, y: canvas.height/2 };
-    const hexRadius = canvas.width * 0.4; // Proportional to canvas
+    const hexRadius = canvas.width * 0.4;
     const ballRadius = hexRadius * 0.07;
     
-    // Physics properties
+    // Physics properties - Adjusted for visible gravity
     let hexRotation = 0;
-    const hexSpeed = 0.003; // Slower rotation
+    const hexSpeed = 0.003;
     let ballPos = { x: 0, y: 0 };
     let ballVel = { 
-        x: hexRadius * 0.015 * (Math.random() > 0.5 ? 1 : -1),
-        y: hexRadius * 0.015 * (Math.random() > 0.5 ? 1 : -1)
+        x: hexRadius * 0.02 * (Math.random() > 0.5 ? 1 : -1),
+        y: 0 // Start with zero vertical velocity for clearer gravity demonstration
     };
-    const gravity = 0.0004125; // Moon gravity (light pull)
-    const bounce = 1.0; // Perfect bounce (no energy loss)
+    const gravity = 0.0005; // Increased gravity for more visible effect
+    const bounce = 0.98; // Slight energy loss for more natural look
 
     function getHexVertices() {
         const vertices = [];
@@ -171,7 +170,7 @@ function initHexagonAnimation() {
     }
 
     function update() {
-        // Apply moon gravity (pulls downward)
+        // Apply gravity - velocity increases over time
         ballVel.y += gravity;
         
         // Update position
@@ -190,7 +189,7 @@ function initHexagonAnimation() {
         ctx.save();
         ctx.translate(center.x, center.y);
         
-        // Draw hexagon (using Deepseek blue)
+        // Draw hexagon
         ctx.beginPath();
         const vertices = getHexVertices();
         ctx.moveTo(vertices[0].x, vertices[0].y);
@@ -198,34 +197,35 @@ function initHexagonAnimation() {
             ctx.lineTo(vertices[i].x, vertices[i].y);
         }
         ctx.closePath();
-        ctx.strokeStyle = 'rgba(13, 110, 253, 0.7)'; // Deepseek blue
-        ctx.lineWidth = canvas.width * 0.008; // Proportional line width
+        ctx.strokeStyle = 'rgba(13, 110, 253, 0.7)';
+        ctx.lineWidth = canvas.width * 0.008;
         ctx.stroke();
         
-        // Draw ball (using Deepseek light blue)
+        // Draw ball with gravity indicator
         const gradient = ctx.createRadialGradient(
             ballPos.x, ballPos.y, 0,
             ballPos.x, ballPos.y, ballRadius
         );
-        gradient.addColorStop(0, 'rgba(51, 153, 255, 0.9)'); // Deepseek light blue
-        gradient.addColorStop(1, 'rgba(13, 110, 253, 0.9)'); // Deepseek blue
+        gradient.addColorStop(0, 'rgba(51, 153, 255, 0.9)');
+        gradient.addColorStop(1, 'rgba(13, 110, 253, 0.9)');
         
         ctx.beginPath();
         ctx.arc(ballPos.x, ballPos.y, ballRadius, 0, Math.PI*2);
         ctx.fillStyle = gradient;
         ctx.fill();
         
-        // Ball highlight
-        ctx.beginPath();
-        ctx.arc(
-            ballPos.x - ballRadius*0.3, 
-            ballPos.y - ballRadius*0.3, 
-            ballRadius*0.15, 
-            0, 
-            Math.PI*2
-        );
-        ctx.fillStyle = 'rgba(255,255,255,0.6)';
-        ctx.fill();
+        // Gravity indicator tail
+        if (Math.abs(ballVel.y) > 0.1) {
+            ctx.beginPath();
+            ctx.moveTo(ballPos.x, ballPos.y);
+            ctx.lineTo(
+                ballPos.x, 
+                ballPos.y + ballRadius * 2 * (ballVel.y > 0 ? 1 : -1)
+            );
+            ctx.strokeStyle = 'rgba(255,255,255,0.3)';
+            ctx.lineWidth = 1;
+            ctx.stroke();
+        }
         
         ctx.restore();
     }
@@ -236,17 +236,12 @@ function initHexagonAnimation() {
         requestAnimationFrame(animate);
     }
 
-    // Random starting position (within hexagon bounds)
-    const startAngle = Math.random() * Math.PI * 2;
-    const startDist = Math.random() * hexRadius * 0.7;
-    ballPos = {
-        x: Math.cos(startAngle) * startDist,
-        y: Math.sin(startAngle) * startDist
-    };
+    // Start at top to clearly show gravity
+    ballPos = { x: 0, y: -hexRadius * 0.6 };
+    ballVel = { x: hexRadius * 0.01, y: 0 };
 
     animate();
 }
-
 
 
 function checkColorScheme() {
