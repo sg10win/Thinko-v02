@@ -519,5 +519,5 @@ body {
 #hexagonCanvas {
     display: block;
     background: transparent;
-    touch-action: none; /* Prevent touch interference */
+    
 }
