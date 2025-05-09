@@ -16,8 +16,8 @@
   --correct-glow: 0 0 10px rgba(0, 204, 102, 0.3);
   --incorrect-glow: 0 0 10px rgba(255, 51, 51, 0.3);
   --shadow-color: rgba(0, 0, 0, 0.1);
-  --hexagon-color: #ff0000;  /* Red hexagon */
-  --ball-color: #00ff00;     /* Green ball */
+  --hexagon-color: var(--deepseek-text-light);  /* Red hexagon */
+  --ball-color: var(--deepseek-blue);     /* Green ball */
 }
 
 /* Dark Mode Colors */
@@ -510,10 +510,10 @@ body {
 
 #hexagonContainer {
    position: absolute;
-  top: 0.2rem;
+  top: 0rem;
   left: 0.2rem;
-    width: 90px;
-    height: 90px;
+    width: 80px;
+    height: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
