@@ -505,5 +505,77 @@ body {
   font-weight: bold;
   font-size: 1.2em;
 }
+/* Hexagon Animation Container */
+.hexagon-container {
+  position: relative;
+  width: 120px;
+  height: 140px;
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+/* Hexagon */
+.hexagon {
+  width: 100px;
+  height: 110px;
+  background: transparent;
+  position: relative;
+  animation: spin 8s linear infinite;
+}
+
+.hexagon:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--deepseek-blue);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  opacity: 0.3;
+}
+
+/* Bouncing Ball */
+.ball {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: var(--deepseek-light-blue);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: bounce 2.5s infinite cubic-bezier(0.28, 0.84, 0.42, 1);
+  box-shadow: 0 0 8px rgba(58, 134, 255, 0.7);
+}
+
+/* Animations */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1, 1);
+    animation-timing-function: ease-out;
+  }
+  10% {
+    transform: translate(-50%, -200%) scale(1, 1.1);
+    animation-timing-function: ease-in;
+  }
+  20% {
+    transform: translate(-50%, -50%) scale(1, 0.9);
+  }
+  50% {
+    transform: translate(-50%, -20%) scale(1, 1);
+    animation-timing-function: ease-in;
+  }
+  70% {
+    transform: translate(-50%, -50%) scale(1, 1);
+    animation-timing-function: ease-out;
+  }
+}
 
