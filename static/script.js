@@ -114,7 +114,142 @@ function checkColorScheme() {
 }
 
 
+// ===== HEXAGON ANIMATION =====
+function initHexagonAnimation() {
+  const canvas = document.getElementById('hexagonCanvas');
+  const container = document.querySelector('.hexagon-container');
+  
+  // Set canvas size
+  function resizeCanvas() {
+    canvas.width = container.clientWidth;
+    canvas.height = container.clientHeight;
+  }
+  
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas);
+  
+  const ctx = canvas.getContext('2d');
+  const center = { x: canvas.width/2, y: canvas.height/2 };
+  const hexRadius = Math.min(canvas.width, canvas.height) * 0.4;
+  const ballRadius = hexRadius * 0.08;
+  
+  // Physics properties
+  let hexRotation = 0;
+  const hexSpeed = 0.005;
+  let ballPos = { x: 0, y: 0 };
+  let ballVel = { 
+    x: hexRadius * 0.02 * (Math.random() > 0.5 ? 1 : -1), 
+    y: hexRadius * 0.02 * (Math.random() > 0.5 ? 1 : -1) 
+  };
+  const gravity = 0.0004;
+  const bounce = 1.0; // Perfect bounce (no energy loss)
 
+  function getHexVertices() {
+    const vertices = [];
+    for (let i = 0; i < 6; i++) {
+      const angle = hexRotation + i * Math.PI/3;
+      vertices.push({
+        x: Math.cos(angle) * hexRadius,
+        y: Math.sin(angle) * hexRadius
+      });
+    }
+    return vertices;
+  }
+
+  function checkCollisions() {
+    const vertices = getHexVertices();
+    
+    for (let i = 0; i < 6; i++) {
+      const p1 = vertices[i];
+      const p2 = vertices[(i+1)%6];
+      
+      // Edge vector and normal
+      const edge = { x: p2.x-p1.x, y: p2.y-p1.y };
+      const edgeLen = Math.sqrt(edge.x*edge.x + edge.y*edge.y);
+      const normal = { x: -edge.y/edgeLen, y: edge.x/edgeLen };
+      
+      // Distance from ball to edge
+      const ballToEdge = { x: ballPos.x-p1.x, y: ballPos.y-p1.y };
+      const dist = ballToEdge.x*normal.x + ballToEdge.y*normal.y;
+      
+      if (dist < ballRadius) {
+        // Collision response
+        const dot = ballVel.x*normal.x + ballVel.y*normal.y;
+        ballVel.x -= 2 * dot * normal.x * bounce;
+        ballVel.y -= 2 * dot * normal.y * bounce;
+        
+        // Reposition ball
+        const correction = (ballRadius - dist) * 1.01;
+        ballPos.x += normal.x * correction;
+        ballPos.y += normal.y * correction;
+      }
+    }
+  }
+
+  function update() {
+    // Apply moon gravity
+    ballVel.y += gravity;
+    
+    // Update position
+    ballPos.x += ballVel.x;
+    ballPos.y += ballVel.y;
+    
+    // Check collisions
+    checkCollisions();
+    
+    // Rotate hexagon
+    hexRotation += hexSpeed;
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.save();
+    ctx.translate(center.x, center.y);
+    
+    // Draw hexagon
+    ctx.beginPath();
+    const vertices = getHexVertices();
+    ctx.moveTo(vertices[0].x, vertices[0].y);
+    for (let i = 1; i < 6; i++) {
+      ctx.lineTo(vertices[i].x, vertices[i].y);
+    }
+    ctx.closePath();
+    ctx.strokeStyle = `rgba(${getComputedStyle(document.documentElement)
+      .getPropertyValue('--deepseek-blue-rgb')}, 0.5)`;
+    ctx.lineWidth = 3;
+    ctx.stroke();
+    
+    // Draw ball
+    ctx.beginPath();
+    ctx.arc(ballPos.x, ballPos.y, ballRadius, 0, Math.PI*2);
+    ctx.fillStyle = `rgba(${getComputedStyle(document.documentElement)
+      .getPropertyValue('--deepseek-light-blue-rgb')}, 0.8)`;
+    ctx.fill();
+    
+    // Ball highlight
+    ctx.beginPath();
+    ctx.arc(ballPos.x-ballRadius*0.3, ballPos.y-ballRadius*0.3, 
+            ballRadius*0.2, 0, Math.PI*2);
+    ctx.fillStyle = 'rgba(255,255,255,0.6)';
+    ctx.fill();
+    
+    ctx.restore();
+  }
+
+  function animate() {
+    update();
+    draw();
+    requestAnimationFrame(animate);
+  }
+
+  // Random starting position
+  ballPos = {
+    x: (Math.random()-0.5) * hexRadius*0.8,
+    y: (Math.random()-0.5) * hexRadius*0.8
+  };
+
+  animate();
+}
 
 // ===== GAME INITIALIZATION =====
 function initGame() {
@@ -127,6 +262,7 @@ function initGame() {
     setupEventListeners();
     setupPWAInstall();
     fetchRiddle();
+    initHexagonAnimation();
     updateStatsDisplay();
     
     // Auto-save every 5 minutes
