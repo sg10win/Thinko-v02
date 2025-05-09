@@ -124,7 +124,7 @@ function createHexagonBounce(config) {
     const colors = {
         hexagon: styles.getPropertyValue('--hexagon-color').trim() || '#0d6efd',
         ball: styles.getPropertyValue('--ball-color').trim() || '#fd7e14',
-        bg: styles.getPropertyValue('--bg-color').trim() || '#1a1a2e'
+        bg: styles.getPropertyValue('--deepseek-bg').trim() || '#1a1a2e'
     };
     
     const ballRadius = cfg.size * cfg.ballSizeRatio;
