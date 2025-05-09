@@ -267,7 +267,7 @@ function initGame() {
         hexagonColor: '#0d6efd',
         ballColor: '#fd7e14',
         rotationSpeed: 0.015, // Slightly faster
-        ballSizeRatio: 0.06, // Slightly larger ball for visibility
+        ballSizeRatio: 0.04, // Slightly larger ball for visibility
         gravityRatio: 0.0006,
         minFrameTime: 16 // Ensures consistent speed (60fps)
     };
