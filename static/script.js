@@ -99,7 +99,7 @@ function createHexagonBounce(config) {
     // Default configuration - optimized for constant speed
     const defaults = {
         containerId: 'hexagonContainer',
-        size: 300, // Smaller default size
+        size: 15, // Smaller default size
         hexagonColor: '#0d6efd',
         ballColor: '#fd7e14',
         rotationSpeed: 0.008, // Slightly faster
