@@ -97,151 +97,134 @@ const storage = {
 
 
 
-function initHexagonAnimation() {
-    const canvas = document.getElementById('hexagonCanvas');
-    const container = document.querySelector('.hexagon-container');
-    
-    // Set canvas size
-    function resizeCanvas() {
-        const size = Math.min(container.clientWidth, container.clientHeight);
-        canvas.width = size;
-        canvas.height = size;
-    }
-    
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-    
-    const ctx = canvas.getContext('2d');
-    const center = { x: canvas.width/2, y: canvas.height/2 };
-    const hexRadius = canvas.width * 0.4;
-    const ballRadius = hexRadius * 0.07;
-    
-    // Physics properties - Adjusted for visible gravity
-    let hexRotation = 0;
-    const hexSpeed = 0.003;
-    let ballPos = { x: 0, y: 0 };
-    let ballVel = { 
-        x: hexRadius * 0.02 * (Math.random() > 0.5 ? 1 : -1),
-        y: 0 // Start with zero vertical velocity for clearer gravity demonstration
-    };
-    const gravity = 0.0005; // Increased gravity for more visible effect
-    const bounce = 0.98; // Slight energy loss for more natural look
+function startHexagonBallAnimation(container) {
+  const canvas = document.createElement("canvas");
+  canvas.style.width = "100%";
+  canvas.style.height = "100%";
+  canvas.style.display = "block";
+  canvas.id = "hexagonCanvas_" + Math.random().toString(36).substring(2);
+  container.appendChild(canvas);
 
-    function getHexVertices() {
-        const vertices = [];
-        for (let i = 0; i < 6; i++) {
-            const angle = hexRotation + i * Math.PI/3;
-            vertices.push({
-                x: Math.cos(angle) * hexRadius,
-                y: Math.sin(angle) * hexRadius
-            });
+  const ctx = canvas.getContext("2d");
+
+  function resizeCanvas() {
+    canvas.width = canvas.clientWidth;
+    canvas.height = canvas.clientHeight;
+  }
+  window.addEventListener("resize", resizeCanvas);
+  resizeCanvas();
+
+  const state = {
+    rotation: 0,
+    ball: {
+      x: 0,
+      y: 0,
+      vx: 0.002,
+      vy: 0,
+      radius: 0.05,
+    },
+    gravity: 0.0003,
+    bounce: 0.8,
+    friction: 0.99,
+  };
+
+  function hexPoints(cx, cy, radius, rotation) {
+    const points = [];
+    for (let i = 0; i < 6; i++) {
+      const angle = rotation + i * Math.PI / 3;
+      points.push({
+        x: cx + radius * Math.cos(angle),
+        y: cy + radius * Math.sin(angle)
+      });
+    }
+    return points;
+  }
+
+  function pointInPolygon(x, y, polygon) {
+    let inside = false;
+    for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
+      const xi = polygon[i].x, yi = polygon[i].y;
+      const xj = polygon[j].x, yj = polygon[j].y;
+      const intersect = ((yi > y) !== (yj > y)) &&
+        (x < (xj - xi) * (y - yi) / (yj - yi + 0.00001) + xi);
+      if (intersect) inside = !inside;
+    }
+    return inside;
+  }
+
+  function draw() {
+    const w = canvas.width;
+    const h = canvas.height;
+    const cx = w / 2;
+    const cy = h / 2;
+    const minSize = Math.min(w, h);
+    const hexRadius = minSize * 0.4;
+
+    ctx.clearRect(0, 0, w, h);
+    state.rotation += 0.005;
+
+    const hex = hexPoints(cx, cy, hexRadius, state.rotation);
+
+    ctx.beginPath();
+    ctx.moveTo(hex[0].x, hex[0].y);
+    for (let i = 1; i < hex.length; i++) {
+      ctx.lineTo(hex[i].x, hex[i].y);
+    }
+    ctx.closePath();
+    ctx.strokeStyle = "#333";
+    ctx.lineWidth = 3;
+    ctx.stroke();
+
+    const ball = state.ball;
+    const radius = hexRadius * ball.radius;
+
+    ball.vy += state.gravity * minSize;
+    ball.vx *= state.friction;
+    ball.vy *= state.friction;
+
+    ball.x += ball.vx * minSize;
+    ball.y += ball.vy * minSize;
+
+    const globalBallX = cx + ball.x;
+    const globalBallY = cy + ball.y;
+
+    if (!pointInPolygon(globalBallX, globalBallY, hex)) {
+      for (let i = 0; i < hex.length; i++) {
+        const a = hex[i];
+        const b = hex[(i + 1) % hex.length];
+        const dx = b.x - a.x;
+        const dy = b.y - a.y;
+        const normal = { x: -dy, y: dx };
+        const mag = Math.sqrt(normal.x ** 2 + normal.y ** 2);
+        normal.x /= mag;
+        normal.y /= mag;
+
+        const dist = (globalBallX - a.x) * normal.x + (globalBallY - a.y) * normal.y;
+        if (dist < radius) {
+          ball.vx -= 2 * (ball.vx * normal.x + ball.vy * normal.y) * normal.x;
+          ball.vy -= 2 * (ball.vx * normal.x + ball.vy * normal.y) * normal.y;
+          ball.vx *= state.bounce;
+          ball.vy *= state.bounce;
+          ball.x -= normal.x * (radius - dist);
+          ball.y -= normal.y * (radius - dist);
         }
-        return vertices;
+      }
     }
 
-    function checkCollisions() {
-        const vertices = getHexVertices();
-        
-        for (let i = 0; i < 6; i++) {
-            const p1 = vertices[i];
-            const p2 = vertices[(i+1)%6];
-            
-            // Edge vector and normal
-            const edge = { x: p2.x-p1.x, y: p2.y-p1.y };
-            const edgeLen = Math.sqrt(edge.x*edge.x + edge.y*edge.y);
-            const normal = { x: -edge.y/edgeLen, y: edge.x/edgeLen };
-            
-            // Distance from ball to edge
-            const ballToEdge = { x: ballPos.x-p1.x, y: ballPos.y-p1.y };
-            const dist = ballToEdge.x*normal.x + ballToEdge.y*normal.y;
-            
-            if (dist < ballRadius) {
-                // Collision response
-                const dot = ballVel.x*normal.x + ballVel.y*normal.y;
-                ballVel.x -= 2 * dot * normal.x * bounce;
-                ballVel.y -= 2 * dot * normal.y * bounce;
-                
-                // Reposition ball
-                const correction = (ballRadius - dist) * 1.01;
-                ballPos.x += normal.x * correction;
-                ballPos.y += normal.y * correction;
-            }
-        }
-    }
+    ctx.beginPath();
+    ctx.arc(globalBallX, globalBallY, radius, 0, 2 * Math.PI);
+    ctx.fillStyle = "red";
+    ctx.fill();
+    ctx.stroke();
 
-    function update() {
-        // Apply gravity - velocity increases over time
-        ballVel.y += gravity;
-        
-        // Update position
-        ballPos.x += ballVel.x;
-        ballPos.y += ballVel.y;
-        
-        // Check collisions
-        checkCollisions();
-        
-        // Rotate hexagon
-        hexRotation += hexSpeed;
-    }
+    requestAnimationFrame(draw);
+  }
 
-    function draw() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.save();
-        ctx.translate(center.x, center.y);
-        
-        // Draw hexagon
-        ctx.beginPath();
-        const vertices = getHexVertices();
-        ctx.moveTo(vertices[0].x, vertices[0].y);
-        for (let i = 1; i < 6; i++) {
-            ctx.lineTo(vertices[i].x, vertices[i].y);
-        }
-        ctx.closePath();
-        ctx.strokeStyle = 'rgba(13, 110, 253, 0.7)';
-        ctx.lineWidth = canvas.width * 0.008;
-        ctx.stroke();
-        
-        // Draw ball with gravity indicator
-        const gradient = ctx.createRadialGradient(
-            ballPos.x, ballPos.y, 0,
-            ballPos.x, ballPos.y, ballRadius
-        );
-        gradient.addColorStop(0, 'rgba(51, 153, 255, 0.9)');
-        gradient.addColorStop(1, 'rgba(13, 110, 253, 0.9)');
-        
-        ctx.beginPath();
-        ctx.arc(ballPos.x, ballPos.y, ballRadius, 0, Math.PI*2);
-        ctx.fillStyle = gradient;
-        ctx.fill();
-        
-        // Gravity indicator tail
-        if (Math.abs(ballVel.y) > 0.1) {
-            ctx.beginPath();
-            ctx.moveTo(ballPos.x, ballPos.y);
-            ctx.lineTo(
-                ballPos.x, 
-                ballPos.y + ballRadius * 2 * (ballVel.y > 0 ? 1 : -1)
-            );
-            ctx.strokeStyle = 'rgba(255,255,255,0.3)';
-            ctx.lineWidth = 1;
-            ctx.stroke();
-        }
-        
-        ctx.restore();
-    }
-
-    function animate() {
-        update();
-        draw();
-        requestAnimationFrame(animate);
-    }
-
-    // Start at top to clearly show gravity
-    ballPos = { x: 0, y: -hexRadius * 0.6 };
-    ballVel = { x: hexRadius * 0.01, y: 0 };
-
-    animate();
+  state.ball.x = 0;
+  state.ball.y = 0;
+  draw();
 }
+
 
 
 function checkColorScheme() {
@@ -270,7 +253,7 @@ function initGame() {
     setupEventListeners();
     setupPWAInstall();
     fetchRiddle();
-    initHexagonAnimation();
+    startHexagonBallAnimation(document.querySelector(".hexagon-container"));
     updateStatsDisplay();
     
     // Auto-save every 5 minutes
